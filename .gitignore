@@ -58,3 +58,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+KENKA-JOUTOU/Library/
+KENKA-JOUTOU/Temp/
+KENKA-JOUTOU/Logs/
+KENKA-JOUTOU/obj/

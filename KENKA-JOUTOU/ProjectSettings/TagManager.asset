@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Piller
   - Grab
+  - Player2
+  - item
   layers:
   - Default
   - TransparentFX

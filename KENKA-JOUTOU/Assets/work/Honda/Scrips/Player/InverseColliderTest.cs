@@ -6,12 +6,11 @@ public class InverseColliderTest : MonoBehaviour
     [SerializeField]
     private float colliderSize;
     [SerializeField]
-    private PhysicMaterial stringMax;
-    [SerializeField]
     private GameObject Root1;
     [SerializeField]
     private GameObject Root2;
     private bool isActivated = false;
+    [SerializeField]
     private GameObject colliderObject;
     [SerializeField]
     private GameObject triggerObject;
@@ -20,8 +19,8 @@ public class InverseColliderTest : MonoBehaviour
 
     private void Start()
     {
-        Root1.GetComponent<Transform>();
-        Root2.GetComponent<Transform>();
+        Transform  Pos1 = Root1.GetComponent<Transform>();
+        Transform  Pos2 = Root2.GetComponent<Transform>();
     }
 
     private void Update()
@@ -63,18 +62,23 @@ public class InverseColliderTest : MonoBehaviour
         // ÉÅÉbÉVÉÖÇÃñ ÇãtÇ…ÇµÇƒÇ©ÇÁMeshColliderÇê›íË
         var mesh = colliderObject.GetComponent<MeshFilter>().mesh;
         mesh.triangles = mesh.triangles.Reverse().ToArray();
-        colliderObject.AddComponent<MeshCollider>();
-        colliderObject.GetComponent<MeshCollider>().material = stringMax;
+        var col = colliderObject.AddComponent<MeshCollider>();
+        // col.convex = true;
+        // col.isTrigger = true;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        if (collision.gameObject.tag == "Player") {
-            Rigidbody rig = Root1.transform.GetComponent<Rigidbody>();
-            Rigidbody rig2 = Root2.transform.GetComponent<Rigidbody>();
+        if (colliderObject)
+        {
+            if (other.gameObject.tag == "Player" || other.gameObject.tag == "Player2") 
+            {
+                Rigidbody rig = Root1.transform.GetComponent<Rigidbody>();
+                Rigidbody rig2 = Root2.transform.GetComponent<Rigidbody>();
 
-            rig.AddForce(transform.forward * Bouns,ForceMode.Impulse);
-            rig2.AddForce(transform.forward * Bouns,ForceMode.Impulse);
+                rig.AddForce(-Root1.transform.position * Bouns, ForceMode.VelocityChange);
+                rig2.AddForce(-Root2.transform.position * Bouns, ForceMode.VelocityChange);
+            }
         }
     }
 }

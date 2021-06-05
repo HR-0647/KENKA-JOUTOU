@@ -2,16 +2,12 @@ using UnityEngine;
 
 public class Player2 : MonoBehaviour
 {
-    [SerializeField]
     private Vector3 velosity; // 移動地
-    [SerializeField]
     private Vector3 input; // 入力値
     [SerializeField]
     private float WalkSpeed = 1.5f;
 
-    [SerializeField]
     private Vector3 Dashvelosity; // ダッシュ移動地
-    [SerializeField]
     private Vector3 Dashinput; // ダッシュ入力値
     [SerializeField]
     private float DashSpeed = 5;

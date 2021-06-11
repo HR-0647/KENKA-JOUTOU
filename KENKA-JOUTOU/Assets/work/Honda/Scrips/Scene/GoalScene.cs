@@ -10,7 +10,6 @@ public class GoalScene : MonoBehaviour
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log(Player);
     }
 
     private void OnTriggerEnter(Collider other)

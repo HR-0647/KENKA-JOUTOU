@@ -9,7 +9,6 @@ public class Grab1 : MonoBehaviour
     private void Start()
     {
         item.GetComponent<Rigidbody>();
-        item.GetComponent<GameObject>();
     }
     private void OnTriggerStay(Collider other)
     {

@@ -46,6 +46,8 @@ public class Player2 : MonoBehaviour
 
             Dashvelosity += transform.forward * DashSpeed;
         }
+
+        
     }
 
     void FixedUpdate()

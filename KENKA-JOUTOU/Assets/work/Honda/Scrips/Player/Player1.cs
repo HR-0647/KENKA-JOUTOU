@@ -48,14 +48,16 @@ public class Player1 : MonoBehaviour
 
             Dashvelosity += transform.forward * DashSpeed;
         }
+
+        
     }
 
     void FixedUpdate()
     {
         // ƒLƒƒƒ‰‚ÌˆÚ“®ˆ—
         rig.MovePosition(transform.position + velosity * Time.fixedDeltaTime);
-        if (Input.GetKeyDown("joystick button 6") && CoolTime < 0)  
-        { 
+        if (Input.GetKeyDown("joystick button 6") && CoolTime < 0)
+        {
             rig.MovePosition(transform.position + Dashvelosity * Time.deltaTime);
             Dash.Play();
             CoolTime = DashTime;

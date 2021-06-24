@@ -8,6 +8,7 @@ TagManager:
   - Grab
   - Player2
   - item
+  - Grab2
   layers:
   - Default
   - TransparentFX

@@ -17,6 +17,10 @@ public class Player1 : MonoBehaviour
     private ParticleSystem Dash;
     [SerializeField]
     private float DashTime = 0.5f;
+    [SerializeField]
+    private GameObject player1;
+    [SerializeField]
+    private GameObject player2;
     private float CoolTime;
 
     void Start()
@@ -48,8 +52,9 @@ public class Player1 : MonoBehaviour
 
             Dashvelosity += transform.forward * DashSpeed;
         }
-
-        
+        Vector3 middle = Vector3.Lerp(player1.transform.position, player2.transform.position, 0.5f);
+        Mathf.Clamp(middle.x, -3, 3);
+        //Debug.Log(middle.x);
     }
 
     void FixedUpdate()

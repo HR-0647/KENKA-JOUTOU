@@ -11,15 +11,17 @@ public class ForwardPlayer : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Vector3 center = Vector3.Lerp(player.transform.position, player2.transform.position, 0.5f);
         // MainCamera(自分自身)とplayerとの相対距離を求める
-        offset = transform.position - player.transform.position - player2.transform.position;
-
+        offset = transform.position + center;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector3 center = Vector3.Lerp(player.transform.position, player2.transform.position, 0.5f);
         //新しいトランスフォームの値を代入する
-        transform.position = player.transform.position + offset;
+        transform.position = center + offset;
     }
 }

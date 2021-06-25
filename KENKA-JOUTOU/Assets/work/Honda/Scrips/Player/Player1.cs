@@ -5,7 +5,7 @@ public class Player1 : MonoBehaviour
     private Vector3 velosity; // 移動地
     private Vector3 input; // 入力値
     [SerializeField]
-    private float WalkSpeed = 1.5f;
+    public float WalkSpeed = 1.5f;
 
     private Vector3 Dashvelosity; // ダッシュ移動地
     private Vector3 Dashinput; // ダッシュ入力値
@@ -52,9 +52,46 @@ public class Player1 : MonoBehaviour
 
             Dashvelosity += transform.forward * DashSpeed;
         }
-        Vector3 middle = Vector3.Lerp(player1.transform.position, player2.transform.position, 0.5f);
-        Mathf.Clamp(middle.x, -3, 3);
-        //Debug.Log(middle.x);
+
+        
+
+        // Lerpを使い距離が離れると遅くなる予定だった
+        //Vector3 middle = Vector3.Lerp(player1.transform.localPosition, player2.transform.localPosition, 0.5f);
+        //Vector3 distance = Vector3.Lerp(-player1.transform.localPosition, -player2.transform.localPosition, 0.5f);
+
+        //if (middle.x > distance.x)
+        //{
+        //    WalkSpeed = 1f;
+        //}
+        //else if (middle.x < distance.x)
+        //{
+        //    WalkSpeed = 5f;
+        //}
+        //if (middle.z > distance.z)
+        //{
+        //    WalkSpeed = 1f;
+        //}
+        //else if (middle.z < distance.z)
+        //{
+        //    WalkSpeed = 5f;
+        //}
+
+        //if (middle.x < distance.x)
+        //{
+        //    WalkSpeed = 1f;
+        //}
+        //else if (middle.x > distance.x)
+        //{
+        //    WalkSpeed = 5f;
+        //}
+        //if (middle.z < distance.z)
+        //{
+        //    WalkSpeed = 1f;
+        //}
+        //else if (middle.z > distance.z)
+        //{
+        //    WalkSpeed = 5f;
+        //}
     }
 
     void FixedUpdate()

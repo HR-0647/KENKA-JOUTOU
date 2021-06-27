@@ -4,11 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - Piller
   - Grab
   - Player2
   - item
   - Grab2
+=======
+  - Wire
+>>>>>>> origin/葛西風月
   layers:
   - Default
   - TransparentFX

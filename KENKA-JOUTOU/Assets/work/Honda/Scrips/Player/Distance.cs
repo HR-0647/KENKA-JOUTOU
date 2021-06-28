@@ -12,6 +12,18 @@ public class Distance : MonoBehaviour
     private GameObject p1;
     [SerializeField]
     private GameObject p2;
+    [SerializeField]
+    private Rigidbody PL1;
+    [SerializeField]
+    private Rigidbody PL2;
+    [SerializeField]
+    private float stampTime = 5f;
+    [SerializeField]
+    private float boundPower=5f;
+
+    private float CoolTime;
+    private float dis;
+
 
     private void Start()
     {
@@ -19,12 +31,26 @@ public class Distance : MonoBehaviour
         p2 = GameObject.Find("SD_unitychan_humanoid (1)");
     }
 
+    private void Update()
+    {
+        CoolTime -= Time.deltaTime;
+
+        if (dis > 10 && CoolTime < 0)
+        {
+            PL1.AddForce(-p1.transform.position * boundPower,ForceMode.VelocityChange);
+            PL2.AddForce(-p2.transform.position * boundPower,ForceMode.VelocityChange);
+
+            CoolTime = stampTime;
+        }
+    }
+
     private void LateUpdate()
     {
+        // ƒLƒƒƒ‰‚Ì‹——£‚ª10‚ð’´‚¦‚é‚Æ’x‚­‚È‚é(ŒÝ‚¢‚É10ˆÈ‰º‚Å‚ ‚ê‚Î‘¬“x‚ÍŒ¸‘¬‚µ‚È‚¢)
         Vector3 A = target.transform.position;
         Vector3 B = target2.transform.position;
 
-        float dis = Vector3.Distance(A, B);
+        dis = Vector3.Distance(A, B);
         if (dis > 10)
         {
             p1.GetComponent<Player1>().WalkSpeed = 1f;

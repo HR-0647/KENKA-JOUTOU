@@ -8,7 +8,7 @@ public class Player2 : MonoBehaviour
     public float WalkSpeed = 1.5f;
 
     private Vector3 Dashvelosity; // ダッシュ移動地
-    private Vector3 Dashinput; // ダッシュ入力値
+    private Vector3 DashInput; // ダッシュ入力値
     [SerializeField]
     private float DashSpeed = 5;
 
@@ -17,12 +17,8 @@ public class Player2 : MonoBehaviour
     private ParticleSystem Dash;
     [SerializeField]
     private float DashTime = 0.5f;
-    [SerializeField]
-    private GameObject player1;
-    [SerializeField]
-    private GameObject player2;
-    private float CoolTime;
 
+    private float CoolTime;
     void Start()
     {
         rig = GetComponent<Rigidbody>();
@@ -42,63 +38,22 @@ public class Player2 : MonoBehaviour
         }
 
         Dashvelosity = Vector3.zero;
-        Dashinput = new Vector3(Input.GetAxis("Horizontal3"), 0f, Input.GetAxis("Vertical3"));
+        DashInput = new Vector3(Input.GetAxis("Horizontal3"), 0f, Input.GetAxis("Vertical3"));
 
-        if (Dashinput.magnitude > 1f)
+        if (DashInput.magnitude > 0f)
         {
-            transform.LookAt(transform.position + Dashinput);
+            transform.LookAt(transform.position + DashInput);
 
             Dashvelosity += transform.forward * DashSpeed;
         }
-
-        
-
-        // Lerpを使い距離が離れると遅くなる予定だった
-        //Vector3 middle = Vector3.Lerp(player1.transform.localPosition, player2.transform.localPosition, 0.5f);
-        //Vector3 distance = Vector3.Lerp(-player1.transform.localPosition, -player2.transform.localPosition, 0.5f);
-
-        //Debug.Log()
-
-        //if (middle.x > distance.x)
-        //{
-        //    WalkSpeed = 1f;
-        //}
-        //else if (middle.x < distance.x)
-        //{
-        //    WalkSpeed = 5f;
-        //}
-        //if (middle.z > distance.z)
-        //{
-        //    WalkSpeed = 1f;
-        //}
-        //else if (middle.z < distance.z)
-        //{
-        //    WalkSpeed = 5f;
-        //}
-
-        //if (middle.x < distance.x)
-        //{
-        //    WalkSpeed = 1f;
-        //}
-        //else if (middle.x > distance.x)
-        //{
-        //    WalkSpeed = 5f;
-        //}
-        //if (middle.z < distance.z)
-        //{
-        //    WalkSpeed = 1f;
-        //}
-        //else if (middle.z > distance.z)
-        //{
-        //    WalkSpeed = 5f;
-        //}
     }
 
     void FixedUpdate()
     {
         // キャラの移動処理
         rig.MovePosition(transform.position + velosity * Time.fixedDeltaTime);
-        if (Input.GetKeyDown("joystick button 7") && CoolTime < 0)
+
+        if (Input.GetKey("joystick button 7") && CoolTime < 0)
         {
             rig.MovePosition(transform.position + Dashvelosity * Time.deltaTime);
             Dash.Play();

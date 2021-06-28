@@ -25,23 +25,15 @@ public class Distance : MonoBehaviour
         Vector3 B = target2.transform.position;
 
         float dis = Vector3.Distance(A, B);
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Player2")
-        {
-            p1.GetComponent<Player1>().WalkSpeed = 5f;
-            p2.GetComponent<Player2>().WalkSpeed = 5f;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag=="Player"|| other.gameObject.tag == "Player2")
+        if (dis > 10)
         {
             p1.GetComponent<Player1>().WalkSpeed = 1f;
             p2.GetComponent<Player2>().WalkSpeed = 1f;
+        }
+        else
+        {
+            p1.GetComponent<Player1>().WalkSpeed = 5f;
+            p2.GetComponent<Player2>().WalkSpeed = 5f;
         }
     }
 }

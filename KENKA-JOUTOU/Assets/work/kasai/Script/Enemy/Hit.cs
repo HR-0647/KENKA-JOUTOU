@@ -9,7 +9,7 @@ public class Hit : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            EnemyHealth = EnemyHealth - 10;
+            EnemyHealth -= 10;
             Debug.Log("hit");
             if (EnemyHealth <= 0)
             {

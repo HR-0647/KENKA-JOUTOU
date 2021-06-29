@@ -16,13 +16,19 @@ public class Distance : MonoBehaviour
     private Rigidbody PL1;
     [SerializeField]
     private Rigidbody PL2;
+
+    // ヒップアタック関係
     [SerializeField]
     private float stampTime = 5f;
     [SerializeField]
     private float boundPower=5f;
 
+    // クールダウンタイム
     private float CoolTime;
+
     private float dis;
+    private Vector3 A;
+    private Vector3 B;
 
 
     private void Start()
@@ -33,24 +39,22 @@ public class Distance : MonoBehaviour
 
     private void Update()
     {
-        CoolTime -= Time.deltaTime;
 
-        if (dis > 10 && CoolTime < 0)
+        A = target.transform.position;
+        B = target2.transform.position;
+
+        dis = Vector3.Distance(A, B);
+
+        if (dis > 1 && Input.GetKey("joystick button 6") && Input.GetKey("joystick button 7"))
         {
-            PL1.AddForce(-p1.transform.position * boundPower,ForceMode.VelocityChange);
-            PL2.AddForce(-p2.transform.position * boundPower,ForceMode.VelocityChange);
-
-            CoolTime = stampTime;
+            PL1.AddForce(-p1.transform.forward * boundPower, ForceMode.VelocityChange);
+            PL2.AddForce(-p2.transform.forward * boundPower, ForceMode.VelocityChange);
         }
     }
 
     private void LateUpdate()
     {
         // キャラの距離が10を超えると遅くなる(互いに10以下であれば速度は減速しない)
-        Vector3 A = target.transform.position;
-        Vector3 B = target2.transform.position;
-
-        dis = Vector3.Distance(A, B);
         if (dis > 10)
         {
             p1.GetComponent<Player1>().WalkSpeed = 1f;

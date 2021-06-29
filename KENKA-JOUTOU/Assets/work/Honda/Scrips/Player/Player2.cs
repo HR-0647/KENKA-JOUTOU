@@ -40,7 +40,7 @@ public class Player2 : MonoBehaviour
         Dashvelosity = Vector3.zero;
         DashInput = new Vector3(Input.GetAxis("Horizontal3"), 0f, Input.GetAxis("Vertical3"));
 
-        if (DashInput.magnitude > 0f)
+        if (DashInput.magnitude > 1f)
         {
             transform.LookAt(transform.position + DashInput);
 

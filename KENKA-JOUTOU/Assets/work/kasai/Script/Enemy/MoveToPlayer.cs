@@ -15,7 +15,7 @@ public class MoveToPlayer : MonoBehaviour
     private Vector3 PlayerPosition1;    //プレイヤーの位置情報1
     private Vector3 PlayerPosition2;    //プレイヤーの位置情報2
     private Vector3 WirePosition;       //ワイヤーの位置情報
-    private Vector3 EnemyPosition;      //エネミーの位置情報
+    //private Vector3 EnemyPosition;      //エネミーの位置情報
 
     private float timeleft;
 
@@ -88,7 +88,7 @@ public class MoveToPlayer : MonoBehaviour
         //プレイヤーと糸までの距離を出す
         PlayerPosition1 = PlayerObject1.transform.position;
         PlayerPosition2 = PlayerObject2.transform.position;
-        EnemyPosition = transform.position;
+        //EnemyPosition = transform.position;
         WirePosition = WireObject.transform.position;
 
         //x1 = PlayerPosition1.x - EnemyPosition.x;
@@ -163,8 +163,8 @@ public class MoveToPlayer : MonoBehaviour
                     //攻撃
                     Debug.Log("Atk");
                 }
-                
-                
+
+
 
             }
 

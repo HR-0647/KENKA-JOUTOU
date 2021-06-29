@@ -21,7 +21,7 @@ public class Distance : MonoBehaviour
     [SerializeField]
     private float stampTime = 5f;
     [SerializeField]
-    private float boundPower=5f;
+    private float boundPower=10f;
 
     // クールダウンタイム
     private float CoolTime;

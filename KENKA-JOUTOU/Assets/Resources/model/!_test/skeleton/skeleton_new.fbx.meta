@@ -1,0 +1,289 @@
+fileFormatVersion: 2
+guid: 5624569d5a26d18498f07cf1aaf3c17f
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: arm_all
+    100002: arm_hand_left
+    100004: arm_hand_right
+    100006: arm_left
+    100008: arm_low_left
+    100010: arm_low_right
+    100012: arm_right
+    100014: arm_up_left
+    100016: arm_up_right
+    100018: belt_
+    100020: belt_2
+    100022: belt_3
+    100024: belt_4
+    100026: belt_buckle_1
+    100028: boots_left
+    100030: boots_right
+    100032: clavicle_all
+    100034: clavicle_left
+    100036: clavicle_right
+    100038: eye_all
+    100040: eye_left
+    100042: eye_right
+    100044: eye_right 1
+    100046: eye_right 2
+    100048: eye_shadow_right
+    100050: eye_shadow_right 1
+    100052: head
+    100054: head_
+    100056: Ilium
+    100058: knee_left
+    100060: knee_right
+    100062: leg_all
+    100064: leg_down_left
+    100066: leg_down_right
+    100068: leg_left
+    100070: leg_right
+    100072: leg_up_left
+    100074: leg_up_right
+    100076: lower_body
+    100078: pupil_right
+    100080: pupil_right 1
+    100082: rib
+    100084: scapula_all
+    100086: scapula_left
+    100088: scapula_right
+    100090: //RootNode
+    100092: spine
+    100094: upper_body
+    400000: arm_all
+    400002: arm_hand_left
+    400004: arm_hand_right
+    400006: arm_left
+    400008: arm_low_left
+    400010: arm_low_right
+    400012: arm_right
+    400014: arm_up_left
+    400016: arm_up_right
+    400018: belt_
+    400020: belt_2
+    400022: belt_3
+    400024: belt_4
+    400026: belt_buckle_1
+    400028: boots_left
+    400030: boots_right
+    400032: clavicle_all
+    400034: clavicle_left
+    400036: clavicle_right
+    400038: eye_all
+    400040: eye_left
+    400042: eye_right
+    400044: eye_right 1
+    400046: eye_right 2
+    400048: eye_shadow_right
+    400050: eye_shadow_right 1
+    400052: head
+    400054: head_
+    400056: Ilium
+    400058: knee_left
+    400060: knee_right
+    400062: leg_all
+    400064: leg_down_left
+    400066: leg_down_right
+    400068: leg_left
+    400070: leg_right
+    400072: leg_up_left
+    400074: leg_up_right
+    400076: lower_body
+    400078: pupil_right
+    400080: pupil_right 1
+    400082: rib
+    400084: scapula_all
+    400086: scapula_left
+    400088: scapula_right
+    400090: //RootNode
+    400092: spine
+    400094: upper_body
+    2100000: skeleton_tex
+    2300000: arm_hand_left
+    2300002: arm_hand_right
+    2300004: arm_low_left
+    2300006: arm_low_right
+    2300008: arm_up_left
+    2300010: arm_up_right
+    2300012: belt_2
+    2300014: belt_3
+    2300016: belt_4
+    2300018: belt_buckle_1
+    2300020: boots_left
+    2300022: boots_right
+    2300024: clavicle_left
+    2300026: clavicle_right
+    2300028: eye_right 1
+    2300030: eye_right 2
+    2300032: eye_shadow_right
+    2300034: eye_shadow_right 1
+    2300036: head
+    2300038: Ilium
+    2300040: knee_left
+    2300042: knee_right
+    2300044: leg_down_left
+    2300046: leg_down_right
+    2300048: leg_up_left
+    2300050: leg_up_right
+    2300052: pupil_right
+    2300054: pupil_right 1
+    2300056: rib
+    2300058: scapula_left
+    2300060: scapula_right
+    2300062: spine
+    3300000: arm_hand_left
+    3300002: arm_hand_right
+    3300004: arm_low_left
+    3300006: arm_low_right
+    3300008: arm_up_left
+    3300010: arm_up_right
+    3300012: belt_2
+    3300014: belt_3
+    3300016: belt_4
+    3300018: belt_buckle_1
+    3300020: boots_left
+    3300022: boots_right
+    3300024: clavicle_left
+    3300026: clavicle_right
+    3300028: eye_right 1
+    3300030: eye_right 2
+    3300032: eye_shadow_right
+    3300034: eye_shadow_right 1
+    3300036: head
+    3300038: Ilium
+    3300040: knee_left
+    3300042: knee_right
+    3300044: leg_down_left
+    3300046: leg_down_right
+    3300048: leg_up_left
+    3300050: leg_up_right
+    3300052: pupil_right
+    3300054: pupil_right 1
+    3300056: rib
+    3300058: scapula_left
+    3300060: scapula_right
+    3300062: spine
+    4300000: head
+    4300002: pupil_right
+    4300004: eye_right
+    4300006: eye_shadow_right
+    4300008: pupil_right
+    4300010: eye_right
+    4300012: eye_shadow_right
+    4300014: arm_hand_right
+    4300016: arm_low_right
+    4300018: arm_up_right
+    4300020: arm_hand_left
+    4300022: arm_low_left
+    4300024: arm_up_left
+    4300026: scapula_right
+    4300028: scapula_left
+    4300030: clavicle_right
+    4300032: clavicle_left
+    4300034: spine
+    4300036: rib
+    4300038: belt_buckle_1
+    4300040: belt_2
+    4300042: belt_3
+    4300044: belt_4
+    4300046: Ilium
+    4300048: leg_up_right
+    4300050: leg_down_right
+    4300052: knee_right
+    4300054: boots_right
+    4300056: leg_up_left
+    4300058: leg_down_left
+    4300060: knee_left
+    4300062: boots_left
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skeleton_tex
+    second: {fileID: 2100000, guid: 28b6a80c150cd28478a2fcf3e685729b, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

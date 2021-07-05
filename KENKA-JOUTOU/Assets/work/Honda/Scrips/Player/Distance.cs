@@ -45,11 +45,11 @@ public class Distance : MonoBehaviour
 
         dis = Vector3.Distance(A, B);
 
-        if (dis > 1 && Input.GetKey("joystick button 6") && Input.GetKey("joystick button 7"))
-        {
-            PL1.AddForce(-p1.transform.forward * boundPower, ForceMode.VelocityChange);
-            PL2.AddForce(-p2.transform.forward * boundPower, ForceMode.VelocityChange);
-        }
+        //if (dis > 1 && Input.GetKey("joystick button 6") && Input.GetKey("joystick button 7"))
+        //{
+        //    PL1.AddForce(-p1.transform.forward * boundPower, ForceMode.VelocityChange);
+        //    PL2.AddForce(-p2.transform.forward * boundPower, ForceMode.VelocityChange);
+        //}
     }
 
     private void LateUpdate()

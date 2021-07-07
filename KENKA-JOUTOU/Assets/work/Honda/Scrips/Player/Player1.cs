@@ -55,7 +55,9 @@ public class Player1 : MonoBehaviour
     void FixedUpdate()
     {
         // ƒLƒƒƒ‰‚ÌˆÚ“®ˆ—
-        rig.MovePosition(transform.position + velosity * Time.fixedDeltaTime);
+        rig.AddForce(input * WalkSpeed);
+
+        rig.velocity = Vector3.ClampMagnitude(velosity, WalkSpeed);
 
         if (Input.GetKey("joystick button 6") && CoolTime < 0)
         {

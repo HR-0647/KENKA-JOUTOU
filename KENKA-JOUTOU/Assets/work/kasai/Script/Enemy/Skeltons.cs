@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 
-public class MoveToPlayer : MonoBehaviour
+public class Skeltons : MonoBehaviour
 {
     public GameObject PlayerObject1;    //プレイヤーオブジェクト1
     public GameObject PlayerObject2;    //プレイヤーオブジェクト2
@@ -42,7 +42,7 @@ public class MoveToPlayer : MonoBehaviour
                 return Vector3.zero;
             }
 
-            return m_targets[ m_targetIndex ].position;
+            return m_targets[m_targetIndex].position;
         }
     }
 
@@ -64,7 +64,7 @@ public class MoveToPlayer : MonoBehaviour
 
     public float EnemySearchArea;       //敵の索敵範囲(仮置き)
     public float EnemyAtkInterval;      //敵の攻撃間隔(仮置き)
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -80,7 +80,7 @@ public class MoveToPlayer : MonoBehaviour
         m_navAgent = GetComponent<NavMeshAgent>();
         m_navAgent.destination = CurretTargetPosition;
 
-        
+
 
     }
 
@@ -116,7 +116,7 @@ public class MoveToPlayer : MonoBehaviour
         //エネミーの巡回
 
         if (m_navAgent.remainingDistance <= m_destinationThreshold && trigger)
-            //(range1 >= EnemySearchArea || range2 >= EnemySearchArea || range3 >= EnemySearchArea)
+        //(range1 >= EnemySearchArea || range2 >= EnemySearchArea || range3 >= EnemySearchArea)
         {
             {
                 m_targetIndex = (m_targetIndex + 1) % m_targets.Length;
@@ -134,45 +134,45 @@ public class MoveToPlayer : MonoBehaviour
         {
 
             //体力がMaxなら糸に向かって移動
-            if (EnemyHealth >= 100 && range3 >= 1)
-            {
-                m_navAgent.destination = WirePosition;
-                //if (WirePosition.x > EnemyPosition.x)
-                //{
-                //    EnemyPosition.x = EnemyPosition.x + 0.01f;
-                //}
-                //else if (WirePosition.x < EnemyPosition.x)
-                //{
-                //    EnemyPosition.x = EnemyPosition.x - 0.01f;
-                //}
+            //if (EnemyHealth >= 100 && range3 >= 1)
+            //{
+            //    m_navAgent.destination = WirePosition;
+            //    //if (WirePosition.x > EnemyPosition.x)
+            //    //{
+            //    //    EnemyPosition.x = EnemyPosition.x + 0.01f;
+            //    //}
+            //    //else if (WirePosition.x < EnemyPosition.x)
+            //    //{
+            //    //    EnemyPosition.x = EnemyPosition.x - 0.01f;
+            //    //}
 
-                //if (WirePosition.z > EnemyPosition.z)
-                //{
-                //    EnemyPosition.z = EnemyPosition.z + 0.01f;
-                //}
-                //else if (WirePosition.z < EnemyPosition.z)
-                //{
-                //    EnemyPosition.z = EnemyPosition.z - 0.01f;
-                //}
+            //    //if (WirePosition.z > EnemyPosition.z)
+            //    //{
+            //    //    EnemyPosition.z = EnemyPosition.z + 0.01f;
+            //    //}
+            //    //else if (WirePosition.z < EnemyPosition.z)
+            //    //{
+            //    //    EnemyPosition.z = EnemyPosition.z - 0.01f;
+            //    //}
 
-            }
-            else if (EnemyHealth >= 100 && range3 <= 1)
-            {
-                //糸に攻撃した後EnemyAtkInterval分の間隔を置いて再度攻撃を繰り返す
-                if (timeleft <= 0.0)
-                {
-                    timeleft = EnemyAtkInterval;
-                    //攻撃
-                    Debug.Log("Atk");
-                }
+            //}
+            //else if (EnemyHealth >= 100 && range3 <= 1)
+            //{
+            //    //糸に攻撃した後EnemyAtkInterval分の間隔を置いて再度攻撃を繰り返す
+            //    if (timeleft <= 0.0)
+            //    {
+            //        timeleft = EnemyAtkInterval;
+            //        //攻撃
+            //        Debug.Log("Atk");
+            //    }
 
 
 
-            }
+            //}
 
             //体力が減っているならプレイヤーに向かって移動
-            if (EnemyHealth < 100)
-            {
+            //if (EnemyHealth < 100)
+            //{
                 //プレイヤー1の方が近い場合
                 if (range1 <= range2 && range1 >= 1)
                 {
@@ -244,7 +244,7 @@ public class MoveToPlayer : MonoBehaviour
                 else { }
 
 
-            }
+            //}
 
             //transform.position = EnemyPosition;
 

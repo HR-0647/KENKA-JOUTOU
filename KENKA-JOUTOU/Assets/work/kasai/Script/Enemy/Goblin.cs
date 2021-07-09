@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 
-public class MoveToPlayer : MonoBehaviour
+public class Goblin : MonoBehaviour
 {
     public GameObject PlayerObject1;    //プレイヤーオブジェクト1
     public GameObject PlayerObject2;    //プレイヤーオブジェクト2
@@ -19,6 +19,7 @@ public class MoveToPlayer : MonoBehaviour
 
     public static float EnemyHealth = 100;      //エネミーの体力
 
+    //タイマー
     private float timeleft;
 
     //NavMesh関連
@@ -42,11 +43,9 @@ public class MoveToPlayer : MonoBehaviour
                 return Vector3.zero;
             }
 
-            return m_targets[ m_targetIndex ].position;
+            return m_targets[m_targetIndex].position;
         }
     }
-
-    //ここまで
 
     //private float x1;                   //プレイヤー1のx座標
     //private float x2;                   //プレイヤー2のx座標
@@ -62,9 +61,12 @@ public class MoveToPlayer : MonoBehaviour
     private float range2;               //エネミーからプレイヤー2までの距離
     private float range3;               //エネミーから糸までの距離
 
-    public float EnemySearchArea;       //敵の索敵範囲(仮置き)
-    public float EnemyAtkInterval;      //敵の攻撃間隔(仮置き)
-    
+    public float EnemySearchArea;       //敵の索敵範囲
+    public float EnemyAtkInterval;      //敵の攻撃間隔
+
+    //アニメーション関連
+    private Animator animator;
+
 
     // Start is called before the first frame update
     void Start()
@@ -80,8 +82,7 @@ public class MoveToPlayer : MonoBehaviour
         m_navAgent = GetComponent<NavMeshAgent>();
         m_navAgent.destination = CurretTargetPosition;
 
-        
-
+       
     }
 
     // Update is called once per frame
@@ -116,7 +117,7 @@ public class MoveToPlayer : MonoBehaviour
         //エネミーの巡回
 
         if (m_navAgent.remainingDistance <= m_destinationThreshold && trigger)
-            //(range1 >= EnemySearchArea || range2 >= EnemySearchArea || range3 >= EnemySearchArea)
+        //(range1 >= EnemySearchArea || range2 >= EnemySearchArea || range3 >= EnemySearchArea)
         {
             {
                 m_targetIndex = (m_targetIndex + 1) % m_targets.Length;

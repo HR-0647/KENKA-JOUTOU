@@ -156,19 +156,19 @@ public class MoveToPlayer : MonoBehaviour
                 //}
 
             }
-            else if (EnemyHealth >= 100 && range3 <= 1)
-            {
-                //…‚ÉUŒ‚‚µ‚½ŒãEnemyAtkInterval•ª‚ÌŠÔŠu‚ğ’u‚¢‚ÄÄ“xUŒ‚‚ğŒJ‚è•Ô‚·
-                if (timeleft <= 0.0)
-                {
-                    timeleft = EnemyAtkInterval;
-                    //UŒ‚
-                    Debug.Log("Atk");
-                }
+            //else if (EnemyHealth >= 100 && range3 <= 1)
+            //{
+            //    //…‚ÉUŒ‚‚µ‚½ŒãEnemyAtkInterval•ª‚ÌŠÔŠu‚ğ’u‚¢‚ÄÄ“xUŒ‚‚ğŒJ‚è•Ô‚·
+            //    if (timeleft <= 0.0)
+            //    {
+            //        timeleft = EnemyAtkInterval;
+            //        //UŒ‚
+            //        Debug.Log("Atk");
+            //    }
 
 
 
-            }
+            //}
 
             //‘Ì—Í‚ªŒ¸‚Á‚Ä‚¢‚é‚È‚çƒvƒŒƒCƒ„[‚ÉŒü‚©‚Á‚ÄˆÚ“®
             if (EnemyHealth < 100)
@@ -195,18 +195,18 @@ public class MoveToPlayer : MonoBehaviour
                     //    EnemyPosition.z = EnemyPosition.z - 0.01f;
                     //}
                 }
-                else if (range1 <= range2 && range1 <= 1)
-                {
-                    //ƒvƒŒƒCƒ„[1‚ÉUŒ‚‚µ‚½ŒãEnemyAtkInterval•ª‚ÌŠÔŠu‚ğ’u‚¢‚ÄÄ“xUŒ‚‚ğŒJ‚è•Ô‚·
-                    if (timeleft <= 0.0)
-                    {
-                        timeleft = EnemyAtkInterval;
-                        //UŒ‚
-                        Debug.Log("Atk");
-                    }
+                //else if (range1 <= range2 && range1 <= 1)
+                //{
+                //    //ƒvƒŒƒCƒ„[1‚ÉUŒ‚‚µ‚½ŒãEnemyAtkInterval•ª‚ÌŠÔŠu‚ğ’u‚¢‚ÄÄ“xUŒ‚‚ğŒJ‚è•Ô‚·
+                //    if (timeleft <= 0.0)
+                //    {
+                //        timeleft = EnemyAtkInterval;
+                //        //UŒ‚
+                //        Debug.Log("Atk");
+                //    }
 
 
-                }
+                //}
                 else { }
                 //ƒvƒŒƒCƒ„[2‚Ì•û‚ª‹ß‚¢ê‡
                 if (range2 < range1 && range2 >= 1)

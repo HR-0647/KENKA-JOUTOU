@@ -10,11 +10,12 @@ public class Skeltons : MonoBehaviour
     public GameObject WireObject;      //ワイヤーオブジェクト
 
     public bool trigger = true;         //巡回とターゲット切り替え
+
     private Vector3 PlayerPosition1;    //プレイヤーの位置情報1
     private Vector3 PlayerPosition2;    //プレイヤーの位置情報2
     private Vector3 WirePosition;       //ワイヤーの位置情報
 
-    public float EnemyHP = 100;      //エネミーの体力
+    public int EnemyHP = 100;      //エネミーの体力
 
     private float timeleft;
 
@@ -53,9 +54,8 @@ public class Skeltons : MonoBehaviour
     private float range2;               //エネミーからプレイヤー2までの距離
     private float range3;               //エネミーから糸までの距離
 
-    public float EnemySearchArea;       //敵の索敵範囲(仮置き)
-    public float EnemyAtkInterval;      //敵の攻撃間隔(仮置き)
-
+    public float EnemySearchArea;       //敵の索敵範囲
+    public float EnemyAtkInterval;      //敵の攻撃間隔
 
     // Start is called before the first frame update
     void Start()
@@ -83,6 +83,7 @@ public class Skeltons : MonoBehaviour
         //タイマー
         timeleft -= Time.deltaTime;
 
+
         //ここからエネミーの行動パターン
    
         //エネミーの巡回
@@ -97,69 +98,61 @@ public class Skeltons : MonoBehaviour
 
             }
         }
+
+        //検知範囲にプレイヤーか糸がいるなら接近する
         if (range1 <= EnemySearchArea || range2 <= EnemySearchArea || range3 <= EnemySearchArea)
         {
             trigger = false;
         }
 
-
-        //検知範囲にプレイヤーか糸がいるなら接近する
+                
         if (!trigger)
         {
                 //プレイヤー1の方が近い場合
-                if (range1 <= range2 && range1 >= m_navAgent.stoppingDistance)
-                {
-                    m_navAgent.speed = 5;
-                    m_navAgent.acceleration = 8;
+                if (range1 <= range2)
+                {                    
                     m_navAgent.destination = PlayerPosition1;
 
-                }
-                else if (range1 <= range2 && range1 < m_navAgent.stoppingDistance)
-                {
-                    m_navAgent.speed = 0;
-                    m_navAgent.acceleration = 0;
-
-                    //プレイヤー1に攻撃した後EnemyAtkInterval分の間隔を置いて再度攻撃を繰り返す
-                    if (timeleft <= 0.0)
+                    if (range1 < m_navAgent.stoppingDistance)
                     {
-                        timeleft = EnemyAtkInterval;
-                        //攻撃
-                        Debug.Log("Atk");
+                        
+                        //プレイヤー1に攻撃した後EnemyAtkInterval分の間隔を置いて再度攻撃を繰り返す
+                        if (timeleft <= 0.0)
+                        {
+                            timeleft = EnemyAtkInterval;
+                            //攻撃
+                            Debug.Log("Atk");
 
-                        //攻撃音再生
-                        audioSource.PlayOneShot(atksound);
-                    }
-
+                            //攻撃音再生
+                            audioSource.PlayOneShot(atksound);
+                        }
 
                 }
-            else { }
-                //プレイヤー2の方が近く、プレイヤーにと密着していない場合
-                if (range2 < range1 && range2 >= m_navAgent.stoppingDistance )
-                {
-                    m_navAgent.speed = 5;
-                    m_navAgent.acceleration = 8;
+
+            }
+                
+           
+                //プレイヤー2の方が近く、プレイヤー2と密着していない場合
+                if (range2 < range1)
+                {                    
                     m_navAgent.destination = PlayerPosition2;
-                }
-                else if (range2 < range1 && range2 <= m_navAgent.stoppingDistance)
-                {
-                    m_navAgent.speed = 0;
-                    m_navAgent.acceleration = 0;
 
-                //プレイヤー2に攻撃した後EnemyAtkInterval分の間隔を置いて再度攻撃を繰り返す
-                if (timeleft <= 0.0)
-                    {
-                        timeleft = EnemyAtkInterval;
-                        //攻撃
-                        Debug.Log("Atk");
-                        //攻撃音再生
-                        audioSource.PlayOneShot(atksound);
-
-
-                    }
-
+                    if (range2 <= m_navAgent.stoppingDistance)
+                    {                        
+                        //プレイヤー2に攻撃した後EnemyAtkInterval分の間隔を置いて再度攻撃を繰り返す
+                        if (timeleft <= 0.0)
+                        {
+                            timeleft = EnemyAtkInterval;
+                            //攻撃
+                            Debug.Log("Atk");
+                            //攻撃音再生
+                            audioSource.PlayOneShot(atksound);
+                        }
 
                 }
-                else { }
+            }
+                
+                
 
 
         }
@@ -179,12 +172,12 @@ public class Skeltons : MonoBehaviour
         {
             EnemyHP -= 10;
             Debug.Log("hit");
-
+            
         }
         //体力の判定
         if (EnemyHP <= 0)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

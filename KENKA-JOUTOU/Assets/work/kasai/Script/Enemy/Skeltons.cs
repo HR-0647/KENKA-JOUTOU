@@ -168,7 +168,7 @@ public class Skeltons : MonoBehaviour
         //    //audioSource.PlayOneShot(objectcllide);
         //    GetComponent<AudioSource>().PlayOneShot(objectcllide);
         //}
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player"|| collision.gameObject.tag == "Player2")
         {
             EnemyHP -= 10;
             Debug.Log("hit");

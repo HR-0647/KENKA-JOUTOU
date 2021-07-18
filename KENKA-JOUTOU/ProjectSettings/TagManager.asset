@@ -4,7 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
+  - Piller
+  - Player2
+  - Grab2
+  - Grab
+  - item
+  - Rope
+=======
   - plane
+>>>>>>> 248d2bf1e70af86804a6e9948008afd31cb00b3f
   layers:
   - Default
   - TransparentFX

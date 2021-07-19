@@ -34,7 +34,7 @@ public class Player1 : MonoBehaviour
         input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 
         // •ûŒüƒL[‚ª‘½­‰Ÿ‚³‚ê‚Ä‚¢‚é‚Æ‚«
-        if (input.magnitude > 1f)
+        if (input.magnitude > 0f)
         {
             transform.LookAt(transform.position + input);
 
@@ -44,7 +44,7 @@ public class Player1 : MonoBehaviour
         Dashvelosity = Vector3.zero;
         Dashinput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 
-        if(Dashinput.magnitude > 1f)
+        if(Dashinput.magnitude > 0f)
         {
             transform.LookAt(transform.position + Dashinput);
 

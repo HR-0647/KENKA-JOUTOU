@@ -4,12 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Piller
-  - item
-  - Player2
-  - Grab2
-  - Grab
-  - Obi
+  - plane
   layers:
   - Default
   - TransparentFX

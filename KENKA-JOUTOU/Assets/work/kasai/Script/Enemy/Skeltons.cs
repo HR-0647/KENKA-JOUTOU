@@ -170,7 +170,7 @@ public class Skeltons : MonoBehaviour
         //}
         if (collision.gameObject.tag == "Player"|| collision.gameObject.tag == "Player2")
         {
-            EnemyHP -= 10;
+            EnemyHP -= 20;
             Debug.Log("hit");
             
         }

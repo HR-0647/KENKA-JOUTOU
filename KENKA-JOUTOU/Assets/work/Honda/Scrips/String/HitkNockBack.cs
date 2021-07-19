@@ -14,6 +14,7 @@ public class HitkNockBack : MonoBehaviour
     Rigidbody rigidBody;
     Rigidbody playerRigidBody;
     GameObject player;
+    GameObject Obi;
 
     void Start()
     {
@@ -21,12 +22,13 @@ public class HitkNockBack : MonoBehaviour
 
         //プレイヤーをタグで検索し、Rigidbodyを取得
         player = GameObject.FindGameObjectWithTag("Player");
+        Obi = GameObject.FindGameObjectWithTag("Obi");
         playerRigidBody = player.GetComponent<Rigidbody>();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Player2" && isCollision == false)
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Player2" || collision.gameObject.tag=="Obi" && isCollision == false)
         {
             //吹っ飛ばす
             Vector3 playerVelocity = playerRigidBody.velocity;

@@ -9,7 +9,6 @@ public class Skeltons : MonoBehaviour
     public GameObject PlayerObject1;    //プレイヤーオブジェクト1
     public GameObject PlayerObject2;    //プレイヤーオブジェクト2
     public GameObject WireObject;      //ワイヤーオブジェクト
-    public ObiSolver obi;
 
     public bool trigger = true;         //巡回とターゲット切り替え
 

@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - plane
+  - Player2
+  - Grab2
+  - Grab
+  - Obi
+  - item
+  - Enemy
   layers:
   - Default
   - TransparentFX

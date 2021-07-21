@@ -1,0 +1,270 @@
+fileFormatVersion: 2
+guid: e6c87b8ec275b9a45b8d7f89876a9fc2
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: door
+    100002: floor5
+    100004: //RootNode
+    100006: Prison_preset_1
+    100008: wall_3
+    100010: wood_Pillar_
+    100012: wood_Pillar_10
+    100014: wood_Pillar_10 1
+    100016: wood_Pillar_10 2
+    100018: wood_Pillar_10 3
+    100020: wood_Pillar_12
+    100022: wood_Pillar_12 1
+    100024: wood_Pillar_13
+    100026: wood_Pillar_13 1
+    100028: wood_Pillar_13 2
+    100030: wood_Pillar_13 3
+    100032: wood_Pillar_14
+    100034: wood_Pillar_14 1
+    100036: wood_Pillar_15
+    100038: wood_Pillar_15 1
+    100040: wood_Pillar_15 2
+    100042: wood_Pillar_15 3
+    100044: wood_Pillar_16
+    100046: wood_Pillar_17
+    100048: wood_Pillar_18
+    100050: wood_Pillar_5
+    100052: wood_Pillar_5 1
+    100054: wood_Pillar_5 2
+    100056: wood_Pillar_5 3
+    100058: wood_Pillar_6
+    100060: wood_Pillar_6 1
+    100062: wood_Pillar_6 2
+    100064: wood_Pillar_6 3
+    100066: wood_Pillar_7
+    100068: wood_Pillar_7 1
+    100070: wood_Pillar_7 2
+    100072: wood_Pillar_7 3
+    400000: door
+    400002: floor5
+    400004: //RootNode
+    400006: Prison_preset_1
+    400008: wall_3
+    400010: wood_Pillar_
+    400012: wood_Pillar_10
+    400014: wood_Pillar_10 1
+    400016: wood_Pillar_10 2
+    400018: wood_Pillar_10 3
+    400020: wood_Pillar_12
+    400022: wood_Pillar_12 1
+    400024: wood_Pillar_13
+    400026: wood_Pillar_13 1
+    400028: wood_Pillar_13 2
+    400030: wood_Pillar_13 3
+    400032: wood_Pillar_14
+    400034: wood_Pillar_14 1
+    400036: wood_Pillar_15
+    400038: wood_Pillar_15 1
+    400040: wood_Pillar_15 2
+    400042: wood_Pillar_15 3
+    400044: wood_Pillar_16
+    400046: wood_Pillar_17
+    400048: wood_Pillar_18
+    400050: wood_Pillar_5
+    400052: wood_Pillar_5 1
+    400054: wood_Pillar_5 2
+    400056: wood_Pillar_5 3
+    400058: wood_Pillar_6
+    400060: wood_Pillar_6 1
+    400062: wood_Pillar_6 2
+    400064: wood_Pillar_6 3
+    400066: wood_Pillar_7
+    400068: wood_Pillar_7 1
+    400070: wood_Pillar_7 2
+    400072: wood_Pillar_7 3
+    2100000: lambert27
+    2100002: Prison_tile
+    2300000: door
+    2300002: floor5
+    2300004: wall_3
+    2300006: wood_Pillar_10
+    2300008: wood_Pillar_10 1
+    2300010: wood_Pillar_10 2
+    2300012: wood_Pillar_10 3
+    2300014: wood_Pillar_12
+    2300016: wood_Pillar_12 1
+    2300018: wood_Pillar_13
+    2300020: wood_Pillar_13 1
+    2300022: wood_Pillar_13 2
+    2300024: wood_Pillar_13 3
+    2300026: wood_Pillar_14
+    2300028: wood_Pillar_14 1
+    2300030: wood_Pillar_15
+    2300032: wood_Pillar_15 1
+    2300034: wood_Pillar_15 2
+    2300036: wood_Pillar_15 3
+    2300038: wood_Pillar_5
+    2300040: wood_Pillar_5 1
+    2300042: wood_Pillar_5 2
+    2300044: wood_Pillar_5 3
+    2300046: wood_Pillar_6
+    2300048: wood_Pillar_6 1
+    2300050: wood_Pillar_6 2
+    2300052: wood_Pillar_6 3
+    2300054: wood_Pillar_7
+    2300056: wood_Pillar_7 1
+    2300058: wood_Pillar_7 2
+    2300060: wood_Pillar_7 3
+    3300000: door
+    3300002: floor5
+    3300004: wall_3
+    3300006: wood_Pillar_10
+    3300008: wood_Pillar_10 1
+    3300010: wood_Pillar_10 2
+    3300012: wood_Pillar_10 3
+    3300014: wood_Pillar_12
+    3300016: wood_Pillar_12 1
+    3300018: wood_Pillar_13
+    3300020: wood_Pillar_13 1
+    3300022: wood_Pillar_13 2
+    3300024: wood_Pillar_13 3
+    3300026: wood_Pillar_14
+    3300028: wood_Pillar_14 1
+    3300030: wood_Pillar_15
+    3300032: wood_Pillar_15 1
+    3300034: wood_Pillar_15 2
+    3300036: wood_Pillar_15 3
+    3300038: wood_Pillar_5
+    3300040: wood_Pillar_5 1
+    3300042: wood_Pillar_5 2
+    3300044: wood_Pillar_5 3
+    3300046: wood_Pillar_6
+    3300048: wood_Pillar_6 1
+    3300050: wood_Pillar_6 2
+    3300052: wood_Pillar_6 3
+    3300054: wood_Pillar_7
+    3300056: wood_Pillar_7 1
+    3300058: wood_Pillar_7 2
+    3300060: wood_Pillar_7 3
+    4300000: door
+    4300002: wall_3
+    4300004: floor5
+    4300006: wood_Pillar_5
+    4300008: wood_Pillar_6
+    4300010: wood_Pillar_7
+    4300012: wood_Pillar_10
+    4300014: wood_Pillar_15
+    4300016: wood_Pillar_14
+    4300018: wood_Pillar_13
+    4300020: wood_Pillar_12
+    4300022: wood_Pillar_5
+    4300024: wood_Pillar_6
+    4300026: wood_Pillar_7
+    4300028: wood_Pillar_10
+    4300030: wood_Pillar_15
+    4300032: wood_Pillar_14
+    4300034: wood_Pillar_13
+    4300036: wood_Pillar_12
+    4300038: wood_Pillar_5
+    4300040: wood_Pillar_6
+    4300042: wood_Pillar_7
+    4300044: wood_Pillar_10
+    4300046: wood_Pillar_15
+    4300048: wood_Pillar_13
+    4300050: wood_Pillar_5
+    4300052: wood_Pillar_6
+    4300054: wood_Pillar_7
+    4300056: wood_Pillar_10
+    4300058: wood_Pillar_15
+    4300060: wood_Pillar_13
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Prison_tile
+    second: {fileID: 2100000, guid: dff41c3cf20313249859ca1e2a4505e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert27
+    second: {fileID: 2100000, guid: d8d65bd3833bed9478e4af27d140ce54, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

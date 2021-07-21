@@ -35,8 +35,8 @@ public class HipAttack : MonoBehaviour
     // クラスは参照をするので更新を書かなくとも元から取るので必要ない
     void Start()
     {
-        p1 = GameObject.Find("SD_unitychan_humanoid");
-        p2 = GameObject.Find("SD_unitychan_humanoid (1)");
+        p1 = GameObject.Find("player_1_");
+        p2 = GameObject.Find("player_2_");
     }
 
     // 現段階では設定した方のプレイヤーにヒップアタックさせることができた

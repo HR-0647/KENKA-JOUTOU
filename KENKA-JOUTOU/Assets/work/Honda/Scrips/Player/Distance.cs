@@ -19,8 +19,8 @@ public class Distance : MonoBehaviour
 
     private void Start()
     {
-        p1 = GameObject.Find("SD_unitychan_humanoid");
-        p2 = GameObject.Find("SD_unitychan_humanoid (1)");
+        p1 = GameObject.Find("player_1_");
+        p2 = GameObject.Find("player_2_");
     }
 
     private void Update()

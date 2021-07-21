@@ -5,6 +5,6 @@ public class Title : MonoBehaviour
 {
     public void StartButton()
     {
-        SceneManager.LoadScene("TestMock");
+        SceneManager.LoadScene("Map");
     }
 }

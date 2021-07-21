@@ -11,6 +11,8 @@ TagManager:
   - Obi
   - item
   - Enemy
+  - Piller
+  - Prefub1
   layers:
   - Default
   - TransparentFX

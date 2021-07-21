@@ -31,9 +31,9 @@ public class hitcoll : MonoBehaviour
             if (contact.distance < 0.01)
             {
                 ObiColliderBase col = world.colliderHandles[contact.bodyB].owner;
-                if (col != null && col.gameObject.tag == "Enemy") 
+                if (col != null && col.gameObject.CompareTag("Enemy")) 
                 {
-                    Debug.Log("A");
+                    Debug.Log(col);
                     int particleIndex = obi.simplices[contact.bodyA];
 
                     int ATK = col.gameObject.GetComponent<Skeltons>().EnemyHP -= 20;

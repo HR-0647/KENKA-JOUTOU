@@ -5506,7 +5506,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Size: {x: 0.5, y: 0.5, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0.7}
 --- !u!54 &877641650055002677
 Rigidbody:
@@ -5538,6 +5538,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Grab1: {fileID: 877641650060806145}
   Grab2: {fileID: 877641650055002680}
+  fastPush: 0
+  push: 0
+  nextButtonDownTime: 0.3
 --- !u!1 &877641650060806145
 GameObject:
   m_ObjectHideFlags: 0
@@ -5582,7 +5585,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Size: {x: 0.5, y: 0.5, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0.7}
 --- !u!54 &877641650060806146
 Rigidbody:
@@ -5614,6 +5617,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Grab1: {fileID: 877641650060806145}
   Grab2: {fileID: 877641650055002680}
+  fastPush: 0
+  push: 0
+  nextButtonDownTime: 0.3
 --- !u!1 &877641650438338125
 GameObject:
   m_ObjectHideFlags: 0

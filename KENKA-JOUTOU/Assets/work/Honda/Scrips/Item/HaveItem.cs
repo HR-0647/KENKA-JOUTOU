@@ -14,7 +14,13 @@ public class HaveItem : MonoBehaviour
     public float nextButtonDownTime = 0.3f;
     private float nowTime = 0f;
 
+    public bool twofastPush = false;
+    public bool twopush = false;
+    public float twonextButtonDownTime = 0.3f;
+    private float twonowTime = 0f;
+
     GameObject InGrab;
+    GameObject InGrab2;
 
     private void Update()
     {
@@ -44,32 +50,36 @@ public class HaveItem : MonoBehaviour
             fastPush = false;
             push = false;
         }
-        if (!fastPush)
+
+
+        if (!twofastPush)
         {
             if (Input.GetKeyDown("joystick 2 button 2"))
             {
-                if (!push)
+                if (!twopush)
                 {
-                    push = true;
-                    nowTime = 0f;
+                    twopush = true;
+                    twonowTime = 0f;
                 }
-                else if (InGrab != null)
+                else if (InGrab2 != null)
                 {
-                    if (nowTime <= nextButtonDownTime)
+                    if (twonowTime <= twonextButtonDownTime)
                     {
-                        fastPush = true;
-                        InGrab.GetComponent<Rigidbody>().isKinematic = false;
-                        InGrab.GetComponent<Rigidbody>().useGravity = true;
-                        InGrab.transform.parent = null;
+                        twofastPush = true;
+                        InGrab2.GetComponent<Rigidbody>().isKinematic = false;
+                        InGrab2.GetComponent<Rigidbody>().useGravity = true;
+                        InGrab2.transform.parent = null;
                     }
                 }
             }
         }
         else if (Input.GetKeyDown("joystick 2 button 2"))
         {
-            fastPush = false;
-            push = false;
+            twofastPush = false;
+            twopush = false;
         }
+
+
         if (push)
         {
             nowTime += Time.deltaTime;
@@ -77,6 +87,16 @@ public class HaveItem : MonoBehaviour
             if (nowTime > nextButtonDownTime)
             {
                 push = false;
+            }
+        }
+
+        if (twopush)
+        {
+            twonowTime += Time.deltaTime;
+
+            if (twonowTime > twonextButtonDownTime)
+            {
+                twopush = false;
             }
         }
     }
@@ -94,7 +114,7 @@ public class HaveItem : MonoBehaviour
 
             if (Input.GetKeyDown("joystick 2 button 2"))
             {
-                GameObject InGrab2 = Instantiate(Resources.Load("Prefab/Brick (1)"),Grab2.transform.position, Grab2.transform.rotation) as GameObject;
+                InGrab2 = Instantiate(Resources.Load("Prefab/Brick (1)"),Grab2.transform.position, Grab2.transform.rotation) as GameObject;
                 InGrab2.name = InGrab2.name.Replace("(Clone)", "");
                 InGrab2.transform.Translate(0,0.5f,1);
                 InGrab2.transform.parent = Grab2.transform;

@@ -14,7 +14,7 @@ public class HaveItem : MonoBehaviour
     {
         if (other.gameObject.CompareTag("item"))
         {
-            if (Input.GetAxis("CircleButton1") > 0.2f)
+            if (Input.GetAxis("CircleButton1") > 0f)
             {
                 InGrab = Instantiate(Resources.Load("Prefab/Brick (1)"),Grab1.transform.position,Grab1.transform.rotation) as GameObject;
                 InGrab.name = InGrab.name.Replace("(Clone)", "");
@@ -28,7 +28,7 @@ public class HaveItem : MonoBehaviour
                 }
             }
 
-            if (Input.GetAxis("CircleButton2") > 0.2f)
+            if (Input.GetAxis("CircleButton2") > 0f)
             {
                 GameObject InGrab2 = Instantiate(Resources.Load("Prefab/Brick (1)"),Grab2.transform.position, Grab2.transform.rotation) as GameObject;
                 InGrab2.name = InGrab2.name.Replace("(Clone)", "");

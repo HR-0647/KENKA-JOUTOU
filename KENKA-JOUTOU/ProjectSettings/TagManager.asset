@@ -13,6 +13,7 @@ TagManager:
   - Enemy
   - Piller
   - Prefub1
+  - IronGrill
   layers:
   - Default
   - TransparentFX

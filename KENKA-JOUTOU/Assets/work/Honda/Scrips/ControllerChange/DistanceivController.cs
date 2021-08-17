@@ -35,7 +35,7 @@ public class DistanceivController : MonoBehaviour
     {
         // キャラの距離が10を超えると遅くなる(互いに10以下であれば速度は減速しない)
         // 13に達した時点で移動ができなくなる
-        if (dis > 10)
+        if (dis > 7)
         {
             p1.GetComponent<OnePController>().WalkSpeed = 1f;
             p2.GetComponent<TwoPController>().WalkSpeed = 1f;
@@ -46,7 +46,7 @@ public class DistanceivController : MonoBehaviour
             p2.GetComponent<TwoPController>().WalkSpeed = 5f;
         }
 
-        if (dis > 13)
+        if (dis > 10)
         {
             p1.GetComponent<OnePController>().WalkSpeed = 0.1f;
             p2.GetComponent<TwoPController>().WalkSpeed = 0.1f;

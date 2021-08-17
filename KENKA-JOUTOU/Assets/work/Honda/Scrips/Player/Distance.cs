@@ -17,6 +17,11 @@ public class Distance : MonoBehaviour
     private Vector3 A;
     private Vector3 B;
 
+    public Material red;
+    public Material yellow;
+
+    public GameObject obi;
+
     private void Start()
     {
         p1 = GameObject.Find("player_1_");
@@ -29,13 +34,22 @@ public class Distance : MonoBehaviour
         B = target2.transform.position;
 
         dis = Vector3.Distance(A, B);
+        
+        if (dis > 10)
+        {
+            obi.GetComponent<MeshRenderer>().material.color = red.color;
+        }
+        else
+        {
+            obi.GetComponent<MeshRenderer>().material.color = yellow.color;
+        }
     }
 
     private void LateUpdate()
     {
         // キャラの距離が10を超えると遅くなる(互いに10以下であれば速度は減速しない)
         // 13に達した時点で移動ができなくなる
-        if (dis > 10)
+        if (dis > 7)
         {
             p1.GetComponent<Player1>().WalkSpeed = 1f;
             p2.GetComponent<Player2>().WalkSpeed = 1f;
@@ -46,7 +60,7 @@ public class Distance : MonoBehaviour
             p2.GetComponent<Player2>().WalkSpeed = 5f;
         }
 
-        if (dis > 13)
+        if (dis > 10)
         {
             p1.GetComponent<Player1>().WalkSpeed = 0.1f;
             p2.GetComponent<Player2>().WalkSpeed = 0.1f;

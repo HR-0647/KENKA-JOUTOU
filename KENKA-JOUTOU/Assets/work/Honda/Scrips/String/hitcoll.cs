@@ -29,6 +29,7 @@ public class hitcoll : MonoBehaviour
         obi.OnCollision -= Solver_OnCollision;
     }
 
+    // hit‚µ‚½‚Ìˆ—
     private void Solver_OnCollision(object sender, Obi.ObiSolver.ObiCollisionEventArgs e)
     {
         var world = ObiColliderWorld.GetInstance();

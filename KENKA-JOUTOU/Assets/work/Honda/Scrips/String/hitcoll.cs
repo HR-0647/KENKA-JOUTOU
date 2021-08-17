@@ -57,7 +57,15 @@ public class hitcoll : MonoBehaviour
                     // êÅÇ¡îÚÇŒÇ∑
                     col.GetComponent<Rigidbody>().AddForce(Vector3.forward * impulse, ForceMode.Impulse);
                     Destroy(col.gameObject, time);
+                }
 
+                // à÷éqéû
+                if (col.gameObject.CompareTag("Chair"))
+                {
+                    col.GetComponent<Rigidbody>().isKinematic = false;
+                    // êÅÇ¡îÚÇŒÇ∑
+                    col.GetComponent<Rigidbody>().AddForce(Vector3.forward * impulse, ForceMode.Impulse);
+                    
                 }
             }
         }

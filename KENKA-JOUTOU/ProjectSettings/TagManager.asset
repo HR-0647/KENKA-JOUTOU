@@ -15,6 +15,9 @@ TagManager:
   - Prefub1
   - IronGrill
   - Chair
+  - FxTemporaire
+  - Wall
+  - FireBall
   layers:
   - Default
   - TransparentFX

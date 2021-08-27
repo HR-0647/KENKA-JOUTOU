@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/work/Honda/alpha/HallArea.unity
     guid: 19e5213a9e4598342b6acf758330a521
+  - enabled: 1
+    path: Assets/work/Honda/alpha/HallArea2.unity
+    guid: 3dd35484c2b411248b5f64269aa06c16
   m_configObjects: {}

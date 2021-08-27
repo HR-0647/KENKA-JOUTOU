@@ -41,6 +41,8 @@ public class hitcoll : MonoBehaviour
             if (contact.distance < 0.01)
             {
                 ObiColliderBase col = world.colliderHandles[contact.bodyB].owner;
+
+                Vector3 dis = (col.transform.position - transform.position).normalized;
                 // Enemyéû
                 if (col != null && col.gameObject.CompareTag("Enemy"))
                 {
@@ -50,6 +52,7 @@ public class hitcoll : MonoBehaviour
                     col.GetComponent<Skeltons>().Damaged();
                     Debug.Log("true");
                 }
+
                 // òSâÆéû
                 if (col.gameObject.CompareTag("IronGrill"))
                 { 
@@ -57,23 +60,6 @@ public class hitcoll : MonoBehaviour
                     // êÅÇ¡îÚÇŒÇ∑
                     col.GetComponent<Rigidbody>().AddForce(Vector3.forward * impulse, ForceMode.Impulse);
                     Destroy(col.gameObject, time);
-                }
-
-                // à÷éqéû
-                if (col.gameObject.CompareTag("Chair"))
-                {
-                    col.GetComponent<Rigidbody>().isKinematic = false;
-                    // êÅÇ¡îÚÇŒÇ∑
-                    col.GetComponent<Rigidbody>().AddForce(Vector3.forward * impulse, ForceMode.Impulse);
-                    
-                }
-
-                // ñÿî†éû
-                if (col.gameObject.CompareTag("Wooden_Box"))
-                {
-                    col.GetComponent<Rigidbody>().isKinematic = false;
-                    // êÅÇ¡îÚÇŒÇ∑
-                    col.GetComponent<Rigidbody>().AddForce(Vector3.forward * boxImpulse, ForceMode.Impulse);
                 }
             }
         }

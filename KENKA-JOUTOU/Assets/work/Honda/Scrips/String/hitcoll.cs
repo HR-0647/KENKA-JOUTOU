@@ -42,16 +42,13 @@ public class hitcoll : MonoBehaviour
             {
                 ObiColliderBase col = world.colliderHandles[contact.bodyB].owner;
                 // Enemy
-                if (col != null && col.gameObject.CompareTag("Enemy")) 
+                if (col != null && col.gameObject.CompareTag("Enemy"))
                 {
-                    int particleIndex = obi.simplices[contact.bodyA];
+                    col.GetComponent<Skeltons>().DamageTrigger = true;
+                    Debug.Log("true");
 
-                    // Enemy‚Ì‘Ì—Í‚ğŒ¸‚ç‚µA0‚É‚È‚Á‚½‚çÁ–Å‚·‚é
-                    int ATK = col.gameObject.GetComponent<Skeltons>().EnemyHP -= 20;
-                    if (col.gameObject.GetComponent<Skeltons>().EnemyHP <= 0)
-                    {
-                        Destroy(col.gameObject);
-                    }
+                    col.GetComponent<Skeltons>().Damaged();
+                    Debug.Log("true");
                 }
                 // ˜S‰®
                 if (col.gameObject.CompareTag("IronGrill"))

@@ -18,6 +18,7 @@ TagManager:
   - FxTemporaire
   - Wall
   - FireBall
+  - Wooden_Box
   layers:
   - Default
   - TransparentFX

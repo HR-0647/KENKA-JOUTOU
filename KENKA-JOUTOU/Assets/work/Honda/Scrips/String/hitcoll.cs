@@ -12,6 +12,9 @@ public class hitcoll : MonoBehaviour
     float impulse = 3;
 
     [SerializeField]
+    float boxImpulse = 3;
+
+    [SerializeField]
     float time = 3f;
 
     void Awake()
@@ -66,6 +69,14 @@ public class hitcoll : MonoBehaviour
                     // êÅÇ¡îÚÇŒÇ∑
                     col.GetComponent<Rigidbody>().AddForce(Vector3.forward * impulse, ForceMode.Impulse);
                     
+                }
+
+                // ñÿî†éû
+                if (col.gameObject.CompareTag("Wooden_Box"))
+                {
+                    col.GetComponent<Rigidbody>().isKinematic = false;
+                    // êÅÇ¡îÚÇŒÇ∑
+                    col.GetComponent<Rigidbody>().AddForce(Vector3.forward * boxImpulse, ForceMode.Impulse);
                 }
             }
         }

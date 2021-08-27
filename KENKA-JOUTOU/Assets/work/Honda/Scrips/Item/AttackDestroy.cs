@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackDestroy : MonoBehaviour
 {
     [SerializeField]
-    private GameObject Chair;
+    private GameObject OBJ;
 
     private void OnCollisionEnter(Collision collision)
     {

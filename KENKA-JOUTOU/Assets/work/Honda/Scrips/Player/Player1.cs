@@ -20,10 +20,12 @@ public class Player1 : MonoBehaviour
     private float DashTime = 0.5f;
 
     private float CoolTime;
+    private Animator anim = null;
 
     void Start()
     {
         rig = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -49,6 +51,15 @@ public class Player1 : MonoBehaviour
             transform.LookAt(transform.position + Dashinput);
 
             Dashvelosity += transform.forward * DashSpeed;
+        }
+
+        if(input.magnitude > 0.5f)
+        {
+            anim.SetBool("walk", true);
+        }
+        else
+        {
+            anim.SetBool("walk", false);
         }
     }
 

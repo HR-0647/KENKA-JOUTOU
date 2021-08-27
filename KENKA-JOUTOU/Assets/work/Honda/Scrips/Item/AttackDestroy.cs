@@ -11,8 +11,7 @@ public class AttackDestroy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<Skeltons>().EnemyHP -= 20;
-            Destroy(this.gameObject);
+            collision.gameObject.GetComponent<Skeltons>().Damaged();
         }
     }
 }

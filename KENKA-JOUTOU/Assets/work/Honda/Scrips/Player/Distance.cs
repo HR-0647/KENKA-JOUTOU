@@ -24,8 +24,8 @@ public class Distance : MonoBehaviour
 
     private void Start()
     {
-        p1 = GameObject.Find("player_1_");
-        p2 = GameObject.Find("player_2_");
+        p1 = GameObject.Find("player_1_cmp");
+        p2 = GameObject.Find("player_2_cmp");
     }
 
     private void Update()
@@ -56,8 +56,8 @@ public class Distance : MonoBehaviour
         }
         else
         {
-            p1.GetComponent<Player1>().WalkSpeed = 5f;
-            p2.GetComponent<Player2>().WalkSpeed = 5f;
+            p1.GetComponent<Player1>().WalkSpeed = 2.5f;
+            p2.GetComponent<Player2>().WalkSpeed = 2.5f;
         }
 
         if (dis > 10)

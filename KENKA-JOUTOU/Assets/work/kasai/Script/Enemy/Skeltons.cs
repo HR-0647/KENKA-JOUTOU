@@ -7,17 +7,20 @@ public class Skeltons : MonoBehaviour
 {
     public GameObject PlayerObject1;    //プレイヤーオブジェクト1
     public GameObject PlayerObject2;    //プレイヤーオブジェクト2
-    public GameObject WireObject;      //ワイヤーオブジェクト
+    public GameObject WireObject;       //ワイヤーオブジェクト
 
-    public bool trigger = true;         //巡回とターゲット切り替え
+    public bool Trigger = true;         //巡回とターゲット切り替え
+    public bool DamageTrigger = false;  //ダメージ処理切り替え
 
     private Vector3 PlayerPosition1;    //プレイヤーの位置情報1
     private Vector3 PlayerPosition2;    //プレイヤーの位置情報2
     private Vector3 WirePosition;       //ワイヤーの位置情報
+   
+    private float KnockbackSpeed = 5.0f;//ノックバックのスピード
 
-    public int EnemyHP = 100;      //エネミーの体力
+    public int EnemyHP = 100;           //エネミーの体力
 
-    private float timeleft;
+    private float timeleft;             //タイマー
 
     //サウンド
     public AudioClip atksound;  //攻撃音
@@ -71,6 +74,19 @@ public class Skeltons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //体力の判定
+        if (EnemyHP <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+
+        //ダメージ処理呼び出し
+        if (DamageTrigger == true)
+        {
+            Damaged();
+        }
+
         //プレイヤーと糸までの距離を出す
         PlayerPosition1 = PlayerObject1.transform.position;
         PlayerPosition2 = PlayerObject2.transform.position;
@@ -88,7 +104,7 @@ public class Skeltons : MonoBehaviour
    
         //エネミーの巡回
 
-        if (m_navAgent.remainingDistance <= m_destinationThreshold && trigger)
+        if (m_navAgent.remainingDistance <= m_destinationThreshold && Trigger)
         {
             {
                 m_targetIndex = (m_targetIndex + 1) % m_targets.Length;
@@ -102,11 +118,11 @@ public class Skeltons : MonoBehaviour
         //検知範囲にプレイヤーか糸がいるなら接近する
         if (range1 <= EnemySearchArea || range2 <= EnemySearchArea || range3 <= EnemySearchArea)
         {
-            trigger = false;
+            Trigger = false;
         }
 
                 
-        if (!trigger)
+        if (!Trigger)
         {
                 //プレイヤー1の方が近い場合
                 if (range1 <= range2)
@@ -158,6 +174,14 @@ public class Skeltons : MonoBehaviour
         }
 
     }
+
+    public void Damaged()//エネミーがダメージを受けた時の処理
+    {
+        EnemyHP -= 20;
+        Debug.Log("hit");
+        transform.position -= transform.forward * KnockbackSpeed;
+        DamageTrigger = false;
+    }
     //当たった時に呼ばれる関数
     private void OnCollisionEnter(Collision collision)
     {
@@ -170,14 +194,8 @@ public class Skeltons : MonoBehaviour
         //}
         if (collision.gameObject.tag == "Player"|| collision.gameObject.tag == "Player2")
         {
-            EnemyHP -= 20;
-            Debug.Log("hit");
-            
+            DamageTrigger = true;
         }
-        //体力の判定
-        if (EnemyHP <= 0)
-        {
-            Destroy(this.gameObject);
-        }
+       
     }
 }

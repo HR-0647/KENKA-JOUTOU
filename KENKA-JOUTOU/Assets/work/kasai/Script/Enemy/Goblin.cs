@@ -12,6 +12,7 @@ public class Goblin : MonoBehaviour
     //public Transform PlayerDistance2;
     //public Transform WireDistance;
     public bool trigger = true;         //巡回とターゲット切り替え
+
     private Vector3 PlayerPosition1;    //プレイヤーの位置情報1
     private Vector3 PlayerPosition2;    //プレイヤーの位置情報2
     private Vector3 WirePosition;       //ワイヤーの位置情報
@@ -246,8 +247,6 @@ public class Goblin : MonoBehaviour
 
 
             }
-
-            //transform.position = EnemyPosition;
 
         }
 

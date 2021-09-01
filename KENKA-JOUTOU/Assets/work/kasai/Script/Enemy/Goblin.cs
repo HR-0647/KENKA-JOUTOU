@@ -83,7 +83,7 @@ public class Goblin : MonoBehaviour
         m_navAgent = GetComponent<NavMeshAgent>();
         m_navAgent.destination = CurretTargetPosition;
 
-       
+
     }
 
     // Update is called once per frame

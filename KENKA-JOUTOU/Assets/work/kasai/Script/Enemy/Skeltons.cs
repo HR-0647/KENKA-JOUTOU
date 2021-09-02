@@ -79,7 +79,7 @@ public class Skeltons : MonoBehaviour
         //アニメーターコンポーネント所得
         anim = GetComponent<Animator>();
         anim.SetBool("Atk", false);
-        anim.SetBool("Walk", false);
+        anim.SetBool("Walk", true);
 
     }
 
@@ -150,7 +150,7 @@ public class Skeltons : MonoBehaviour
                 }
                 else if (range1 < m_navAgent.stoppingDistance)
                 {
-                    
+
                     //プレイヤー1に攻撃した後EnemyAtkInterval分の間隔を置いて再度攻撃を繰り返す
                     if (timeleft <= 0.0)
                     {
@@ -162,13 +162,18 @@ public class Skeltons : MonoBehaviour
 
                         //攻撃
                         Debug.Log("Atk");
+                        //Debug.Log(timeleft);
 
                         //攻撃音再生
                         audioSource.PlayOneShot(atksound);
 
-                        //攻撃アニメーションを一時的に停止させる
-                        anim.SetBool("Atk", false);
+                        //if (timeleft == 3.0)
+                        //{
+                        //    //攻撃アニメーションを一時的に停止させる
+                        //    anim.SetBool("Atk", false);
+                        //}
                     }
+                    
 
                 }
 

@@ -418,7 +418,6 @@ GameObject:
   - component: {fileID: 4765634885581714867}
   - component: {fileID: 4765634885581714876}
   - component: {fileID: 4765634885581714877}
-  - component: {fileID: 4765634885581714865}
   m_Layer: 0
   m_Name: wooden_box (1)
   m_TagString: Wooden_Box
@@ -508,19 +507,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kinematicForParticles: 0
---- !u!114 &4765634885581714865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3157382910247241182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 286799347d3d8ea4f98091c37bf84f62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OBJ: {fileID: 3157382910247241182}
 --- !u!1 &6364321837177188592
 GameObject:
   m_ObjectHideFlags: 0

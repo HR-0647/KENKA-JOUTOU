@@ -4723,6 +4723,8 @@ GameObject:
   - component: {fileID: 5569189697805123078}
   - component: {fileID: 5569189697805123077}
   - component: {fileID: 5921218365235602809}
+  - component: {fileID: 4345987526655160327}
+  - component: {fileID: -4033497311002237150}
   m_Layer: 0
   m_Name: CFX4 Fire
   m_TagString: FireBall
@@ -9470,3 +9472,33 @@ MonoBehaviour:
   speed: 3
   maxDistance: 100
   movepos: {x: 0, y: 0, z: -1}
+--- !u!114 &4345987526655160327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5569189697805220005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6757b231cedd544c583ef8aeaf773b2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thickness: 0
+  material: {fileID: 0}
+  filter: -65535
+  m_SourceCollider: {fileID: 0}
+  m_DistanceField: {fileID: 0}
+--- !u!114 &-4033497311002237150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5569189697805220005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62359d80fdc0e4315ab6331b78ec5b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kinematicForParticles: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using Obi;
 
 [RequireComponent(typeof(ObiSolver))]
@@ -47,15 +48,13 @@ public class hitcoll : MonoBehaviour
                 if (col != null && col.gameObject.CompareTag("Enemy"))
                 {
                     col.GetComponent<Skeltons>().DamageTrigger = true;
-                    Debug.Log("true");
-
                     col.GetComponent<Skeltons>().Damaged();
-                    Debug.Log("true");
+                    col.GetComponent<NavMeshAgent>().enabled = false;
                 }
 
                 // òSâÆéû
                 if (col.gameObject.CompareTag("IronGrill"))
-                { 
+                {
                     col.GetComponent<Rigidbody>().isKinematic = false;
                     // êÅÇ¡îÚÇŒÇ∑
                     col.GetComponent<Rigidbody>().AddForce(Vector3.forward * impulse, ForceMode.Impulse);

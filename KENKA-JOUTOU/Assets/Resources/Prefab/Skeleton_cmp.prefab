@@ -3277,6 +3277,7 @@ MonoBehaviour:
   PlayerObject2: {fileID: 0}
   WireObject: {fileID: 0}
   DamageTrigger: 0
+  KnockbackSpeed: 50
   EnemyHP: 100
   atksound: {fileID: 8300000, guid: ad0ec1faf33b97448b56d8199fc4020e, type: 3}
   anim: {fileID: 109624638547360502}

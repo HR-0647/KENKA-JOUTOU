@@ -9,7 +9,7 @@ public class ReturnTitle : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Player2")
         {
-            SceneManager.LoadScene("Title");
+            SceneManager.LoadScene("Map");
         }
     }
 }

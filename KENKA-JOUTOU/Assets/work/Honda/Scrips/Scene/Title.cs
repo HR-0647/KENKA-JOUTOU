@@ -8,7 +8,7 @@ public class Title : MonoBehaviour
     public GameObject camera;
     public GameObject titlecamera;
     private float time;
-    private float endtime = 0.2f;
+    private float endtime = 0.1f;
     private bool OunButton;
     private void Update()
     {
@@ -19,7 +19,6 @@ public class Title : MonoBehaviour
                 OunButton = true;
                 canvas.SetActive(false);
                 Hp.SetActive(true);
-                Debug.Log("a");
             }
 
             TitleAnim.Play();

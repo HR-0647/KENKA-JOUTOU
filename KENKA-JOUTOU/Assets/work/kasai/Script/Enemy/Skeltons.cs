@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+
 [RequireComponent(typeof(NavMeshAgent))]
 
-public class Skeltons : MonoBehaviour
+public class Skeltons : Enemy
 {
     public GameObject PlayerObject1;    //プレイヤーオブジェクト1
     public GameObject PlayerObject2;    //プレイヤーオブジェクト2
@@ -19,14 +20,11 @@ public class Skeltons : MonoBehaviour
     private Vector3 PlayerPosition2;    //プレイヤーの位置情報2
     private Vector3 WirePosition;       //ワイヤーの位置情報
 
-    public float KnockbackSpeed = 5.0f;//ノックバックのスピード
+    private float KnockbackSpeed = 5.0f;//ノックバックのスピード
 
-    public int EnemyHP = 100;           //エネミーの体力
+    
 
     private float timeleft;             //タイマー
-
-    private float NavNotAttachmentTime = 3; //NavMeshを外された際の待ちタイム
-    private float NavMeshInterval;
 
     //サウンド
     public AudioClip atksound;  //攻撃音
@@ -73,6 +71,9 @@ public class Skeltons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        type = EnemyType.Skeleton;
+        EnemyHP = 100;//エネミー体力
+        attack = 10;
         m_navAgent = GetComponent<NavMeshAgent>();
         m_navAgent.destination = CurretTargetPosition;
 
@@ -120,11 +121,15 @@ public class Skeltons : MonoBehaviour
 
         if (m_navAgent.remainingDistance <= m_destinationThreshold && Trigger)
         {
-            {
+            
+            {            
+
                 m_targetIndex = (m_targetIndex + 1) % m_targets.Length;
                 //移動アニメーション
                 anim.SetBool("Walk", true);
                 m_navAgent.destination = CurretTargetPosition;
+
+
             }
         }
 
@@ -168,7 +173,6 @@ public class Skeltons : MonoBehaviour
 
                         //if (timeleft == 3.0)
                         //{
-                        //    Debug.Log(timeleft);
                         //    //攻撃アニメーションを一時的に停止させる
                         //    anim.SetBool("Atk", false);
                         //}
@@ -212,29 +216,20 @@ public class Skeltons : MonoBehaviour
 
                 }
             }
+
+
+
+
         }
-        // ノックバックを受けた際にひるむ時間
-        if (m_navAgent.enabled == false)
-        {
-            if (NavMeshInterval > NavNotAttachmentTime)
-            {
-                NavMeshInterval = 0.0f;
-                m_navAgent.enabled = true;
-                anim.SetBool("Walk", true);
-                anim.SetBool("Atk", true);
-            }
-            else
-            {
-                NavMeshInterval += Time.deltaTime;
-                anim.SetBool("Idol", true);
-            }
-        }
+
     }
 
     public void Damaged()//エネミーがダメージを受けた時の処理
     {
         var rigidbody = GetComponent<Rigidbody>();
+        EnemyHP -= 20;
         Debug.Log("hit");
+        Slider.value = (float)EnemyHP / defaultEnemyHP;
         //transform.position -= transform.forward * KnockbackSpeed*Time.deltaTime;
         rigidbody.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange);
         DamageTrigger = false;
@@ -254,9 +249,5 @@ public class Skeltons : MonoBehaviour
             DamageTrigger = true;
         }
 
-        if(collision.gameObject.tag == "Wall")
-        {
-            Destroy(gameObject);
-        }
     }
 }

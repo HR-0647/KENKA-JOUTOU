@@ -19,6 +19,7 @@ TagManager:
   - Wall
   - FireBall
   - Wooden_Box
+  - EnemyMissile
   layers:
   - Default
   - TransparentFX

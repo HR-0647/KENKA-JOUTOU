@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+
 [RequireComponent(typeof(NavMeshAgent))]
 
-public class Skeltons : MonoBehaviour
+public class Skeltons : Enemy
 {
     public GameObject PlayerObject1;    //プレイヤーオブジェクト1
     public GameObject PlayerObject2;    //プレイヤーオブジェクト2
@@ -21,7 +22,7 @@ public class Skeltons : MonoBehaviour
 
     private float KnockbackSpeed = 5.0f;//ノックバックのスピード
 
-    public int EnemyHP = 100;           //エネミーの体力
+    
 
     private float timeleft;             //タイマー
 
@@ -70,6 +71,9 @@ public class Skeltons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        type = EnemyType.Skeleton;
+        EnemyHP = 100;//エネミー体力
+        attack = 10;
         m_navAgent = GetComponent<NavMeshAgent>();
         m_navAgent.destination = CurretTargetPosition;
 
@@ -225,6 +229,7 @@ public class Skeltons : MonoBehaviour
         var rigidbody = GetComponent<Rigidbody>();
         EnemyHP -= 20;
         Debug.Log("hit");
+        Slider.value = (float)EnemyHP / defaultEnemyHP;
         //transform.position -= transform.forward * KnockbackSpeed*Time.deltaTime;
         rigidbody.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange);
         DamageTrigger = false;

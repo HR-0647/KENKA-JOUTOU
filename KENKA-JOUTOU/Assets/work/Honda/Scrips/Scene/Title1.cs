@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Title1 : MonoBehaviour
+public class Title : MonoBehaviour
 {
     public GameObject canvas;
     public GameObject Hp;
@@ -15,15 +15,15 @@ public class Title1 : MonoBehaviour
 
     private void Start()
     {
-        Player1.GetComponent<OnePController>().enabled = false;
-        Player2.GetComponent<TwoPController>().enabled = false;
+        Player1.GetComponent<Player1>().enabled = false;
+        Player2.GetComponent<Player2>().enabled = false;
     }
     private void Update()
     {
         if(Input.GetAxis("CircleButton1") > 0 || Input.GetAxis("CircleButton2") > 0)
         {
-            Player1.GetComponent<OnePController>().enabled = true;
-            Player2.GetComponent<TwoPController>().enabled = true;
+            Player1.GetComponent<Player1>().enabled = true;
+            Player2.GetComponent<Player2>().enabled = true;
             if (!OunButton)
             {
                 OunButton = true;

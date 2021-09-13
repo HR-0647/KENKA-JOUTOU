@@ -2,36 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cerestiea : MonoBehaviour
+public class Cerestiea : Enemy
 {
-    public GameObject WireObject;       //ワイヤーオブジェクト
+    public GameObject PlayerObject1;    //プレイヤーオブジェクト1
+    public GameObject PlayerObject2;    //プレイヤーオブジェクト2
+    public GameObject SpawnPos1;        //ホーミング弾と雑魚キャラを発生させる場所
+    public GameObject SpawnPos2;        //ホーミング弾と雑魚キャラを発生させる場所
+    public GameObject SpawnPos3;        //ホーミング弾と雑魚キャラを発生させる場所
+
+    [SerializeField] GameObject Skelton;
+    [SerializeField] GameObject Goblin;
+    [SerializeField] GameObject Mimic;
+    [SerializeField] GameObject Homingbullet;
+
+    private Vector3 PlayerPosition1;    //プレイヤーの位置情報1
+    private Vector3 PlayerPosition2;    //プレイヤーの位置情報2
+    private float range1;               //プレイヤー1までの距離
+    private float range2;               //プレイヤー2までの距離
+
     public GameObject Bullet;           //魔法弾
+
     public bool DamageTrigger = false;  //ダメージ処理切り替え
+    public bool invincible = false;     //無敵時間
+    private int Act = 0;
 
-    private Vector3 WirePosition;       //ワイヤーの位置情報
+    private float KnockbackSpeed = 50.0f;//ノックバックのスピード
+    private Vector3 knockback = Vector3.zero;
 
-    private float KnockbackSpeed = 5.0f;//ノックバックのスピード
-
-    public int EnemyHP = 500;           //エネミーの体力
-
-    private float timeleft;             //タイマー
-
-    private bool movetrigger = true;
+    Rigidbody rb;
 
     //サウンド
     public AudioClip atksound;  //攻撃音
     AudioSource audioSource;
+
+    //アニメーション
+    public Animator anim;
 
     [SerializeField]
     private Transform[] m_telep = null;
 
     private int m_telepIndex = 0;
 
-    public int AtkCount = 0;   //敵の攻撃回数
-
-    public float MoveCooltime = 2.0f;         //テレポートのクールタイム
-
-    public float EnemyAtkInterval = 0;      //敵の攻撃間隔
+    public float EnemyAtkInterval = 3;      //敵の攻撃間隔
 
     private Vector3 CurretTargetPosition
     {
@@ -49,8 +61,18 @@ public class Cerestiea : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //type = EnemyType.Cerestiea;
+        EnemyHP = 100;//エネミー体力
+        attack = 15;
         //オーディオコンポーネント取得
         audioSource = GetComponent<AudioSource>();
+        
+        //アニメーターコンポーネント所得
+        anim = GetComponent<Animator>();
+        anim.SetBool("Atk", false);
+        anim.SetBool("Walk", true);
+
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -68,36 +90,47 @@ public class Cerestiea : MonoBehaviour
             Damaged();
         }
 
-        //ワイヤーのほうに方向転換
-        transform.LookAt(WireObject.transform);//移動中などに向きが変わらないなら場所変更する
+        PlayerPosition1 = PlayerObject1.transform.position;
+        PlayerPosition2 = PlayerObject2.transform.position;
 
 
-        if (movetrigger)
+        range1 = Vector3.Distance(PlayerPosition1, transform.position);
+        range2 = Vector3.Distance(PlayerPosition2, transform.position);
+
+        //プレイヤーの方を見る
+        if(range1<=range2)
         {
-            Invoke("Telep", MoveCooltime);
-
+            this.transform.LookAt(PlayerPosition1);
         }
-        else if (!movetrigger)
+        else
         {
-            Invoke("Atk", MoveCooltime);
+            this.transform.LookAt(PlayerPosition2);
         }
 
-
-
-
+        switch(Act)
+        {
+            case 1:
+                //処理
+                StartCoroutine(Telep());
+                break;
+            case 2:
+                //処理
+                StartCoroutine(Summon());
+                break;
+            case 3:
+                //処理
+                StartCoroutine(Atk());
+                break;
+            default:
+                Act = 1;
+                break;
+        }
 
 
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        ////プレイヤーと床以外のオブジェクトに衝突した場合
-        //if (collision.gameObject.tag == "Untagged")
-        //{
-        //    //衝突音再生
-        //    //audioSource.PlayOneShot(objectcllide);
-        //    GetComponent<AudioSource>().PlayOneShot(objectcllide);
-        //}
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Player2")
         {
             DamageTrigger = true;
@@ -105,38 +138,66 @@ public class Cerestiea : MonoBehaviour
 
     }
 
-    public void Damaged()//エネミーがダメージを受けた時の処理
+    public IEnumerator Damaged()//エネミーがダメージを受けた時の処理
     {
-        //var rigidbody = GetComponent<Rigidbody>();
-        EnemyHP -= 20;
+        invincible = true;//無敵時間中はこの処理は行わない
+        
+        EnemyHP -= 1;
+        Slider.value = (float)EnemyHP / defaultEnemyHP;//HPバー変動
+
+        rb.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange); //ノックバック
+        //アニメーションをidol状態に移行
+        //anim.SetBool("Atk", false);
+        //anim.SetBool("Walk", false);
+
+
+        knockback = Vector3.zero;
+
+        yield return new WaitForSeconds(2.0f);//数秒待機
+
         Debug.Log("hit");
-        transform.position -= transform.forward * KnockbackSpeed * Time.deltaTime;
-        //rigidbody.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange);
+        
         DamageTrigger = false;
-    }
-
-    public void Atk()//攻撃
-    {
-        for (int i = 0; i < AtkCount; i++)
-        {
-            if (timeleft <= 0.0)
-            {
-                Instantiate(Bullet, this.transform.position + new Vector3(0.0f, 1.0f, 0.5f), Quaternion.identity);            //弾を生成(自分の目の前に生成する)
-                timeleft = EnemyAtkInterval;    //攻撃のインターバル
-            }
-        }
-        movetrigger = true;
+        invincible = false;
 
     }
 
-    public void Telep()
+    public IEnumerator Telep()
     {
-        //テレポート先の座標1～最大値までをループする
+        //Actが1の時呼び出される
 
         //テレポート
-        m_telepIndex = (m_telepIndex + 1) % m_telep.Length;
+        m_telepIndex = Random.Range(0, m_telep.Length);
         transform.position = m_telep[m_telepIndex].position;
 
-        movetrigger = false;
+        Act = 2;
+        yield return new WaitForSeconds(EnemyAtkInterval);
+    }
+
+    public IEnumerator Summon()
+    {
+        //Actが2の時呼び出される
+
+        Instantiate(Skelton,SpawnPos1.transform);
+        yield return new WaitForSeconds(EnemyAtkInterval);
+        Instantiate(Goblin, SpawnPos2.transform);
+        yield return new WaitForSeconds(EnemyAtkInterval);
+        Instantiate(Mimic, SpawnPos3.transform);
+        yield return new WaitForSeconds(EnemyAtkInterval);
+        Act = 3;
+        yield return new WaitForSeconds(EnemyAtkInterval);
+    }
+
+    public IEnumerator Atk()
+    {
+        //Actが3の時呼び出される
+        Instantiate(Homingbullet, SpawnPos1.transform);
+        yield return new WaitForSeconds(EnemyAtkInterval);
+        Instantiate(Homingbullet, SpawnPos2.transform);
+        yield return new WaitForSeconds(EnemyAtkInterval);
+        Instantiate(Homingbullet, SpawnPos3.transform);
+        yield return new WaitForSeconds(EnemyAtkInterval);
+        Act = 1;
+        yield return new WaitForSeconds(EnemyAtkInterval);
     }
 }

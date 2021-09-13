@@ -72,7 +72,7 @@ public class Goblin : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        type = EnemyType.Skeleton;
+        //type = EnemyType.Goblin;
         EnemyHP = 40;//エネミー体力
         attack = 5;
         m_navAgent = GetComponent<NavMeshAgent>();
@@ -231,7 +231,7 @@ public class Goblin : Enemy
         rb.isKinematic = false;
 
         EnemyHP -= 1;
-        //Slider.value = (float)EnemyHP / defaultEnemyHP;//HPバー変動
+        Slider.value = (float)EnemyHP / defaultEnemyHP;//HPバー変動
 
         rb.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange); //ノックバック
         //アニメーションをidol状態に移行

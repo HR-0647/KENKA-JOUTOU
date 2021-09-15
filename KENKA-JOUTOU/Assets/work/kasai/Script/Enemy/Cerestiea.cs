@@ -144,9 +144,9 @@ public class Cerestiea : Enemy
         Slider.value = (float)EnemyHP / defaultEnemyHP;//HPバー変動
 
         rb.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange); //ノックバック
-        //アニメーションをidol状態に移行
-        //anim.SetBool("Atk", false);
-        //anim.SetBool("Walk", false);
+        //アニメーションを移行
+        anim.SetBool("Atk", false);
+        anim.SetBool("Walk", false);
 
 
         knockback = Vector3.zero;

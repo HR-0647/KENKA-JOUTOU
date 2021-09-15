@@ -1,14 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/// <summary>
-///このスクリプトはスケルトン用です
-/// </summary>
-
 
 public class EnemySearchArea : MonoBehaviour
 {
-    public int Area = 5;
+    public int Area = 5;//カプセルコライダーのサイズを変更する
     // Start is called before the first frame update
     void Start()
     {

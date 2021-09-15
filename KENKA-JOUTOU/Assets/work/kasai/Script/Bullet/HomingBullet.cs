@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Concurrent;
 
 public class HomingBullet : MonoBehaviour
 {
@@ -33,7 +32,7 @@ public class HomingBullet : MonoBehaviour
         range1 = Vector3.Distance(PlayerPosition1, transform.position);
         range2 = Vector3.Distance(PlayerPosition2, transform.position);
 
-        //reflect=false;//テスト用
+        
     }
 
     // Update is called once per frame
@@ -48,7 +47,7 @@ public class HomingBullet : MonoBehaviour
             StartCoroutine(Homing());
         }
         //プレイヤー2のほうが近い場合
-        else if (range1>range2)
+        else
         {
             Target = PlayerObject2;//ターゲット決定
             StartCoroutine(Homing());

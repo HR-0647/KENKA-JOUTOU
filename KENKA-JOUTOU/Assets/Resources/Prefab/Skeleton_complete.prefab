@@ -3885,9 +3885,7 @@ MonoBehaviour:
   invincible: 0
   atksound: {fileID: 8300000, guid: ad0ec1faf33b97448b56d8199fc4020e, type: 3}
   anim: {fileID: 4511805762149019930}
-  m_targets:
-  - {fileID: 0}
-  - {fileID: 0}
+  m_targets: []
   m_destinationThreshold: 1
   EnemyAtkInterval: 3
 --- !u!195 &8792675399319717036

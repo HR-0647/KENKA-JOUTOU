@@ -9,6 +9,7 @@ public class Player2 : MonoBehaviour
 
     private Vector3 Dashvelosity; // ダッシュ移動地
     private Vector3 DashInput; // ダッシュ入力値
+
     [SerializeField]
     private float DashSpeed = 5;
 
@@ -17,6 +18,12 @@ public class Player2 : MonoBehaviour
     private ParticleSystem Dash;
     [SerializeField]
     private float DashTime = 0.5f;
+
+    [SerializeField]
+    private float DamageTime = 2f;
+
+    private float invisibleTime;
+    private bool DamageTrigger = false;
 
     private float CoolTime;
     private Animator anim = null;
@@ -30,9 +37,12 @@ public class Player2 : MonoBehaviour
     void Update()
     {
         CoolTime -= Time.deltaTime;
+        invisibleTime -= Time.deltaTime;
+        // 接着しているので移動速度を0に
         velosity = Vector3.zero;
         input = new Vector3(Input.GetAxis("Horizontal3"), 0f, Input.GetAxis("Vertical3"));
 
+        // 方向キーが多少押されているとき
         if (input.magnitude > 1f)
         {
             transform.LookAt(transform.position + input);
@@ -50,6 +60,7 @@ public class Player2 : MonoBehaviour
             Dashvelosity += transform.forward * DashSpeed;
         }
 
+        // アニメーション
         if (input.magnitude > 0.5f)
         {
             anim.SetBool("walk", true);
@@ -72,6 +83,20 @@ public class Player2 : MonoBehaviour
             rig.MovePosition(transform.position + Dashvelosity * Time.deltaTime);
             Dash.Play();
             CoolTime = DashTime;
+        }
+    }
+
+    // ダメージの際無敵時間を入れる
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            DamageTrigger = true;
+            if (invisibleTime < 0)
+            {
+                invisibleTime = DamageTime;
+                Debug.Log("a");
+            }
         }
     }
 }

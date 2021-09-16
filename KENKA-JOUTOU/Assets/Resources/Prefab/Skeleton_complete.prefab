@@ -3874,12 +3874,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff3ceb564c41884491e2f06754ece52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
+  attack: 0
+  EnemyHP: 1000
+  defaultEnemyHP: 0
+  Slider: {fileID: 3743483334743608738}
   PlayerObject1: {fileID: 0}
   PlayerObject2: {fileID: 0}
-  WireObject: {fileID: 0}
   DamageTrigger: 0
-  KnockbackSpeed: 5
-  EnemyHP: 1000
+  invincible: 0
   atksound: {fileID: 8300000, guid: ad0ec1faf33b97448b56d8199fc4020e, type: 3}
   anim: {fileID: 4511805762149019930}
   m_targets:
@@ -4695,6 +4698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4619e02fe8552d44baf4fbc95b3ffbb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Area: 5
 --- !u!1 &8815107869159888825
 GameObject:
   m_ObjectHideFlags: 0
@@ -5385,3 +5389,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1120132765858232850, guid: 438e8a6b651968c4c81d7071ebaabc28, type: 3}
   m_PrefabInstance: {fileID: 4357237667918353189}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3743483334743608738 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1120132764675694215, guid: 438e8a6b651968c4c81d7071ebaabc28, type: 3}
+  m_PrefabInstance: {fileID: 4357237667918353189}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

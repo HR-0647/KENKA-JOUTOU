@@ -124,6 +124,8 @@ GameObject:
   - component: {fileID: 7605322148595624390}
   - component: {fileID: 7605322148592724454}
   - component: {fileID: 7605322148593724198}
+  - component: {fileID: 2558405016381532276}
+  - component: {fileID: 285281146827346920}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Untagged
@@ -194,3 +196,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2558405016381532276
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7605322148595660262}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.88595456, y: 0.13230458, z: 0.8657091}
+  m_Center: {x: -0.000000029802322, y: 0.0077157747, z: -0.000000029802322}
+--- !u!111 &285281146827346920
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7605322148595660262}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f17d48ec1c1d81b4a9cc8e0e8445bcc1, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: f17d48ec1c1d81b4a9cc8e0e8445bcc1, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

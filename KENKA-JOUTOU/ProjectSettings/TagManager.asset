@@ -20,6 +20,7 @@ TagManager:
   - FireBall
   - Wooden_Box
   - EnemyMissile
+  - Floor
   layers:
   - Default
   - TransparentFX

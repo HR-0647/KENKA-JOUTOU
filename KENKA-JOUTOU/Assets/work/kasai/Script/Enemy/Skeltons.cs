@@ -230,8 +230,9 @@ public class Skeltons : Enemy
         m_navAgent.enabled = false;
         rb.isKinematic = false;
 
-        EnemyHP -= 1;
-        Slider.value = (float)EnemyHP / defaultEnemyHP;//HPバー変動
+        EnemyHP -= 5;
+        Slider.value = (float)EnemyHP;//HPバー変動
+        Debug.Log(Slider.value);
 
         rb.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange); //ノックバック
         //アニメーションをidol状態に移行

@@ -10,9 +10,9 @@ public class Cerestiea : Enemy
     public GameObject SpawnPos2;        //ホーミング弾と雑魚キャラを発生させる場所
     public GameObject SpawnPos3;        //ホーミング弾と雑魚キャラを発生させる場所
 
-    [SerializeField] GameObject Skelton;
-    [SerializeField] GameObject Goblin;
-    [SerializeField] GameObject Mimic;
+    [SerializeField] GameObject enemySkelton;
+    [SerializeField] GameObject enemyGoblin;
+    [SerializeField] GameObject enemyMimic;
     [SerializeField] GameObject homingbullet;//魔法弾
 
     private Vector3 PlayerPosition1;    //プレイヤーの位置情報1
@@ -190,16 +190,18 @@ public class Cerestiea : Enemy
             process = true;
 
             //Instantiate(Skelton, SpawnPos1.transform);
-            GameObject skelton = Instantiate(Skelton) as GameObject;
+            GameObject skelton = Instantiate(enemySkelton) as GameObject;
             skelton.transform.position = SpawnPos1.transform.position;
             skelton.transform.rotation = SpawnPos1.transform.rotation;
+            Skeltons.Trigger = false;
             yield return new WaitForSeconds(EnemyAtkInterval);
-            GameObject goblin = Instantiate(Goblin) as GameObject;
+            GameObject goblin = Instantiate(enemyGoblin) as GameObject;
             goblin.transform.position = SpawnPos2.transform.position;
             goblin.transform.rotation = SpawnPos2.transform.rotation;
+            Goblin.Trigger = false;
             //Instantiate(Goblin, SpawnPos2.transform);
             yield return new WaitForSeconds(EnemyAtkInterval);
-            GameObject mimic = Instantiate(Mimic) as GameObject;
+            GameObject mimic = Instantiate(enemyMimic) as GameObject;
             mimic.transform.position = SpawnPos3.transform.position;
             mimic.transform.rotation = SpawnPos3.transform.rotation;
             //Instantiate(Mimic, SpawnPos3.transform);

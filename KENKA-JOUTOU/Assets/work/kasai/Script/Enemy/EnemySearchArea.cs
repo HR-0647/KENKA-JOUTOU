@@ -21,7 +21,14 @@ public class EnemySearchArea : MonoBehaviour
     {
         if (other.CompareTag("Player") || other.CompareTag("Player2"))
         {
-            Skeltons.Trigger = false;
+            if (other.gameObject.GetComponent<Skeltons>())
+            {
+                Skeltons.Trigger = false;
+            }
+            else if (other.gameObject.GetComponent<Goblin>())
+            {
+                Goblin.Trigger = false;
+            }
         }
     }
 }

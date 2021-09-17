@@ -13,7 +13,7 @@ public class Cerestiea : Enemy
     [SerializeField] GameObject Skelton;
     [SerializeField] GameObject Goblin;
     [SerializeField] GameObject Mimic;
-    [SerializeField] GameObject Homingbullet;//魔法弾
+    [SerializeField] GameObject homingbullet;//魔法弾
 
     private Vector3 PlayerPosition1;    //プレイヤーの位置情報1
     private Vector3 PlayerPosition2;    //プレイヤーの位置情報2
@@ -22,6 +22,8 @@ public class Cerestiea : Enemy
 
     public bool DamageTrigger = false;  //ダメージ処理切り替え
     public bool invincible = false;     //無敵時間
+    private bool process = false;
+
     private int Act = 1;
 
     private float KnockbackSpeed = 50.0f;//ノックバックのスピード
@@ -85,7 +87,7 @@ public class Cerestiea : Enemy
         //ダメージ処理呼び出し
         if (DamageTrigger == true)
         {
-            Damaged();
+            StartCoroutine(Damaged());
         }
 
         PlayerPosition1 = PlayerObject1.transform.position;
@@ -149,7 +151,8 @@ public class Cerestiea : Enemy
         anim.SetBool("Walk", false);
 
 
-        knockback = Vector3.zero;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
 
         yield return new WaitForSeconds(2.0f);//数秒待機
 
@@ -164,38 +167,75 @@ public class Cerestiea : Enemy
     {
         //Actが1の時呼び出される
 
-        //テレポート
-        m_telepIndex = Random.Range(0, m_telep.Length);
-        transform.position = m_telep[m_telepIndex].position;
+        if (!process)
+        {
+            process = true;
 
-        Act = 2;
-        yield return new WaitForSeconds(EnemyAtkInterval);
+            //テレポート
+            m_telepIndex = Random.Range(0, m_telep.Length);
+            transform.position = m_telep[m_telepIndex].position;
+
+            Act = 2;
+            yield return new WaitForSeconds(EnemyAtkInterval);
+            process = false;
+
+        }
     }
 
     public IEnumerator Summon()
     {
-        //Actが2の時呼び出される
+        if (!process)
+        {
+            //Actが2の時呼び出される
+            process = true;
 
-        Instantiate(Skelton,SpawnPos1.transform);
-        yield return new WaitForSeconds(EnemyAtkInterval);
-        Instantiate(Goblin, SpawnPos2.transform);
-        yield return new WaitForSeconds(EnemyAtkInterval);
-        Instantiate(Mimic, SpawnPos3.transform);
-        yield return new WaitForSeconds(EnemyAtkInterval);
-        Act = 3;
-        yield return new WaitForSeconds(EnemyAtkInterval);
+            //Instantiate(Skelton, SpawnPos1.transform);
+            GameObject skelton = Instantiate(Skelton) as GameObject;
+            skelton.transform.position = SpawnPos1.transform.position;
+            skelton.transform.rotation = SpawnPos1.transform.rotation;
+            yield return new WaitForSeconds(EnemyAtkInterval);
+            GameObject goblin = Instantiate(Goblin) as GameObject;
+            goblin.transform.position = SpawnPos2.transform.position;
+            goblin.transform.rotation = SpawnPos2.transform.rotation;
+            //Instantiate(Goblin, SpawnPos2.transform);
+            yield return new WaitForSeconds(EnemyAtkInterval);
+            GameObject mimic = Instantiate(Mimic) as GameObject;
+            mimic.transform.position = SpawnPos3.transform.position;
+            mimic.transform.rotation = SpawnPos3.transform.rotation;
+            //Instantiate(Mimic, SpawnPos3.transform);
+            yield return new WaitForSeconds(EnemyAtkInterval);
+            Act = 3;
+            yield return new WaitForSeconds(EnemyAtkInterval);
+            process = false;
+
+        }
     }
 
     public IEnumerator Atk()
     {
-        //Actが3の時呼び出される
-        Instantiate(Homingbullet, SpawnPos1.transform);
-        yield return new WaitForSeconds(EnemyAtkInterval);
-        Instantiate(Homingbullet, SpawnPos2.transform);
-        yield return new WaitForSeconds(EnemyAtkInterval);
-        Instantiate(Homingbullet, SpawnPos3.transform);
-        yield return new WaitForSeconds(EnemyAtkInterval);
-        Act = 1;
-        
+        if (!process)
+        {
+            process = true;
+
+            //Actが3の時呼び出される
+            GameObject bullet = Instantiate(homingbullet) as GameObject;
+            bullet.transform.position = SpawnPos1.transform.position;
+            bullet.transform.rotation = SpawnPos1.transform.rotation;
+            //Instantiate(Homingbullet, SpawnPos1.transform);
+            yield return new WaitForSeconds(EnemyAtkInterval);
+            bullet = Instantiate(homingbullet) as GameObject;
+            bullet.transform.position = SpawnPos2.transform.position;
+            bullet.transform.rotation = SpawnPos2.transform.rotation;
+            //Instantiate(homingbullet, SpawnPos2.transform);
+            yield return new WaitForSeconds(EnemyAtkInterval);
+            bullet = Instantiate(homingbullet) as GameObject;
+            bullet.transform.position = SpawnPos3.transform.position;
+            bullet.transform.rotation = SpawnPos3.transform.rotation;
+            //Instantiate(homingbullet, SpawnPos3.transform);
+            yield return new WaitForSeconds(EnemyAtkInterval);
+            Act = 1;
+            process = false;
+
+        }
     }
 }

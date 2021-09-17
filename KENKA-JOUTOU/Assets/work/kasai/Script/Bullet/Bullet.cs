@@ -3,36 +3,28 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public Loxos loxos;
+    //public Loxos loxos;
     public float BulletSpead=7;           //’eŠÛ‚Ì‘¬‚³
     public GameObject PlayerObject1;
     public GameObject PlayerObject2;
-    private GameObject Target;
+   
     // Start is called before the first frame update
     void Start()
-    {
-        if(loxos.target)
-        {
-            Target = PlayerObject1;
-        }
-        else
-        {
-            Target = PlayerObject2;
-        }
-        StartCoroutine(Move());
-    }
-
-    // Update is called once per frame
-    void Update()
     {
         
     }
 
+    // Update is called once per frame
+    void Update()
+    {       
+        StartCoroutine(Move());
+    }
+
     public IEnumerator Move()
     {
-        this.transform.LookAt(Target.transform.position);
+        
         transform.position += transform.forward * BulletSpead * Time.deltaTime;
-        Invoke("Destroy", 10.0f);
+        Invoke("Destroy", 20.0f);
         yield break;
     }
     private void Destroy()

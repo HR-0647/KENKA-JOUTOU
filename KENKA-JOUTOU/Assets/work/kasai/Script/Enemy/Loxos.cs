@@ -6,8 +6,9 @@ public class Loxos : Enemy
 {
     public bool DamageTrigger = false;  //ダメージ処理切り替え
     public bool invincible = false;     //無敵時間
-    public bool target=false;                 //Bulletの対象切り替え用
-    private bool StunTrgger = false;
+    public static bool target=false;                 //Bulletの対象切り替え用
+    private bool StunTrgger = false;    //壁に衝突したときの判定
+    private bool process = false;       //処理中に別の処理を呼ばないようにする
     private float KnockbackSpeed = 50.0f;//ノックバックのスピード
     private float TackleSpeed = 20.0f;//タックルのスピード
     private Vector3 knockback = Vector3.zero;
@@ -37,7 +38,7 @@ public class Loxos : Enemy
     public Animator anim;
 
     Rigidbody rb;
-    public static int bulletcount;
+    //public static int bulletcount;
     public float EnemyAtkInterval = 3;      //敵の攻撃間隔
     private int Act = 1;                    //敵の行動パターン
     // Start is called before the first frame update
@@ -70,7 +71,7 @@ public class Loxos : Enemy
         //ダメージ処理呼び出し
         if (DamageTrigger == true)
         {
-            Damaged();
+            StartCoroutine(Damaged());
         }
 
         PlayerPosition1 = PlayerObject1.transform.position;
@@ -122,70 +123,116 @@ public class Loxos : Enemy
     }
     public IEnumerator Damaged()//エネミーがダメージを受けた時の処理
     {
-        invincible = true;//無敵時間中はこの処理は行わない
+        if (!process)
+        {
+            invincible = true;//無敵時間中はこの処理は行わない
+            process = true;
 
-        EnemyHP -= 1;
-        Slider.value = (float)EnemyHP / defaultEnemyHP;//HPバー変動
+            EnemyHP -= 1;
+            Slider.value = (float)EnemyHP / defaultEnemyHP;//HPバー変動
 
-        rb.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange); //ノックバック
-        //アニメーションをidol状態に移行
-        //anim.SetBool("Atk", false);
-        //anim.SetBool("Walk", false);
+            rb.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange); //ノックバック
+                                                                                        //アニメーションをidol状態に移行
+                                                                                        //anim.SetBool("Atk", false);
+                                                                                        //anim.SetBool("Walk", false);
 
 
-        knockback = Vector3.zero;
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
 
-        yield return new WaitForSeconds(2.0f);//数秒待機
+            yield return new WaitForSeconds(2.0f);//数秒待機
 
-        Debug.Log("hit");
+            Debug.Log("hit");
 
-        DamageTrigger = false;
-        invincible = false;
+            DamageTrigger = false;
+            invincible = false;
+            process = false;
+        }
 
     }
 
     public IEnumerator Tackle()//タックル攻撃
     {
-        //Actが1の時呼び出される
-        transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, TackleSpeed);
-        if(StunTrgger)
+        if (!process)
         {
+            process = true;
+            //Actが1の時呼び出される
+            invincible = true;
+            rb.AddForce(transform.forward * TackleSpeed, ForceMode.VelocityChange);
             yield return new WaitForSeconds(2.0f);
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            if (StunTrgger)
+            {
+                yield return new WaitForSeconds(2.0f);
+            }
+            StunTrgger = false;
+            Debug.Log("Atk");
+            Act = 2;
+            yield return new WaitForSeconds(EnemyAtkInterval);
+            invincible = false;
+            process = false;
+
         }
-        StunTrgger = false;
-        Debug.Log("Atk");
-        Act = 2;
-        yield return new WaitForSeconds(EnemyAtkInterval);
     }
     
     public IEnumerator Summon()//雑魚召喚
     {
         //Actが2の時呼び出される
-
-        Instantiate(Skelton, SpawnPos1.transform);
-        yield return new WaitForSeconds(EnemyAtkInterval);
-        Instantiate(Goblin, SpawnPos2.transform);
-        yield return new WaitForSeconds(EnemyAtkInterval);
-        Instantiate(Mimic, SpawnPos3.transform);
-        yield return new WaitForSeconds(EnemyAtkInterval);
-        Debug.Log("Summon");
-        Act = 3;
+        if (!process)
+        {
+            process = true;
+            //Instantiate(Skelton, SpawnPos1.transform);
+            GameObject skelton = Instantiate(Skelton) as GameObject;
+            skelton.transform.position = SpawnPos1.transform.position;
+            skelton.transform.rotation = SpawnPos1.transform.rotation;
+            yield return new WaitForSeconds(EnemyAtkInterval);
+            GameObject goblin = Instantiate(Goblin) as GameObject;
+            goblin.transform.position = SpawnPos2.transform.position;
+            goblin.transform.rotation = SpawnPos2.transform.rotation;
+            //Instantiate(Goblin, SpawnPos2.transform);
+            yield return new WaitForSeconds(EnemyAtkInterval);
+            GameObject mimic = Instantiate(Mimic) as GameObject;
+            mimic.transform.position = SpawnPos3.transform.position;
+            mimic.transform.rotation = SpawnPos3.transform.rotation;
+            //Instantiate(Mimic, SpawnPos3.transform);
+            yield return new WaitForSeconds(EnemyAtkInterval);
+            Debug.Log("Summon");
+            Act = 3;
+            process = false;
+        }
         
     }
     public IEnumerator Remoteatk()//魔法弾
     {
         //Actが3の時呼び出される
-        //1秒毎に5回弾が発射される
-        for (int i = 0; i < 5; i++)
+        
+        if (!process)
         {
-            Instantiate(Bullet, SpawnPos1.transform);
-            target = !target;
-            yield return new WaitForSeconds(1.0f);
-        }
-        Debug.Log("Bullet");
-        Act = 1;
-        yield return new WaitForSeconds(EnemyAtkInterval);
+            process = true;
+            for (int i = 0; i < 5; i++)
+            {
+                if(target)
+                {
+                    this.transform.LookAt(PlayerPosition1);
+                }
+                else if(!target)
+                {
+                    this.transform.LookAt(PlayerPosition2);
+                }
+                //Instantiate(Bullet, SpawnPos1.transform);
+                GameObject bullet = Instantiate(Bullet) as GameObject;
+                bullet.transform.position = SpawnPos1.transform.position;
+                bullet.transform.rotation = SpawnPos1.transform.rotation;
+                target = !target;
+                yield return new WaitForSeconds(EnemyAtkInterval);
+            }
+            Debug.Log("Bullet");
+            Act = 1;
+            //yield return new WaitForSeconds(EnemyAtkInterval);
+            process = false;
 
+        }
 
     }
 }

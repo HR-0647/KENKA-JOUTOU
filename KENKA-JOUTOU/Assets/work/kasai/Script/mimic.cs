@@ -7,21 +7,21 @@ public class mimic : Enemy
     public GameObject PlayerObject1;    //プレイヤーオブジェクト1
     public GameObject PlayerObject2;    //プレイヤーオブジェクト2
     private GameObject Target;        //攻撃対象
-    [SerializeField] GameObject Item;   //ドロップアイテム
+    public GameObject Item;   //ドロップアイテム
 
     Rigidbody rb;
 
-    public static bool Trigger = true;  //巡回とターゲット切り替え
+    public static bool Trigger = false;  //巡回とターゲット切り替え
     public bool DamageTrigger = false;  //ダメージ処理切り替え
     public bool invincible = false;     //無敵時間
+    private bool process = false;       //処理中
 
     private Vector3 PlayerPosition1;    //プレイヤーの位置情報1
     private Vector3 PlayerPosition2;    //プレイヤーの位置情報2
 
-    private float KnockbackSpeed = 50.0f;//ノックバックのスピード
-    private float TackleSpeed = 20.0f;
-    private Vector3 knockback = Vector3.zero;
-
+    private float KnockbackSpeed = 5.0f;//ノックバックのスピード
+    private float TackleSpeed = 5.0f;
+    
     //サウンド
     public AudioClip atksound;  //攻撃音
 
@@ -63,9 +63,9 @@ public class mimic : Enemy
         }
 
         //ダメージ処理呼び出し
-        if (DamageTrigger == true)
+        if (DamageTrigger == true && invincible == false)
         {
-            Damaged();
+            StartCoroutine(Damaged());
         }
 
         PlayerPosition1 = PlayerObject1.transform.position;
@@ -77,7 +77,7 @@ public class mimic : Enemy
 
         if (Trigger)
         {
-            if(range1<=range2)
+            if (range1 <= range2)
             {
                 this.transform.LookAt(PlayerPosition1);
                 Target = PlayerObject1;
@@ -85,7 +85,7 @@ public class mimic : Enemy
             }
             else
             {
-                this.transform.LookAt(PlayerPosition1);
+                this.transform.LookAt(PlayerPosition2);
                 Target = PlayerObject2;
                 StartCoroutine(Atk());
             }
@@ -94,6 +94,7 @@ public class mimic : Enemy
         {
             StopCoroutine(Atk());
             //idol状態
+            Debug.Log(Trigger);
         }
     }
 
@@ -119,7 +120,8 @@ public class mimic : Enemy
         //anim.SetBool("Walk", false);
 
 
-        knockback = Vector3.zero;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
 
         yield return new WaitForSeconds(2.0f);//数秒待機
 
@@ -131,7 +133,21 @@ public class mimic : Enemy
     }
     public IEnumerator Atk()
     {
-        transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, TackleSpeed);//プレイヤーに向かって突進する
-        yield return new WaitForSeconds(EnemyAtkInterval);
+        if (!process)
+        {
+            process = true;
+            invincible = true;
+            this.transform.LookAt(Target.transform.position);
+            //transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, TackleSpeed);//プレイヤーに向かって突進する
+            rb.AddForce(transform.forward * TackleSpeed, ForceMode.VelocityChange);
+            yield return new WaitForSeconds(0.5f);
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            yield return new WaitForSeconds(EnemyAtkInterval);
+            Debug.Log("atk");
+            Trigger = false;
+            invincible = false;
+            process = false;
+        }
     }
 }

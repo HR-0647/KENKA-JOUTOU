@@ -18,7 +18,7 @@ public class HomingBullet : MonoBehaviour
 
     public float BulletSpead;           //’eŠÛ‚Ì‘¬‚³
     
-    private bool reflect = true;        //”½ŽË‚Ì”»’è
+    public bool reflect = true;        //”½ŽË‚Ì”»’è
 
     // Start is called before the first frame update
     void Start()
@@ -62,8 +62,9 @@ public class HomingBullet : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, BulletSpead * Time.deltaTime);
         }
-        else
+        else if(!reflect)
         {
+            
             transform.position += transform.forward * BulletSpead * Time.deltaTime;   
         }
         Invoke("Destroy", 20.0f);
@@ -95,6 +96,7 @@ public class HomingBullet : MonoBehaviour
                 Vector3 refrectVec = Vector3.Reflect(this.lastVelocity, collision.contacts[0].normal);
                 this.rb.velocity = refrectVec;
                 reflect = false;
+                transform.rotation = Target.transform.rotation;
             }
             else if (!reflect)
             {

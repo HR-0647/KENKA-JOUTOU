@@ -58,7 +58,7 @@ public class mimic : Enemy
         //体力の判定
         if (EnemyHP <= 0)
         {
-            Instantiate(Item);          //アイテムのドロップ
+            Instantiate(Item,this.transform.position,this.transform.rotation);          //アイテムのドロップ
             Destroy(this.gameObject);
         }
 

@@ -7,11 +7,22 @@ public class Bullet : MonoBehaviour
     public float BulletSpead=7;           //弾丸の速さ
     public GameObject PlayerObject1;
     public GameObject PlayerObject2;
-   
+    private Vector3 PlayerPosition1;    //プレイヤーの位置情報1
+    private Vector3 PlayerPosition2;    //プレイヤーの位置情報2
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        PlayerPosition1 = PlayerObject1.transform.position;
+        PlayerPosition2 = PlayerObject2.transform.position;
+        if (Loxos.target)
+        {
+            this.transform.LookAt(PlayerPosition1);
+        }
+        else if (!Loxos.target)
+        {
+            this.transform.LookAt(PlayerPosition2);
+        }
     }
 
     // Update is called once per frame

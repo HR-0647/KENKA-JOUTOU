@@ -45,13 +45,17 @@ public class hitcoll : MonoBehaviour
 
                 Vector3 dis = (col.transform.position - transform.position).normalized;
                 // EnemyŽž
-                if (col != null && col.gameObject.CompareTag("Enemy"))
+                if (col != null && col.gameObject.CompareTag("Enemy1"))
+                {
+                    col.GetComponent<Goblin>().DamageTrigger = true;
+                    col.GetComponent<Goblin>().Damaged();
+                    col.GetComponent<NavMeshAgent>().enabled = false;
+                }
+                if (col != null && col.gameObject.CompareTag("Enemy2"))
                 {
                     col.GetComponent<Skeltons>().DamageTrigger = true;
                     col.GetComponent<Skeltons>().Damaged();
-                    col.GetComponent<NavMeshAgent>().enabled = false;
                 }
-
                 // ˜S‰®Žž
                 if (col.gameObject.CompareTag("IronGrill"))
                 {

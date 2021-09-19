@@ -7,7 +7,8 @@ public class mimic : Enemy
     public GameObject PlayerObject1;    //プレイヤーオブジェクト1
     public GameObject PlayerObject2;    //プレイヤーオブジェクト2
     private GameObject Target;        //攻撃対象
-    public GameObject Item;   //ドロップアイテム
+    //　ごめん、アイテムは自分にやらせて(本多)
+    //public GameObject Item;   //ドロップアイテム
 
     Rigidbody rb;
 
@@ -58,7 +59,7 @@ public class mimic : Enemy
         //体力の判定
         if (EnemyHP <= 0)
         {
-            Instantiate(Item,this.transform.position,this.transform.rotation);          //アイテムのドロップ
+            //Instantiate(Item,this.transform.position,this.transform.rotation);          //アイテムのドロップ
             Destroy(this.gameObject);
         }
 
@@ -111,7 +112,7 @@ public class mimic : Enemy
     {
         invincible = true;//無敵時間中はこの処理は行わない
 
-        EnemyHP -= 1;
+        EnemyHP -= 5;
         Slider.value = (float)EnemyHP / defaultEnemyHP;//HPバー変動
 
         rb.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange); //ノックバック

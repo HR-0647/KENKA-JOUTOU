@@ -36,7 +36,7 @@ public class FireBall : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Player2" || collision.gameObject.tag == "Wall")
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Player2" || collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Door")
         {
             Destroy(this.gameObject);
         }

@@ -20,7 +20,7 @@ public class Goblin : Enemy
     private Vector3 PlayerPosition1;    //プレイヤーの位置情報1
     private Vector3 PlayerPosition2;    //プレイヤーの位置情報2
 
-    private float KnockbackSpeed = 50.0f;//ノックバックのスピード
+    private float KnockbackSpeed = 25.0f;//ノックバックのスピード
     private Vector3 knockback = Vector3.zero;
 
 
@@ -230,8 +230,8 @@ public class Goblin : Enemy
         m_navAgent.enabled = false;
         rb.isKinematic = false;
 
-        EnemyHP -= 1;
-        Slider.value = (float)EnemyHP / defaultEnemyHP;//HPバー変動
+        EnemyHP -= 20;
+        Slider.value = (float)EnemyHP;//HPバー変動
 
         rb.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange); //ノックバック
         //アニメーションをidol状態に移行

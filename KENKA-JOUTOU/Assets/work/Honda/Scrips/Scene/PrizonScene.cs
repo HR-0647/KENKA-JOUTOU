@@ -8,6 +8,9 @@ public class PrizonScene : MonoBehaviour
     //インスペクターで取得
     [SerializeField, Header("- シーン遷移先名")]
     private string sceneLoadName;
+    public GameObject Letter;
+    public GameObject Box1;
+    public GameObject Box2;
     [SerializeField] private UnityEngine.UI.Text textbox; //文章
     [SerializeField] private UnityEngine.UI.Text textbox2; //名前
     
@@ -240,115 +243,240 @@ public class PrizonScene : MonoBehaviour
         Player2 = true;
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        currentLine = 28;
+        textbox2.text = " ";
+        Letter.SetActive(true);
+        Box1.SetActive(false);
+        Box2.SetActive(false);
+        image.enabled = false;
+        image2.enabled = false;
+        Player1 = false;
+        Player2 = false;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 29;
+        textbox2.text = "アディソン";
+        Letter.SetActive(false);
+        Box1.SetActive(true);
+        Box2.SetActive(true);
+        image.enabled = true;
+        image2.enabled = true;
+        Player1 = true;
+        Player2 = false;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 30;
+        textbox2.text = "ワイアット";
+        Player1 = false;
+        Player2 = true;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 31;
+        textbox2.text = "アディソン";
+        Player1 = true;
+        Player2 = false;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 32;
+        textbox2.text = "ワイアット";
+        Player1 = false;
+        Player2 = true;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 33;
+        textbox2.text = "アディソン";
+        Player1 = true;
+        Player2 = false;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 34;
+        textbox2.text = "ワイアット";
+        Player1 = false;
+        Player2 = true;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 35;
+        textbox2.text = "";
+        Player1 = false;
+        Player2 = false;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
 
     }
 
     private IEnumerator Button()
     {
+        //1
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //2
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //3
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //4
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //5
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //6
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //7
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //8
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //9
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //10
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //11
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //12
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //13
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //14
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //15
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //16
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //17
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //18
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //19
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //20
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //21
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //22
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //23
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //24
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //25
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //26
         OnClick1();
         OnClick2();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
+        //27
+        OnClick1();
+        OnClick2();
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //28
+        OnClick1();
+        OnClick2();
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //29
+        OnClick1();
+        OnClick2();
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //30
+        OnClick1();
+        OnClick2();
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //31
+        OnClick1();
+        OnClick2();
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //32
+        OnClick1();
+        OnClick2();
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //33
+        OnClick1();
+        OnClick2();
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //34
+        OnClick1();
+        OnClick2();
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //35
         OnClick1();
         OnClick2();
 

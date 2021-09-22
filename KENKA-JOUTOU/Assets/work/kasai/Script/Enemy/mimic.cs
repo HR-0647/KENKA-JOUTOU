@@ -113,7 +113,7 @@ public class mimic : Enemy
         invincible = true;//無敵時間中はこの処理は行わない
 
         EnemyHP -= 5;
-        Slider.value = (float)EnemyHP / defaultEnemyHP;//HPバー変動
+        Slider.value = (float)EnemyHP;//HPバー変動
 
         rb.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange); //ノックバック
         //アニメーションをidol状態に移行

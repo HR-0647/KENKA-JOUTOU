@@ -7,7 +7,7 @@ public class NextStage : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Player2")
         {
-            SceneManager.LoadScene("HallArea");
+            SceneManager.LoadScene("Jailer room");
         }
     }
 }

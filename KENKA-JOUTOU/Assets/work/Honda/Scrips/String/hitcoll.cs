@@ -56,6 +56,11 @@ public class hitcoll : MonoBehaviour
                     col.GetComponent<Skeltons>().DamageTrigger = true;
                     col.GetComponent<Skeltons>().Damaged();
                 }
+                if (col != null && col.gameObject.CompareTag("Enemy3"))
+                {
+                    col.GetComponent<mimic>().DamageTrigger = true;
+                    col.GetComponent<mimic>().Damaged();
+                }
                 // ˜S‰®Žž
                 if (col.gameObject.CompareTag("IronGrill"))
                 {

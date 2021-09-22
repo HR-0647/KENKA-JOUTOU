@@ -6,7 +6,7 @@ public class TextFade : MonoBehaviour
     public Text text;
 
     float fadeSpeed = 0.005f;
-    float red, green, blue, alfa;
+    public float red, green, blue, alfa;
     public bool isFadeOut = false;
     public bool isFadeIn = false;
 

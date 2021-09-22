@@ -9,9 +9,17 @@ public class AttackDestroy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy2"))
         {
             collision.gameObject.GetComponent<Skeltons>().Damaged();
+        }
+        if (collision.gameObject.CompareTag("Enemy1"))
+        {
+
+        }
+        if (collision.gameObject.CompareTag("Enemy3"))
+        {
+
         }
     }
 }

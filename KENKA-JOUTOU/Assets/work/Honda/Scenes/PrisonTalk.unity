@@ -224,17 +224,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161163028}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 71911698}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200.9, y: -399.41}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 581, y: -189}
+  m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &161163030
 MonoBehaviour:
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5647059}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6666667}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb29418d18a67d34893c987c77810fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneLoadName: 
+  sceneLoadName: Map
   Letter: {fileID: 71911697}
   Box1: {fileID: 740880135}
   Box2: {fileID: 1256491423}
@@ -937,6 +937,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ace6082d5e706842abc66d6f6db3a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  red: 0
+  green: 0
+  blue: 0
+  alfa: 0
   isFadeOut: 0
   isFadeIn: 1
 --- !u!114 &1222593719

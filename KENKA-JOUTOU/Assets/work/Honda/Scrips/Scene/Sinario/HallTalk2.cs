@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class HallTalk : MonoBehaviour
+public class HallTalk2 : MonoBehaviour
 {
     //インスペクターで取得
     [SerializeField, Header("- シーン遷移先名")]
@@ -22,6 +22,7 @@ public class HallTalk : MonoBehaviour
     [SerializeField] Image image;
     [SerializeField] Image image2;
     [SerializeField] Image image3;
+    [SerializeField] Image image4;
 
     [Header("フェード")] public Fade fade;
 
@@ -36,6 +37,7 @@ public class HallTalk : MonoBehaviour
     private bool Player2 = false;
     private bool Player1 = false;
     private bool Boss1 = false;
+    private bool Boss2 = false;
     private Animator Flashimage;
     private bool isFlash;
     private bool CorutinSelect1 = false;
@@ -81,7 +83,7 @@ public class HallTalk : MonoBehaviour
         SetNextLine();
         yield return null;
         currentLine = 1;
-        textbox2.text = "???";
+        textbox2.text = "セレス";
         Player1 = false;
         Player2 = false;
         Boss1 = true;
@@ -116,73 +118,77 @@ public class HallTalk : MonoBehaviour
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
         currentLine = 6;
-        textbox2.text = "アディソン";
-        Player1 = true;
-        Player2 = false;
-        Boss1 = false;
-        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
-        yield return null;
-        currentLine = 7;
-        textbox2.text = "ワイアット&セレス";
-        Player1 = false;
-        Player2 = true;
-        Boss1 = true;
-        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
-        yield return null;
-        currentLine = 8;
-        textbox2.text = "アディソン";
-        Player1 = true;
-        Player2 = false;
-        Boss1 = false;
-        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
-        yield return null;
-        currentLine = 9;
-        textbox2.text = "セレス";
-        Player1 = false;
-        Player2 = false;
-        Boss1 = true;
-        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
-        yield return null;
-        currentLine = 10;
-        textbox2.text = "アディソン";
-        Player1 = true;
-        Player2 = false;
-        Boss1 = false;
-        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
-        yield return null;
-        currentLine = 11;
         textbox2.text = "ワイアット";
         Player1 = false;
         Player2 = true;
         Boss1 = false;
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
-        currentLine = 12;
+        currentLine = 7;
         textbox2.text = "アディソン";
         Player1 = true;
         Player2 = false;
         Boss1 = false;
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
-        currentLine = 13;
+        currentLine = 8;
         textbox2.text = "セレス";
         Player1 = false;
         Player2 = false;
         Boss1 = true;
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
-        currentLine = 14;
+        currentLine = 9;
+        textbox2.text = "アディソン&ワイアット";
+        Player1 = true;
+        Player2 = true;
+        Boss1 = false;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 10;
+        textbox2.text = "セレス";
+        Player1 = false;
+        Player2 = false;
+        Boss1 = true;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 11;
+        textbox2.text = "???";
+        Player1 = false;
+        Player2 = false;
+        Boss1 = false;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 12;
+        textbox2.text = "セレス";
+        Player1 = false;
+        Player2 = false;
+        Boss1 = true;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 13;
         textbox2.text = "アディソン";
         Player1 = true;
         Player2 = false;
+        Boss1 = false;
+        Boss2 = false;
+        image4.enabled = true;
+        image3.enabled = false;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 14;
+        textbox2.text = "ワイアット";
+        Player1 = false;
+        Player2 = true;
         Boss1 = false;
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
         currentLine = 15;
-        textbox2.text = "セレス";
+        textbox2.text = "ロキソス";
         Player1 = false;
         Player2 = false;
-        Boss1 = true;
+        Boss1 = false;
+        Boss2 = true;
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
         currentLine = 16;
@@ -190,20 +196,135 @@ public class HallTalk : MonoBehaviour
         Player1 = false;
         Player2 = true;
         Boss1 = false;
+        Boss2 = false;
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
         currentLine = 17;
+        textbox2.text = "ロキソス";
+        Player1 = false;
+        Player2 = false;
+        Boss1 = false;
+        Boss2 = true;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 18;
+        textbox2.text = "アディソン&ワイアット";
+        Player1 = true;
+        Player2 = true;
+        Boss1 = false;
+        Boss2 = false;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 19;
+        textbox2.text = "ロキソス";
+        Player1 = false;
+        Player2 = false;
+        Boss1 = false;
+        Boss2 = true;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 20;
+        textbox2.text = "ワイアット";
+        Player1 = false;
+        Player2 = true;
+        Boss1 = false;
+        Boss2 = false;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 21;
+        textbox2.text = "ロキソス";
+        Player1 = false;
+        Player2 = false;
+        Boss1 = false;
+        Boss2 = true;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 22;
         textbox2.text = "アディソン";
         Player1 = true;
         Player2 = false;
         Boss1 = false;
+        Boss2 = false;
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
-        currentLine = 18;
-        textbox2.text = "セレス";
+        currentLine = 23;
+        textbox2.text = "ロキソス";
         Player1 = false;
         Player2 = false;
-        Boss1 = true;
+        Boss1 = false;
+        Boss2 = true;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 24;
+        textbox2.text = "ワイアット";
+        Player1 = false;
+        Player2 = true;
+        Boss1 = false;
+        Boss2 = false;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 25;
+        textbox2.text = "ロキソス";
+        Player1 = false;
+        Player2 = false;
+        Boss1 = false;
+        Boss2 = true;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 26;
+        textbox2.text = "ワイアット";
+        Player1 = false;
+        Player2 = true;
+        Boss1 = false;
+        Boss2 = false;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 27;
+        textbox2.text = "アディソン";
+        Player1 = true;
+        Player2 = false;
+        Boss1 = false;
+        Boss2 = false;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 28;
+        textbox2.text = "ワイアット";
+        Player1 = false;
+        Player2 = true;
+        Boss1 = false;
+        Boss2 = false;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 29;
+        textbox2.text = "アディソン";
+        Player1 = true;
+        Player2 = false;
+        Boss1 = false;
+        Boss2 = false;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 30;
+        textbox2.text = "ロキソス";
+        Player1 = false;
+        Player2 = false;
+        Boss1 = false;
+        Boss2 = true;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 31;
+        textbox2.text = "アディソン&ワイアット";
+        Player1 = true;
+        Player2 = true;
+        Boss1 = false;
+        Boss2 = false;
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        currentLine = 32;
+        textbox2.text = "ロキソス";
+        Player1 = false;
+        Player2 = false;
+        Boss1 = false;
+        Boss2 = true;
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
     }
@@ -274,54 +395,159 @@ public class HallTalk : MonoBehaviour
         OnClick1();
         OnClick2();
         OnClick3();
+        OnClick4();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
         //12
         OnClick1();
         OnClick2();
         OnClick3();
+        OnClick4();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
         //13
         OnClick1();
         OnClick2();
         OnClick3();
+        OnClick4();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
         //14
         OnClick1();
         OnClick2();
         OnClick3();
+        OnClick4();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
         //15
         OnClick1();
         OnClick2();
         OnClick3();
+        OnClick4();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
         //16
         OnClick1();
         OnClick2();
         OnClick3();
+        OnClick4();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
         //17
         OnClick1();
         OnClick2();
         OnClick3();
+        OnClick4();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
         //18
         OnClick1();
         OnClick2();
         OnClick3();
+        OnClick4();
         yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
         yield return null;
         //19
         OnClick1();
         OnClick2();
+        OnClick3(); 
+        OnClick4();
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //20
+        OnClick1();
+        OnClick2();
         OnClick3();
+        OnClick4();
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //21
+        OnClick1();
+        OnClick2();
+        OnClick3();
+        OnClick4();
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //22
+        OnClick1();
+        OnClick2();
+        OnClick3();
+        OnClick4();
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //23
+        OnClick1();
+        OnClick2();
+        OnClick3();
+        OnClick4();
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //24
+        OnClick1();
+        OnClick2();
+        OnClick3();
+        OnClick4();
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //25
+        OnClick1();
+        OnClick2();
+        OnClick3();
+        OnClick4(); yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //26
+        OnClick1();
+        OnClick2();
+        OnClick3();
+        OnClick4(); yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //27
+        OnClick1();
+        OnClick2();
+        OnClick3();
+        OnClick4();
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //28
+        OnClick1();
+        OnClick2();
+        OnClick3();
+        OnClick4();
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //29
+        OnClick1();
+        OnClick2();
+        OnClick3();
+        OnClick4();
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //30
+        OnClick1();
+        OnClick2();
+        OnClick3();
+        OnClick4();
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //31
+        OnClick1();
+        OnClick2();
+        OnClick3();
+        OnClick4();
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //32
+        OnClick1();
+        OnClick2();
+        OnClick3();
+        OnClick4();
+        yield return new WaitUntil(() => Input.GetButtonDown("CircleButton1"));
+        yield return null;
+        //33
+        OnClick1();
+        OnClick2();
+        OnClick3();
+        OnClick4();
 
         if (!firstPush)
         {
@@ -372,6 +598,18 @@ public class HallTalk : MonoBehaviour
         else if (Boss1 == false)
         {
             image3.color = btnColor2;
+        }
+    }
+
+    private void OnClick4()
+    {
+        if (Boss2 == true)
+        {
+            image4.color = btnColor1;
+        }
+        else if (Boss2 == false)
+        {
+            image4.color = btnColor2;
         }
     }
 

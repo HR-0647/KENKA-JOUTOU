@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Fade : MonoBehaviour
 {
 
-    float fadeSpeed = 0.003f;
+    public float fadeSpeed = 0.003f;
     public float red, green, blue, alfa;
     public bool isFadeOut = false;
     public bool isFadeIn = false;

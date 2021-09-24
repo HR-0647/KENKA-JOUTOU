@@ -230,7 +230,7 @@ public class Goblin : Enemy
         m_navAgent.enabled = false;
         rb.isKinematic = false;
 
-        EnemyHP -= 20;
+        EnemyHP -= 10;
         Slider.value = (float)EnemyHP;//HPバー変動
 
         rb.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange); //ノックバック

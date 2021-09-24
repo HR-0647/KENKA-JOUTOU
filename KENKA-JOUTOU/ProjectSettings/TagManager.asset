@@ -25,6 +25,9 @@ TagManager:
   - Enemy1
   - Enemy2
   - Enemy3
+  - Enemy
+  - Spike_Trap
+  - Rotary_blade
   layers:
   - Default
   - TransparentFX

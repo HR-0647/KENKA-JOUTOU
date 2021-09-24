@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TwoPController : MonoBehaviour
+public class TwoPController : HP
 {
     private Vector3 velosity; // 移動地
     private Vector3 input; // 入力値
@@ -32,12 +32,16 @@ public class TwoPController : MonoBehaviour
     {
         rig = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        PlayerHP = 100;
     }
 
     void Update()
     {
         CoolTime -= Time.deltaTime;
-        invisibleTime -= Time.deltaTime;
+        if (DamageTrigger == true)
+        {
+            invisibleTime -= Time.deltaTime;
+        }
         // 接着しているので移動速度を0に
         velosity = Vector3.zero;
         input = new Vector3(Input.GetAxis("Horizontal2"), 0f, Input.GetAxis("Vertical2"));
@@ -89,13 +93,75 @@ public class TwoPController : MonoBehaviour
     // ダメージの際無敵時間を入れる
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy1")
         {
             DamageTrigger = true;
             if (invisibleTime < 0)
             {
+                PlayerHP -= 3;
+                Slider.value = PlayerHP;
                 invisibleTime = DamageTime;
-                Debug.Log("a");
+                DamageTrigger = false;
+            }
+        }
+
+        if (collision.gameObject.tag == "Enemy2")
+        {
+            DamageTrigger = true;
+            if (invisibleTime < 0)
+            {
+                PlayerHP -= 5;
+                Slider.value = PlayerHP;
+                invisibleTime = DamageTime;
+                DamageTrigger = false;
+            }
+        }
+
+        if (collision.gameObject.tag == "Enemy3")
+        {
+            DamageTrigger = true;
+            if (invisibleTime < 0)
+            {
+                PlayerHP -= 10;
+                Slider.value = PlayerHP;
+                invisibleTime = DamageTime;
+                DamageTrigger = false;
+            }
+        }
+
+        if (collision.gameObject.tag == "FireBall")
+        {
+            DamageTrigger = true;
+            if (invisibleTime < 0)
+            {
+                PlayerHP -= 4;
+                Slider.value = PlayerHP;
+                invisibleTime = DamageTime;
+                DamageTrigger = false;
+            }
+        }
+
+        if (collision.gameObject.tag == "Spike_Trap")
+        {
+            DamageTrigger = true;
+            if (invisibleTime < 0)
+            {
+                PlayerHP -= 10;
+                Slider.value = PlayerHP;
+                invisibleTime = DamageTime;
+                DamageTrigger = false;
+            }
+        }
+
+        if (collision.gameObject.tag == "Rotary_blade")
+        {
+            DamageTrigger = true;
+            if (invisibleTime < 0)
+            {
+                PlayerHP -= 7;
+                Slider.value = PlayerHP;
+                invisibleTime = DamageTime;
+                DamageTrigger = false;
             }
         }
     }

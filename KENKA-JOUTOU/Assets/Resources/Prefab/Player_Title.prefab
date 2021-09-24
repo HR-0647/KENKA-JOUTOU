@@ -11052,6 +11052,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c7ade8e5a92ef4db6f72bc6f19bb5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerHP: 0
+  defaultPlayerHP: 0
+  Slider: {fileID: 0}
   WalkSpeed: 2.5
   DashSpeed: 15
   Dash: {fileID: 997948854}
@@ -11081,6 +11084,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c2bb6bc65e99746a6a17622625141d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerHP: 0
+  defaultPlayerHP: 0
+  Slider: {fileID: 0}
   WalkSpeed: 2.5
   DashSpeed: 15
   Dash: {fileID: 997948854}

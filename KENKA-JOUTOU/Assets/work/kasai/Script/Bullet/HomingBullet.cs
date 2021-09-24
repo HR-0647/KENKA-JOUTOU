@@ -20,11 +20,19 @@ public class HomingBullet : MonoBehaviour
     
     public bool reflect = true;        //反射の判定
 
+    //サウンド
+    public AudioClip sound;
+
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         this.rb = this.GetComponent<Rigidbody>();
-        
+
+        //オーディオコンポーネント取得
+        audioSource = GetComponent<AudioSource>();
+
         //プレイヤーまでの距離を出す
         PlayerPosition1 = PlayerObject1.transform.position;
         PlayerPosition2 = PlayerObject2.transform.position;
@@ -81,17 +89,18 @@ public class HomingBullet : MonoBehaviour
     {
 
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Player2")
-        {         
+        {
             //
             //ワイヤーの体力を減らす処理とseとエフェクトをここに置く
             //
-
+            audioSource.PlayOneShot(sound);
             Destroy(this.gameObject);
         }
         if (collision.gameObject.tag == "Untagged")
         {
             if (reflect)
             {
+                audioSource.PlayOneShot(sound);
                 //反射する向きを指定
                 Vector3 refrectVec = Vector3.Reflect(this.lastVelocity, collision.contacts[0].normal);
                 this.rb.velocity = refrectVec;
@@ -101,7 +110,9 @@ public class HomingBullet : MonoBehaviour
             else if (!reflect)
             {
                 //こっちにはseとエフェクトのみ
+                audioSource.PlayOneShot(sound);
                 Destroy(this.gameObject);
+
             }
         }
 

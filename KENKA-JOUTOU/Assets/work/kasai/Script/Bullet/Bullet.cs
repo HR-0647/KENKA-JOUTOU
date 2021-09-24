@@ -10,9 +10,17 @@ public class Bullet : MonoBehaviour
     private Vector3 PlayerPosition1;    //プレイヤーの位置情報1
     private Vector3 PlayerPosition2;    //プレイヤーの位置情報2
 
+    //サウンド
+    public AudioClip sound;  
+
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        //オーディオコンポーネント取得
+        audioSource = GetComponent<AudioSource>();
+
         PlayerPosition1 = PlayerObject1.transform.position;
         PlayerPosition2 = PlayerObject2.transform.position;
         if (Loxos.target)
@@ -50,11 +58,13 @@ public class Bullet : MonoBehaviour
             //
             //プレイヤーの体力を減らす処理とseとエフェクトをここに置く
             //
+            audioSource.PlayOneShot(sound);
             Destroy(this.gameObject);
         }
         if (collision.gameObject.tag == "Untagged")
         {
             //こっちにはseとエフェクトのみ
+            audioSource.PlayOneShot(sound);
             Destroy(this.gameObject);
         }
 

@@ -260,6 +260,19 @@ MonoBehaviour:
   atksound: {fileID: 8300000, guid: ad0ec1faf33b97448b56d8199fc4020e, type: 3}
   anim: {fileID: 8519735233403041985}
   EnemyAtkInterval: 3
+--- !u!114 &4159745479385468491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8862318668556265650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62359d80fdc0e4315ab6331b78ec5b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kinematicForParticles: 0
 --- !u!114 &8627528238572483221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,19 +290,6 @@ MonoBehaviour:
   filter: -65535
   m_SourceCollider: {fileID: 1382828352}
   m_DistanceField: {fileID: 0}
---- !u!114 &4159745479385468491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8862318668556265650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62359d80fdc0e4315ab6331b78ec5b90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  kinematicForParticles: 0
 --- !u!1001 &5770891756753287267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -469,6 +469,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3268338177474707903, guid: 640a8d2318bcc9b4ebb4ee7b0a385143, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5c92aab8af12ec04a906b1699d0e9b47, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 640a8d2318bcc9b4ebb4ee7b0a385143, type: 3}
 --- !u!1 &8862318668556265650 stripped

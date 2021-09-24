@@ -3845,7 +3845,7 @@ GameObject:
   - component: {fileID: 3972319355947912134}
   m_Layer: 0
   m_Name: loxos_complete
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3879,7 +3879,7 @@ Animator:
   m_GameObject: {fileID: 5690644157186839709}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c848a39c1f7ad7547a95c2a2491774a4, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ed20b56add2a5f740ab9ad3b032dc238, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -3925,7 +3925,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5690644157186839709}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -4041,7 +4041,8 @@ MonoBehaviour:
   enemySkelton: {fileID: 6642399878950648374, guid: dd8db90b01ec21a4dbda458f52268761, type: 3}
   enemyGoblin: {fileID: 8409669074876015712, guid: 8bb9cacb931941f4287a950483125a4c, type: 3}
   enemyMimic: {fileID: 8862318668556265650, guid: 8139261a14eb87444be31fc132928abd, type: 3}
-  Bullet: {fileID: 7802312093002467219, guid: bc0263aa5e7d2b34d83a3c7b7403cc86, type: 3}
+  Bullet: {fileID: 3930245225596165236, guid: 1d42e86090c6a7943a718814e6bce8f8, type: 3}
+  summonEffect: {fileID: 100008, guid: e3d819d8722fa1f47a3f68574b56dfb3, type: 3}
   atksound: {fileID: 0}
   anim: {fileID: 0}
   EnemyAtkInterval: 3

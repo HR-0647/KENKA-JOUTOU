@@ -36,6 +36,8 @@ public class Skeltons : Enemy
     //アニメーション
     public Animator anim;
 
+    [SerializeField] GameObject Effect;//エフェクト
+
     //NavMesh関連
     [SerializeField]
     private Transform[] m_targets = null;
@@ -99,6 +101,8 @@ public class Skeltons : Enemy
         //体力の判定
         if (EnemyHP <= 0)
         {
+            GameObject effect = Instantiate(Effect) as GameObject;
+            effect.transform.position = this.transform.position;
             Destroy(this.gameObject);
         }
 

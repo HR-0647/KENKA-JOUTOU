@@ -28,6 +28,7 @@ TagManager:
   - Enemy
   - Spike_Trap
   - Rotary_blade
+  - Leghold_trap
   layers:
   - Default
   - TransparentFX

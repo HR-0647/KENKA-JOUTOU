@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Leghold_trap : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.gameObject.tag=="Player" || other.gameObject.tag == "Player2")
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Player2")
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 }

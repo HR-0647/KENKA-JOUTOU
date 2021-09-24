@@ -165,21 +165,5 @@ public class Player1 : HP
                 DamageTrigger = false;
             }
         }
-
-        if (collision.gameObject.tag == "Leghold_trap")
-        {
-            DamageTrigger = true;
-            WalkSpeed = 0f;
-            DashSpeed = 0f;
-            if (invisibleTime < 0)
-            {
-                PlayerHP -= 5;
-                Slider.value = PlayerHP;
-                invisibleTime = DamageTime;
-                WalkSpeed = 2.5f;
-                DashSpeed = 15f;
-                DamageTrigger = false;
-            }
-        }
     }
 }

@@ -47,7 +47,7 @@ public class Loxos : Enemy
     void Start()
     {
         //type = EnemyType.Loxos;
-        EnemyHP = 300;//エネミー体力
+        EnemyHP = 150;//エネミー体力
         attack = 30;
         //オーディオコンポーネント取得
         //audioSource = GetComponent<AudioSource>();

@@ -472,6 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ace6082d5e706842abc66d6f6db3a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeSpeed: 0.003
   red: 0
   green: 0
   blue: 0
@@ -1141,7 +1142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0f0a4d02d3ee3dc4587c48ee9372b9b1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f2e87aeed1c5ed74a92a2073a40e2b7d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

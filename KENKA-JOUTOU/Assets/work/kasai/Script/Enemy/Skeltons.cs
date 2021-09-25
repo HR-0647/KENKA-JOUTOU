@@ -89,9 +89,7 @@ public class Skeltons : Enemy
 
         rb = GetComponent<Rigidbody>();
 
-
-
-
+        
 
     }
 
@@ -166,6 +164,7 @@ public class Skeltons : Enemy
                         if (timeleft <= 0.0)
                         {
                             timeleft = EnemyAtkInterval;
+                            
 
                             //攻撃アニメーション
                             anim.SetBool("Atk", true);
@@ -203,6 +202,7 @@ public class Skeltons : Enemy
                         if (timeleft <= 0.0)
                         {
                             timeleft = EnemyAtkInterval;
+                            
 
                             //攻撃アニメーション
                             anim.SetBool("Atk", true);
@@ -234,7 +234,7 @@ public class Skeltons : Enemy
         m_navAgent.enabled = false;
         rb.isKinematic = false;
 
-        EnemyHP -= 5;
+        EnemyHP -= 10;
         Slider.value = (float)EnemyHP;//HPバー変動
         Debug.Log(Slider.value);
 

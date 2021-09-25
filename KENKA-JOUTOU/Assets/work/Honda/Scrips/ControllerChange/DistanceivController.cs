@@ -51,19 +51,19 @@ public class DistanceivController : MonoBehaviour
         // 13‚É’B‚µ‚½Žž“_‚ÅˆÚ“®‚ª‚Å‚«‚È‚­‚È‚é
         if (dis > 7)
         {
-            p1.GetComponent<Player1>().WalkSpeed = 1f;
-            p2.GetComponent<Player2>().WalkSpeed = 1f;
+            p1.GetComponent<OnePController>().WalkSpeed = 1f;
+            p2.GetComponent<TwoPController>().WalkSpeed = 1f;
         }
         else
         {
-            p1.GetComponent<Player1>().WalkSpeed = 2.5f;
-            p2.GetComponent<Player2>().WalkSpeed = 2.5f;
+            p1.GetComponent<OnePController>().WalkSpeed = 2.5f;
+            p2.GetComponent<TwoPController>().WalkSpeed = 2.5f;
         }
 
         if (dis > 10)
         {
-            p1.GetComponent<Player1>().WalkSpeed = 0.1f;
-            p2.GetComponent<Player2>().WalkSpeed = 0.1f;
+            p1.GetComponent<OnePController>().WalkSpeed = 0.1f;
+            p2.GetComponent<TwoPController>().WalkSpeed = 0.1f;
         }
     }
 }

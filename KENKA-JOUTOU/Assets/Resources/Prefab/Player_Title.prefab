@@ -222,7 +222,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126602891}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46617aee5812ea04bad57d780a82eb22, type: 3}
   m_Name: 
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126602891}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 142b9fe85eafe6947a659b2950c44bbf, type: 3}
   m_Name: 
@@ -250,6 +250,9 @@ MonoBehaviour:
   target2: {fileID: 5632547815374206305}
   p1: {fileID: 2380350005023555637}
   p2: {fileID: 5632547815374206309}
+  red: {fileID: 2100000, guid: 9644cf80be04bf648a21e6a6f647e476, type: 2}
+  yellow: {fileID: 2100000, guid: fd867d292e8a8dc4882f7a04f8b54302, type: 2}
+  obi: {fileID: 1352074890405584630}
 --- !u!1 &736266841
 GameObject:
   m_ObjectHideFlags: 0
@@ -10448,216 +10451,211 @@ MonoBehaviour:
   m_CollisionMaterial: {fileID: 0}
   m_SurfaceCollisions: 0
   m_SelfCollisions: 0
-  restLength_: 4.1302977
+  restLength_: 4.020013
   elements:
   - particle1: 0
     particle2: 1
-    restLength: 0.099433236
+    restLength: 0.09760019
     constraintForce: 0
     tearResistance: 1
   - particle1: 1
     particle2: 2
-    restLength: 0.09879389
+    restLength: 0.096855715
     constraintForce: 0
     tearResistance: 1
   - particle1: 2
     particle2: 3
-    restLength: 0.09844694
+    restLength: 0.09644415
     constraintForce: 0
     tearResistance: 1
   - particle1: 3
     particle2: 4
-    restLength: 0.09863577
+    restLength: 0.096836224
     constraintForce: 0
     tearResistance: 1
   - particle1: 4
     particle2: 5
-    restLength: 0.09902099
+    restLength: 0.09708979
     constraintForce: 0
     tearResistance: 1
   - particle1: 5
     particle2: 6
-    restLength: 0.098803446
+    restLength: 0.09684802
     constraintForce: 0
     tearResistance: 1
   - particle1: 6
     particle2: 7
-    restLength: 0.098692216
+    restLength: 0.09673077
     constraintForce: 0
     tearResistance: 1
   - particle1: 7
     particle2: 8
-    restLength: 0.09863991
+    restLength: 0.09668536
     constraintForce: 0
     tearResistance: 1
   - particle1: 8
     particle2: 9
-    restLength: 0.098612934
+    restLength: 0.096761756
     constraintForce: 0
     tearResistance: 1
   - particle1: 9
     particle2: 10
-    restLength: 0.098926
+    restLength: 0.09699677
     constraintForce: 0
     tearResistance: 1
   - particle1: 10
     particle2: 11
-    restLength: 0.09887911
+    restLength: 0.09694035
     constraintForce: 0
     tearResistance: 1
   - particle1: 11
     particle2: 12
-    restLength: 0.09884961
+    restLength: 0.096911915
     constraintForce: 0
     tearResistance: 1
   - particle1: 12
     particle2: 13
-    restLength: 0.098833494
+    restLength: 0.09689921
     constraintForce: 0
     tearResistance: 1
   - particle1: 13
     particle2: 14
-    restLength: 0.09882532
+    restLength: 0.096895196
     constraintForce: 0
     tearResistance: 1
   - particle1: 14
     particle2: 15
-    restLength: 0.09882352
+    restLength: 0.09689512
     constraintForce: 0
     tearResistance: 1
   - particle1: 15
     particle2: 16
-    restLength: 0.098822035
+    restLength: 0.09689234
     constraintForce: 0
     tearResistance: 1
   - particle1: 16
     particle2: 17
-    restLength: 0.09880757
+    restLength: 0.09687301
     constraintForce: 0
     tearResistance: 1
   - particle1: 17
     particle2: 18
-    restLength: 0.09874488
+    restLength: 0.09680447
     constraintForce: 0
     tearResistance: 1
   - particle1: 18
     particle2: 19
-    restLength: 0.09856124
+    restLength: 0.09662571
     constraintForce: 0
     tearResistance: 1
   - particle1: 19
     particle2: 20
-    restLength: 0.09871334
+    restLength: 0.0969476
     constraintForce: 0
     tearResistance: 1
   - particle1: 20
     particle2: 21
-    restLength: 0.09898434
+    restLength: 0.09699781
     constraintForce: 0
     tearResistance: 1
   - particle1: 21
     particle2: 22
-    restLength: 0.09800089
+    restLength: 0.096155345
     constraintForce: 0
     tearResistance: 1
   - particle1: 22
     particle2: 23
-    restLength: 0.0965918
+    restLength: 0.0982825
     constraintForce: 0
     tearResistance: 1
   - particle1: 23
     particle2: 24
-    restLength: 0.098078065
+    restLength: 0.09957765
     constraintForce: 0
     tearResistance: 1
   - particle1: 24
     particle2: 25
-    restLength: 0.09734498
+    restLength: 0.09874951
     constraintForce: 0
     tearResistance: 1
   - particle1: 25
     particle2: 26
-    restLength: 0.09774477
+    restLength: 0.099395014
     constraintForce: 0
     tearResistance: 1
   - particle1: 26
     particle2: 27
-    restLength: 0.097992815
+    restLength: 0.099586815
     constraintForce: 0
     tearResistance: 1
   - particle1: 27
     particle2: 28
-    restLength: 0.098096624
+    restLength: 0.09962478
     constraintForce: 0
     tearResistance: 1
   - particle1: 28
     particle2: 29
-    restLength: 0.098153
+    restLength: 0.09964463
     constraintForce: 0
     tearResistance: 1
   - particle1: 29
     particle2: 30
-    restLength: 0.09816222
+    restLength: 0.09966747
     constraintForce: 0
     tearResistance: 1
   - particle1: 30
     particle2: 31
-    restLength: 0.09794432
+    restLength: 0.09967588
     constraintForce: 0
     tearResistance: 1
   - particle1: 31
     particle2: 32
-    restLength: 0.09792844
+    restLength: 0.099645376
     constraintForce: 0
     tearResistance: 1
   - particle1: 32
     particle2: 33
-    restLength: 0.09806997
+    restLength: 0.09956531
     constraintForce: 0
     tearResistance: 1
   - particle1: 33
     particle2: 34
-    restLength: 0.09811376
+    restLength: 0.09946579
     constraintForce: 0
     tearResistance: 1
   - particle1: 34
     particle2: 35
-    restLength: 0.09805908
+    restLength: 0.09963318
     constraintForce: 0
     tearResistance: 1
   - particle1: 35
     particle2: 36
-    restLength: 0.097936004
+    restLength: 0.09966372
     constraintForce: 0
     tearResistance: 1
   - particle1: 36
     particle2: 37
-    restLength: 0.09780883
+    restLength: 0.099628486
     constraintForce: 0
     tearResistance: 1
   - particle1: 37
     particle2: 38
-    restLength: 0.09777494
+    restLength: 0.09948674
     constraintForce: 0
     tearResistance: 1
   - particle1: 38
     particle2: 39
-    restLength: 0.097957976
+    restLength: 0.09923036
     constraintForce: 0
     tearResistance: 1
   - particle1: 39
     particle2: 40
-    restLength: 0.098425716
+    restLength: 0.10061346
     constraintForce: 0
     tearResistance: 1
   - particle1: 40
     particle2: 41
-    restLength: 0.0988026
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 41
-    particle2: 42
-    restLength: 0.096461006
+    restLength: 0.09818942
     constraintForce: 0
     tearResistance: 1
   m_RopeBlueprint: {fileID: 11400000, guid: 6c78051e8795f314cb83f9adf7c7060c, type: 2}

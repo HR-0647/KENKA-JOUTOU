@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class mimic : Enemy
 {
-    public GameObject PlayerObject1;    //プレイヤーオブジェクト1
-    public GameObject PlayerObject2;    //プレイヤーオブジェクト2
+    private GameObject PlayerObject1;    //プレイヤーオブジェクト1
+    private GameObject PlayerObject2;    //プレイヤーオブジェクト2
+    //public GameObject PlayerObject1;    //プレイヤーオブジェクト1
+    //public GameObject PlayerObject2;    //プレイヤーオブジェクト2
     private GameObject Target;        //攻撃対象
     //　ごめん、アイテムは自分にやらせて(本多)
     //public GameObject Item;   //ドロップアイテム
@@ -24,9 +26,9 @@ public class mimic : Enemy
     private float TackleSpeed = 5.0f;
     
     //サウンド
-    public AudioClip atksound;  //攻撃音
+    //public AudioClip atksound;  //攻撃音
 
-    AudioSource audioSource;
+    //AudioSource audioSource;
 
     //アニメーション
     public Animator anim;
@@ -43,7 +45,7 @@ public class mimic : Enemy
         attack = 20;
         
         //オーディオコンポーネント取得
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
 
         //アニメーターコンポーネント所得
         anim = GetComponent<Animator>();
@@ -68,10 +70,10 @@ public class mimic : Enemy
         {
             StartCoroutine(Damaged());
         }
-
+        PlayerObject1 = GameObject.FindGameObjectWithTag("Player");
+        PlayerObject2 = GameObject.FindGameObjectWithTag("Player2");
         PlayerPosition1 = PlayerObject1.transform.position;
         PlayerPosition2 = PlayerObject2.transform.position;
-
 
         range1 = Vector3.Distance(PlayerPosition1, transform.position);
         range2 = Vector3.Distance(PlayerPosition2, transform.position);

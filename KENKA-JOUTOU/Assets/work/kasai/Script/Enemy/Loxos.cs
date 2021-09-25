@@ -9,7 +9,7 @@ public class Loxos : Enemy
     public static bool target=false;                 //Bulletの対象切り替え用
     private bool StunTrgger = false;    //壁に衝突したときの判定
     private bool process = false;       //処理中に別の処理を呼ばないようにする
-    private float KnockbackSpeed = 50.0f;//ノックバックのスピード
+    private float KnockbackSpeed = 40.0f;//ノックバックのスピード
     private float TackleSpeed = 8.0f;//タックルのスピード
     private Vector3 knockback = Vector3.zero;
 
@@ -122,7 +122,7 @@ public class Loxos : Enemy
         {
             DamageTrigger = true;
         }
-        if(collision.gameObject.tag== "Untagged")
+        if(collision.gameObject.tag== "Wall")
         {
             StunTrgger = true;
         }
@@ -135,7 +135,7 @@ public class Loxos : Enemy
             invincible = true;//無敵時間中はこの処理は行わない
             process = true;
 
-            EnemyHP -= 1;
+            EnemyHP -= 10;
             Slider.value = (float)EnemyHP / defaultEnemyHP;//HPバー変動
             anim.SetBool("hit", true);
             rb.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange); //ノックバック
@@ -157,27 +157,39 @@ public class Loxos : Enemy
 
     public IEnumerator Tackle()//タックル攻撃
     {
-        if (!process)
+        anim.SetBool("dash", true);
+        if (StunTrgger)
         {
-            
-            //Actが1の時呼び出される
-            anim.SetBool("dash", true);
-            process = true;
-            invincible = true;
-            StunTrgger = false;
-            //rb.AddForce(transform.forward * TackleSpeed, ForceMode.VelocityChange);
-            yield return new WaitForSeconds(2.0f);
-            anim.SetBool("dash", false);
-            this.transform.position += transform.forward * 0;
+            anim.SetBool("frightend", true);
+            TackleSpeed = 0;
+            //this.transform.position += transform.forward * 0;
             //rb.velocity = Vector3.zero;
             //rb.angularVelocity = Vector3.zero;
-            if (StunTrgger)
-            {
-                anim.SetBool("frightend", true);
-                yield return new WaitForSeconds(2.0f);
-                anim.SetBool("frightend", false);
-            }
-            StunTrgger = false;
+            Debug.Log("a");
+            yield return new WaitForSeconds(2.0f);
+            anim.SetBool("frightend", false);
+        }
+        StunTrgger = false;
+
+        //rb.AddForce(transform.forward * TackleSpeed, ForceMode.VelocityChange);
+
+        yield return new WaitForSeconds(1.0f);
+        this.transform.position += transform.forward * 0;
+        anim.SetBool("dash", false);
+        if (!process)
+        {
+
+            //Actが1の時呼び出される
+            
+            
+
+            process = true;
+            invincible = true;
+
+
+            //rb.velocity = Vector3.zero;
+            //rb.angularVelocity = Vector3.zero;
+
             Debug.Log("Atk");
             Act = 2;
             yield return new WaitForSeconds(EnemyAtkInterval);
@@ -199,10 +211,10 @@ public class Loxos : Enemy
             anim.SetBool("magic", true);
             GameObject effect = Instantiate(summonEffect) as GameObject;
             effect.transform.position = SpawnPos1.transform.position;
-            //GameObject skelton = Instantiate(enemySkelton) as GameObject;
-            //skelton.transform.position = SpawnPos1.transform.position;
-            //skelton.transform.rotation = SpawnPos1.transform.rotation;
-            //Skeltons.Trigger = false;
+            GameObject skelton = Instantiate(enemySkelton) as GameObject;
+            skelton.transform.position = SpawnPos1.transform.position;
+            skelton.transform.rotation = SpawnPos1.transform.rotation;
+            Skeltons.Trigger = false;
             anim.SetBool("magic", false);
             yield return new WaitForSeconds(EnemyAtkInterval);
 
@@ -210,11 +222,11 @@ public class Loxos : Enemy
             anim.SetBool("magic", true);
             effect = Instantiate(summonEffect) as GameObject;
             effect.transform.position = SpawnPos2.transform.position;
-            //GameObject goblin = Instantiate(enemyGoblin) as GameObject;
-            //goblin.transform.position = SpawnPos2.transform.position;
-            //goblin.transform.rotation = SpawnPos2.transform.rotation;
-            //Goblin.Trigger = false;
-            ////Instantiate(Goblin, SpawnPos2.transform);
+            GameObject goblin = Instantiate(enemyGoblin) as GameObject;
+            goblin.transform.position = SpawnPos2.transform.position;
+            goblin.transform.rotation = SpawnPos2.transform.rotation;
+            Goblin.Trigger = false;
+            //Instantiate(Goblin, SpawnPos2.transform);
             anim.SetBool("magic", false);
             yield return new WaitForSeconds(EnemyAtkInterval);
 
@@ -222,10 +234,10 @@ public class Loxos : Enemy
             anim.SetBool("magic", true);
             effect = Instantiate(summonEffect) as GameObject;
             effect.transform.position = SpawnPos3.transform.position;
-            //GameObject mimic = Instantiate(enemyMimic) as GameObject;
-            //mimic.transform.position = SpawnPos3.transform.position;
-            //mimic.transform.rotation = SpawnPos3.transform.rotation;
-            ////Instantiate(Mimic, SpawnPos3.transform);
+            GameObject mimic = Instantiate(enemyMimic) as GameObject;
+            mimic.transform.position = SpawnPos3.transform.position;
+            mimic.transform.rotation = SpawnPos3.transform.rotation;
+            //Instantiate(Mimic, SpawnPos3.transform);
             anim.SetBool("magic", false);
             yield return new WaitForSeconds(EnemyAtkInterval);
             Debug.Log("Summon");
@@ -247,10 +259,10 @@ public class Loxos : Enemy
                 //Instantiate(Bullet, SpawnPos1.transform);
                 GameObject effect = Instantiate(summonEffect) as GameObject;
                 effect.transform.position = SpawnPos1.transform.position;
-                //GameObject bullet = Instantiate(Bullet) as GameObject;
-                //bullet.transform.position = SpawnPos1.transform.position;
-                //bullet.transform.rotation = SpawnPos1.transform.rotation;
-                //target = !target; anim.SetBool("magic", false);
+                GameObject bullet = Instantiate(Bullet) as GameObject;
+                bullet.transform.position = SpawnPos1.transform.position;
+                bullet.transform.rotation = SpawnPos1.transform.rotation;
+                target = !target; anim.SetBool("magic", false);
                 anim.SetBool("magic", false);
                 yield return new WaitForSeconds(EnemyAtkInterval);
             }

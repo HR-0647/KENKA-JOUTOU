@@ -146,7 +146,7 @@ public class Cerestiea : Enemy
     {
         invincible = true;//無敵時間中はこの処理は行わない
         
-        EnemyHP -= 1;
+        EnemyHP -= 10;
         Slider.value = (float)EnemyHP / defaultEnemyHP;//HPバー変動
 
         rb.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange); //ノックバック

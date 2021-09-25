@@ -3,8 +3,8 @@ using System.Collections;
 
 public class HomingBullet : MonoBehaviour
 {
-    public GameObject PlayerObject1;  //プレイヤーオブジェクト1
-    public GameObject PlayerObject2;  //プレイヤーオブジェクト2
+    private GameObject PlayerObject1;  //プレイヤーオブジェクト1
+    private GameObject PlayerObject2;  //プレイヤーオブジェクト2
     private GameObject Target;        //攻撃対象
        
     private Vector3 PlayerPosition1;    //プレイヤーの位置情報1
@@ -34,6 +34,8 @@ public class HomingBullet : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         //プレイヤーまでの距離を出す
+        PlayerObject1 = GameObject.FindGameObjectWithTag("Player");
+        PlayerObject2 = GameObject.FindGameObjectWithTag("Player2");
         PlayerPosition1 = PlayerObject1.transform.position;
         PlayerPosition2 = PlayerObject2.transform.position;
 

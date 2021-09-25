@@ -90,6 +90,7 @@ public class Player2 : HP
             {
                 if (Input.GetAxis("TriangleButton1") > 0)
                 {
+                    PlayerHP = 100;
                     Slider.value = Slider.maxValue;
                     Potion2.SetActive(false);
                 }
@@ -279,11 +280,11 @@ public class Player2 : HP
         }
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.tag == "Potion")
-    //    {
-    //        Potion2.SetActive(true);
-    //    }
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Potion")
+        {
+            Potion2.SetActive(true);
+        }
+    }
 }

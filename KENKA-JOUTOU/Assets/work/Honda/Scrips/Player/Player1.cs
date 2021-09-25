@@ -93,6 +93,7 @@ public class Player1 : HP
                 if (Input.GetAxis("TriangleButton") > 0)
                 {
                     Slider.value = Slider.maxValue;
+                    PlayerHP = 100;
                     Potion1.SetActive(false);
                 }
             }

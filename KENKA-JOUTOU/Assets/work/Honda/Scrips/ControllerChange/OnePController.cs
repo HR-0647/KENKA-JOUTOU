@@ -90,6 +90,7 @@ public class OnePController : HP
             {
                 if (Input.GetAxis("TriangleButton1") > 0)
                 {
+                    PlayerHP = 100;
                     Slider.value = Slider.maxValue;
                     Potion1.SetActive(false);
                 }

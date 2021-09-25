@@ -90,6 +90,7 @@ public class TwoPController : HP
             {
                 if (Input.GetAxis("TriangleButton2") > 0)
                 {
+                    PlayerHP = 100;
                     Slider.value = Slider.maxValue;
                     Potion2.SetActive(false);
                 }

@@ -27,7 +27,7 @@ public class Cerestiea : Enemy
 
     private int Act = 1;
 
-    private float KnockbackSpeed = 50.0f;//ノックバックのスピード
+    private float KnockbackSpeed = 25.0f;//ノックバックのスピード
     private Vector3 knockback = Vector3.zero;
 
     Rigidbody rb;
@@ -89,7 +89,7 @@ public class Cerestiea : Enemy
         }
 
         //ダメージ処理呼び出し
-        if (DamageTrigger == true)
+        if (DamageTrigger == true && invincible == false)
         {
             StartCoroutine(Damaged());
         }
@@ -144,27 +144,29 @@ public class Cerestiea : Enemy
 
     public IEnumerator Damaged()//エネミーがダメージを受けた時の処理
     {
-        invincible = true;//無敵時間中はこの処理は行わない
-        
-        EnemyHP -= 10;
-        Slider.value = (float)EnemyHP / defaultEnemyHP;//HPバー変動
+        if (!invincible)
+        {
+            invincible = true;//無敵時間中はこの処理は行わない
 
-        rb.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange); //ノックバック
-        //アニメーションを移行
-        anim.SetBool("magic", false);
-        anim.SetBool("death", false);
+            EnemyHP -= 10;
+            Slider.value = (float)EnemyHP;//HPバー変動
+
+            rb.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange); //ノックバック
+                                                                                        //アニメーションを移行
+            anim.SetBool("magic", false);
+            anim.SetBool("death", false);
 
 
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
 
-        yield return new WaitForSeconds(2.0f);//数秒待機
+            yield return new WaitForSeconds(2.0f);//数秒待機
 
-        Debug.Log("hit");
-        
-        DamageTrigger = false;
-        invincible = false;
+            Debug.Log("hitSERES");
 
+            DamageTrigger = false;
+            invincible = false;
+        }
     }
 
     public IEnumerator Telep()

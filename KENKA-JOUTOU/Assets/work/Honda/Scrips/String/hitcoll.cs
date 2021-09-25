@@ -61,6 +61,28 @@ public class hitcoll : MonoBehaviour
                     col.GetComponent<mimic>().DamageTrigger = true;
                     col.GetComponent<mimic>().Damaged();
                 }
+                if (col != null && col.gameObject.CompareTag("summon1"))
+                {
+                    col.GetComponent<SummonsGoblin>().DamageTrigger = true;
+                    col.GetComponent<SummonsGoblin>().Damaged();
+                }
+                if (col != null && col.gameObject.CompareTag("summon2"))
+                {
+                    col.GetComponent<SummonSkelton>().DamageTrigger = true;
+                    col.GetComponent<SummonSkelton>().Damaged();
+                }
+
+                // BossŽž
+                if(col != null && col.gameObject.CompareTag("Boss1"))
+                {
+                    col.GetComponent<Cerestiea>().DamageTrigger = true;
+                    col.GetComponent<Cerestiea>().Damaged();
+                }
+                if (col != null && col.gameObject.CompareTag("Boss2"))
+                {
+                    col.GetComponent<Loxos>().DamageTrigger = true;
+                    col.GetComponent<Loxos>().Damaged();
+                }
                 // ˜S‰®Žž
                 if (col.gameObject.CompareTag("IronGrill"))
                 {

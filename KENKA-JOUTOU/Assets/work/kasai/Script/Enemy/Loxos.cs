@@ -7,10 +7,11 @@ public class Loxos : Enemy
     public bool DamageTrigger = false;  //ダメージ処理切り替え
     public bool invincible = false;     //無敵時間
     public static bool target=false;                 //Bulletの対象切り替え用
-    private bool StunTrgger = false;    //壁に衝突したときの判定
-    private bool process = false;       //処理中に別の処理を呼ばないようにする
+    public bool StunTrgger = false;    //壁に衝突したときの判定
+    public bool process = false;       //処理中に別の処理を呼ばないようにする
+    public bool tackle = false;
     private float KnockbackSpeed = 40.0f;//ノックバックのスピード
-    private float TackleSpeed = 8.0f;//タックルのスピード
+    private float TackleSpeed = 7.0f;//タックルのスピード
     private Vector3 knockback = Vector3.zero;
 
     public GameObject PlayerObject1;    //プレイヤーオブジェクト1
@@ -136,7 +137,7 @@ public class Loxos : Enemy
             process = true;
 
             EnemyHP -= 10;
-            Slider.value = (float)EnemyHP / defaultEnemyHP;//HPバー変動
+            Slider.value = (float)EnemyHP;//HPバー変動
             anim.SetBool("hit", true);
             rb.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange); //ノックバック
 
@@ -158,6 +159,7 @@ public class Loxos : Enemy
     public IEnumerator Tackle()//タックル攻撃
     {
         anim.SetBool("dash", true);
+        tackle = true;
         if (StunTrgger)
         {
             anim.SetBool("frightend", true);
@@ -176,6 +178,7 @@ public class Loxos : Enemy
         yield return new WaitForSeconds(1.0f);
         this.transform.position += transform.forward * 0;
         anim.SetBool("dash", false);
+        tackle = false;
         if (!process)
         {
 

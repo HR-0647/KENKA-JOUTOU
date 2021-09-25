@@ -3867,6 +3867,7 @@ Transform:
   - {fileID: 8979171625605385873}
   - {fileID: 2825397830580407146}
   - {fileID: 5799101098253707969}
+  - {fileID: 5249612094547029968}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4034,6 +4035,9 @@ MonoBehaviour:
   Slider: {fileID: 5799101097288748628}
   DamageTrigger: 0
   invincible: 0
+  StunTrgger: 0
+  process: 0
+  tackCol: {fileID: 0}
   PlayerObject1: {fileID: 0}
   PlayerObject2: {fileID: 0}
   SpawnPos1: {fileID: 2788108465579038724}
@@ -7217,6 +7221,50 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.08895554, y: -0.15290323, z: 1.1961739}
     m_Extent: {x: 0.040799603, y: 0.006552607, z: 0.040807843}
   m_DirtyAABB: 0
+--- !u!1 &8828717233526914786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5249612094547029968}
+  - component: {fileID: 4067151471064938925}
+  m_Layer: 0
+  m_Name: GameObject (3)
+  m_TagString: Tackle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5249612094547029968
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8828717233526914786}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1114220179368563952}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4067151471064938925
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8828717233526914786}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.45, z: 0.58}
+  m_Center: {x: 0, y: 0.81, z: 0.45}
 --- !u!1 &8922845070397759861
 GameObject:
   m_ObjectHideFlags: 0
@@ -7390,6 +7438,14 @@ PrefabInstance:
     - target: {fileID: 1120132764642473862, guid: 438e8a6b651968c4c81d7071ebaabc28, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120132764675694215, guid: 438e8a6b651968c4c81d7071ebaabc28, type: 3}
+      propertyPath: m_Value
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120132764675694215, guid: 438e8a6b651968c4c81d7071ebaabc28, type: 3}
+      propertyPath: m_MaxValue
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1120132765858232848, guid: 438e8a6b651968c4c81d7071ebaabc28, type: 3}
       propertyPath: m_PresetInfoIsWorld

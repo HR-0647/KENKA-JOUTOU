@@ -34,7 +34,7 @@ public class SummonSkelton : Enemy
     void Start()
     {
         //type = EnemyType.Goblin;
-        EnemyHP = 40;//エネミー体力
+        EnemyHP = 20;//エネミー体力
         attack = 5;
 
         //オーディオコンポーネント取得
@@ -112,7 +112,7 @@ public class SummonSkelton : Enemy
 
 
             EnemyHP -= 10;
-            Slider.value = (float)EnemyHP / defaultEnemyHP;//HPバー変動
+            Slider.value = (float)EnemyHP;//HPバー変動
             anim.SetBool("hit", true);
             rb.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange); //ノックバック
 

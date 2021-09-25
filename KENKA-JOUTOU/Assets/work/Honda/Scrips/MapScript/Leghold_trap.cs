@@ -8,7 +8,7 @@ public class Leghold_trap : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Player2")
         {
-            //Destroy(gameObject);
+            Destroy(gameObject,2f);
         }
     }
 }

@@ -29,6 +29,13 @@ TagManager:
   - Spike_Trap
   - Rotary_blade
   - Leghold_trap
+  - summon1
+  - summon2
+  - Boss1
+  - Boss2
+  - Bullet2
+  - Bullet1
+  - Tackle
   layers:
   - Default
   - TransparentFX

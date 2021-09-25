@@ -118,13 +118,13 @@ Material:
     m_Floats:
     - _1st2nd_Shades_Feather: 0.0001
     - _1st_ShadeColor_Feather: 0.0001
-    - _1st_ShadeColor_Step: 0.5
+    - _1st_ShadeColor_Step: 0.035
     - _2nd_ShadeColor_Feather: 0.0001
     - _2nd_ShadeColor_Step: 0
     - _Add_Antipodean_RimLight: 0
     - _Ap_RimLight_FeatherOff: 0
     - _Ap_RimLight_Power: 0.1
-    - _BaseColor_Step: 0.5
+    - _BaseColor_Step: 0.035
     - _BaseShade_Feather: 0.0001
     - _Base_Speed: 0
     - _BlurLevelMatcap: 0
@@ -232,3 +232,4 @@ Material:
     - _Outline_Color: {r: 0, g: 0, b: 0, a: 1}
     - _RimLightColor: {r: 1, g: 1, b: 1, a: 1}
     - _ViewShift: {r: 0, g: 0, b: 0, a: 1}
+  m_BuildTextureStacks: []

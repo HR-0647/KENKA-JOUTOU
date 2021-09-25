@@ -110,7 +110,7 @@ public class SummonsGoblin : Enemy
             
 
             EnemyHP -= 10;
-            Slider.value = (float)EnemyHP / defaultEnemyHP;//HPバー変動
+            Slider.value = (float)EnemyHP;//HPバー変動
             anim.SetBool("hit", true);
             rb.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange); //ノックバック
 

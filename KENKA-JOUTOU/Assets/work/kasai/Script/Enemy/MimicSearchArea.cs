@@ -36,4 +36,13 @@ public class MimicSearchArea : MonoBehaviour
             }
         //}
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player") || other.CompareTag("Player2"))
+        {
+            //trigger‚ð‚¢‚¶‚é
+            mimic.Trigger = false;
+            //Debug.Log("a");
+        }
+    }
 }

@@ -91,12 +91,6 @@ public class mimic : Enemy
                 StartCoroutine(Atk());
             }
         }
-        else
-        {
-            StopCoroutine(Atk());
-            //idol状態
-            Debug.Log(Trigger);
-        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -137,7 +131,7 @@ public class mimic : Enemy
         if (!process)
         {
             process = true;
-            //invincible = true;
+            invincible = true;
             anim.SetBool("atk", true);
             this.transform.LookAt(Target.transform.position);
             //transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, TackleSpeed);//プレイヤーに向かって突進する

@@ -4181,7 +4181,7 @@ GameObject:
   - component: {fileID: 380587904301734819}
   m_Layer: 0
   m_Name: cerestiea_complete
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4215,7 +4215,7 @@ Animator:
   m_GameObject: {fileID: 8004376442055922175}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 7e0e4e8526b238340968803d9bb79c98, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a8bec7de904505b4c851300efba547d4, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -4286,7 +4286,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8004376442055922175}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -4397,10 +4397,11 @@ MonoBehaviour:
   SpawnPos1: {fileID: 8004376443786735523}
   SpawnPos2: {fileID: 8004376442017056661}
   SpawnPos3: {fileID: 8004376442231851439}
-  Skelton: {fileID: 6642399878950648374, guid: dd8db90b01ec21a4dbda458f52268761, type: 3}
-  Goblin: {fileID: 8409669074876015712, guid: 8bb9cacb931941f4287a950483125a4c, type: 3}
-  Mimic: {fileID: 8862318668556265650, guid: 8139261a14eb87444be31fc132928abd, type: 3}
-  homingbullet: {fileID: 7955228695891192245, guid: 476038675b2ea014f9c4999568f89025, type: 3}
+  enemySkelton: {fileID: 7149142353477792218, guid: c3a2e554b0fafac4aa6c54ea7116340f, type: 3}
+  enemyGoblin: {fileID: 0}
+  enemyMimic: {fileID: 8862318668556265650, guid: 8139261a14eb87444be31fc132928abd, type: 3}
+  homingbullet: {fileID: 1986739233109320858, guid: bfc485a04337624409ffe5d09843e399, type: 3}
+  summonEffect: {fileID: 100008, guid: e3d819d8722fa1f47a3f68574b56dfb3, type: 3}
   DamageTrigger: 0
   invincible: 0
   atksound: {fileID: 0}

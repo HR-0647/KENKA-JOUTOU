@@ -14,6 +14,7 @@ public class Cerestiea : Enemy
     [SerializeField] GameObject enemyGoblin;
     [SerializeField] GameObject enemyMimic;
     [SerializeField] GameObject homingbullet;//魔法弾
+    [SerializeField] GameObject summonEffect;//エフェクト
 
     private Vector3 PlayerPosition1;    //プレイヤーの位置情報1
     private Vector3 PlayerPosition2;    //プレイヤーの位置情報2
@@ -32,8 +33,8 @@ public class Cerestiea : Enemy
     Rigidbody rb;
 
     //サウンド
-    public AudioClip atksound;  //攻撃音
-    AudioSource audioSource;
+    //public AudioClip atksound;  //攻撃音
+    //AudioSource audioSource;
 
     //アニメーション
     public Animator anim;
@@ -65,12 +66,12 @@ public class Cerestiea : Enemy
         EnemyHP = 100;//エネミー体力
         attack = 15;
         //オーディオコンポーネント取得
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
         
         //アニメーターコンポーネント所得
         anim = GetComponent<Animator>();
-        anim.SetBool("Atk", false);
-        anim.SetBool("Walk", true);
+        anim.SetBool("magic", false);
+        anim.SetBool("death", false);
 
         rb = GetComponent<Rigidbody>();
     }
@@ -81,6 +82,9 @@ public class Cerestiea : Enemy
         //体力の判定
         if (EnemyHP <= 0)
         {
+            anim = GetComponent<Animator>();
+            anim.SetBool("magic", false);
+            anim.SetBool("death", true);
             Destroy(this.gameObject);
         }
 
@@ -147,8 +151,8 @@ public class Cerestiea : Enemy
 
         rb.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange); //ノックバック
         //アニメーションを移行
-        anim.SetBool("Atk", false);
-        anim.SetBool("Walk", false);
+        anim.SetBool("magic", false);
+        anim.SetBool("death", false);
 
 
         rb.velocity = Vector3.zero;
@@ -172,11 +176,13 @@ public class Cerestiea : Enemy
             process = true;
 
             //テレポート
+            anim.SetBool("magic", true);
             m_telepIndex = Random.Range(0, m_telep.Length);
             transform.position = m_telep[m_telepIndex].position;
 
             Act = 2;
             yield return new WaitForSeconds(EnemyAtkInterval);
+            anim.SetBool("magic", false);
             process = false;
 
         }
@@ -188,26 +194,45 @@ public class Cerestiea : Enemy
         {
             //Actが2の時呼び出される
             process = true;
-
+            //召喚1回目
+            anim.SetBool("magic", true);
             //Instantiate(Skelton, SpawnPos1.transform);
+            GameObject effect = Instantiate(summonEffect) as GameObject;
+            effect.transform.position = SpawnPos1.transform.position;
             GameObject skelton = Instantiate(enemySkelton) as GameObject;
             skelton.transform.position = SpawnPos1.transform.position;
             skelton.transform.rotation = SpawnPos1.transform.rotation;
             Skeltons.Trigger = false;
+            
             yield return new WaitForSeconds(EnemyAtkInterval);
+            anim.SetBool("magic", false);
+
+            //召喚2回目
+            anim.SetBool("magic", true);
+            effect = Instantiate(summonEffect) as GameObject;
+            effect.transform.position = SpawnPos2.transform.position;
             GameObject goblin = Instantiate(enemyGoblin) as GameObject;
             goblin.transform.position = SpawnPos2.transform.position;
             goblin.transform.rotation = SpawnPos2.transform.rotation;
             Goblin.Trigger = false;
+            
             //Instantiate(Goblin, SpawnPos2.transform);
             yield return new WaitForSeconds(EnemyAtkInterval);
+            anim.SetBool("magic", false);
+
+            //召喚3回目
+            anim.SetBool("magic", true);
+            effect = Instantiate(summonEffect) as GameObject;
+            effect.transform.position = SpawnPos3.transform.position;
             GameObject mimic = Instantiate(enemyMimic) as GameObject;
             mimic.transform.position = SpawnPos3.transform.position;
             mimic.transform.rotation = SpawnPos3.transform.rotation;
             //Instantiate(Mimic, SpawnPos3.transform);
+            
             yield return new WaitForSeconds(EnemyAtkInterval);
+            anim.SetBool("magic", false);
             Act = 3;
-            yield return new WaitForSeconds(EnemyAtkInterval);
+           
             process = false;
 
         }
@@ -219,22 +244,37 @@ public class Cerestiea : Enemy
         {
             process = true;
 
+
             //Actが3の時呼び出される
+            anim.SetBool("magic", true);
+            GameObject effect = Instantiate(summonEffect) as GameObject;
+            effect.transform.position = SpawnPos1.transform.position;
             GameObject bullet = Instantiate(homingbullet) as GameObject;
             bullet.transform.position = SpawnPos1.transform.position;
             bullet.transform.rotation = SpawnPos1.transform.rotation;
             //Instantiate(Homingbullet, SpawnPos1.transform);
             yield return new WaitForSeconds(EnemyAtkInterval);
+            anim.SetBool("magic", false);
+
+            anim.SetBool("magic", true);
+            effect = Instantiate(summonEffect) as GameObject;
+            effect.transform.position = SpawnPos1.transform.position;
             bullet = Instantiate(homingbullet) as GameObject;
             bullet.transform.position = SpawnPos2.transform.position;
             bullet.transform.rotation = SpawnPos2.transform.rotation;
             //Instantiate(homingbullet, SpawnPos2.transform);
             yield return new WaitForSeconds(EnemyAtkInterval);
+            anim.SetBool("magic", false);
+
+            anim.SetBool("magic", true);
+            effect = Instantiate(summonEffect) as GameObject;
+            effect.transform.position = SpawnPos1.transform.position;
             bullet = Instantiate(homingbullet) as GameObject;
             bullet.transform.position = SpawnPos3.transform.position;
             bullet.transform.rotation = SpawnPos3.transform.rotation;
             //Instantiate(homingbullet, SpawnPos3.transform);
             yield return new WaitForSeconds(EnemyAtkInterval);
+            anim.SetBool("magic", false);
             Act = 1;
             process = false;
 

@@ -47,8 +47,8 @@ public class mimic : Enemy
 
         //アニメーターコンポーネント所得
         anim = GetComponent<Animator>();
-        anim.SetBool("Atk", false);
-        anim.SetBool("Walk", true);
+        anim.SetBool("atk", false);
+        
 
         rb = GetComponent<Rigidbody>();
     }
@@ -137,7 +137,8 @@ public class mimic : Enemy
         if (!process)
         {
             process = true;
-            invincible = true;
+            //invincible = true;
+            anim.SetBool("atk", true);
             this.transform.LookAt(Target.transform.position);
             //transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, TackleSpeed);//プレイヤーに向かって突進する
             rb.AddForce(transform.forward * TackleSpeed, ForceMode.VelocityChange);
@@ -145,6 +146,7 @@ public class mimic : Enemy
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
             yield return new WaitForSeconds(EnemyAtkInterval);
+            anim.SetBool("atk", false);
             Debug.Log("atk");
             Trigger = false;
             invincible = false;

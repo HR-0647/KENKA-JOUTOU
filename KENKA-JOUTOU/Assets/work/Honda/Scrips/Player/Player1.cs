@@ -10,6 +10,8 @@ public class Player1 : HP
     private Vector3 Dashvelosity; // ダッシュ移動地
     private Vector3 Dashinput; // ダッシュ入力値
 
+    public GameObject Potion1;
+
     [SerializeField]
     private float DashSpeed = 5;
 
@@ -80,6 +82,21 @@ public class Player1 : HP
 
             Dashvelosity += transform.forward * DashSpeed;
         }
+        //Debug.Log(Input.GetAxis("TriangleButton"));
+        //Debug.Log(Input.GetAxis("L2"));
+        
+        if (Potion1 != null)
+        {
+            // もしも100以下でプレイヤーHPが存在する場合
+            if (Slider.value < 100)
+            {
+                if (Input.GetAxis("TriangleButton") > 0)
+                {
+                    Slider.value = Slider.maxValue;
+                    Potion1.SetActive(false);
+                }
+            }
+        }
 
         // アニメーション
         if (input.magnitude > 0.5f)
@@ -99,7 +116,7 @@ public class Player1 : HP
 
         rig.velocity = Vector3.ClampMagnitude(velosity, WalkSpeed);
 
-        if (Input.GetAxis("L2") > 0 && CoolTime < 0)
+        if (Input.GetAxis("L2") >0 && CoolTime < 0)
         {
             rig.MovePosition(transform.position + Dashvelosity * Time.deltaTime);
             Dash.Play();
@@ -257,6 +274,15 @@ public class Player1 : HP
                 stackCTime = stackTime;
                 DamageTrigger = false;
             }
+        }
+
+        
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Potion")
+        {
+            Potion1.SetActive(true);
         }
     }
 }

@@ -11061,9 +11061,11 @@ MonoBehaviour:
   defaultPlayerHP: 0
   Slider: {fileID: 2626597888581642027}
   WalkSpeed: 2.5
+  Potion2: {fileID: 4520195038436103267}
   DashSpeed: 15
   Dash: {fileID: 997948854}
   DashTime: 0.5
+  stackTime: 1.5
   DamageTime: 2
 --- !u!114 &1352074890444075046
 MonoBehaviour:
@@ -11092,10 +11094,12 @@ MonoBehaviour:
   PlayerHP: 0
   defaultPlayerHP: 0
   Slider: {fileID: 2626597888581642027}
+  Potion2: {fileID: 4520195038436103267}
   WalkSpeed: 2.5
   DashSpeed: 15
   Dash: {fileID: 997948854}
   DashTime: 0.5
+  stackTime: 1.5
   DamageTime: 2
 --- !u!114 &1352074890444075048
 MonoBehaviour:
@@ -11192,14 +11196,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db80d3b34bd84a9458dfef166f68ec69, type: 3}
---- !u!4 &5632547815374206305 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6694984121475450188, guid: db80d3b34bd84a9458dfef166f68ec69, type: 3}
-  m_PrefabInstance: {fileID: 1352074890444075053}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5632547815374206309 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6694984121475450184, guid: db80d3b34bd84a9458dfef166f68ec69, type: 3}
+  m_PrefabInstance: {fileID: 1352074890444075053}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5632547815374206305 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6694984121475450188, guid: db80d3b34bd84a9458dfef166f68ec69, type: 3}
   m_PrefabInstance: {fileID: 1352074890444075053}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2857952890299793682
@@ -11324,6 +11328,16 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1581634466745379417, guid: f914a6034018ac145b6691c06023bce0, type: 3}
   m_PrefabInstance: {fileID: 2857952890299793682}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1758264212972669819 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4598147725590678121, guid: f914a6034018ac145b6691c06023bce0, type: 3}
+  m_PrefabInstance: {fileID: 2857952890299793682}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4520195038436103267 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1806937902042142065, guid: f914a6034018ac145b6691c06023bce0, type: 3}
+  m_PrefabInstance: {fileID: 2857952890299793682}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2626597888581642027 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 277800271406294585, guid: f914a6034018ac145b6691c06023bce0, type: 3}
@@ -11366,6 +11380,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3428691098562224817}
     - target: {fileID: 5052527888598223765, guid: e1e7892a44da8ed4a869a5642f8a81f3, type: 3}
+      propertyPath: Potion1
+      value: 
+      objectReference: {fileID: 1758264212972669819}
+    - target: {fileID: 5052527888598223765, guid: e1e7892a44da8ed4a869a5642f8a81f3, type: 3}
       propertyPath: DashSpeed
       value: 15
       objectReference: {fileID: 0}
@@ -11393,6 +11411,10 @@ PrefabInstance:
       propertyPath: Slider
       value: 
       objectReference: {fileID: 3428691098562224817}
+    - target: {fileID: 5052527888598223768, guid: e1e7892a44da8ed4a869a5642f8a81f3, type: 3}
+      propertyPath: Potion1
+      value: 
+      objectReference: {fileID: 1758264212972669819}
     - target: {fileID: 5052527888598223768, guid: e1e7892a44da8ed4a869a5642f8a81f3, type: 3}
       propertyPath: DashSpeed
       value: 15

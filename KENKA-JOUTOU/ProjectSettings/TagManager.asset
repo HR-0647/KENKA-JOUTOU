@@ -36,6 +36,7 @@ TagManager:
   - Bullet2
   - Bullet1
   - Tackle
+  - Potion
   layers:
   - Default
   - TransparentFX

@@ -27,6 +27,9 @@ public class EnemyCount : MonoBehaviour
     public BoxCollider col3;
     public BoxCollider col4;
 
+    public GameObject Item;
+    public GameObject Item2;
+
     //　ホントは効率化を目指したいが今回は無し
     bool door1 = false;
     bool door2 = false;
@@ -72,6 +75,8 @@ public class EnemyCount : MonoBehaviour
             anim[5].Play();
             blade1.Stop();
             blade2.Stop();
+            Item.SetActive(true);
+            Item2.SetActive(true);
         }
         else if (enemyObjects.Length == 0 && enemyObjects2.Length == 0 && !door4)
         {

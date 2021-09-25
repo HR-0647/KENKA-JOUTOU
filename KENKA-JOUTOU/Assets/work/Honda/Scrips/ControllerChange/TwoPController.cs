@@ -5,6 +5,8 @@ public class TwoPController : HP
    private Vector3 velosity; // 移動地
     private Vector3 input; // 入力値
 
+    public GameObject Potion2;
+
     public float WalkSpeed = 1.5f;
 
     private Vector3 Dashvelosity; // ダッシュ移動地
@@ -79,6 +81,19 @@ public class TwoPController : HP
             transform.LookAt(transform.position + Dashinput);
 
             Dashvelosity += transform.forward * DashSpeed;
+        }
+
+        if (Potion2 != null)
+        {
+            // もしも100以下でプレイヤーHPが存在する場合
+            if (Slider.value < 100)
+            {
+                if (Input.GetAxis("TriangleButton2") > 0)
+                {
+                    Slider.value = Slider.maxValue;
+                    Potion2.SetActive(false);
+                }
+            }
         }
 
         // アニメーション

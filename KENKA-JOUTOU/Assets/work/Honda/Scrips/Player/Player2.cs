@@ -10,6 +10,8 @@ public class Player2 : HP
     private Vector3 Dashvelosity; // ダッシュ移動地
     private Vector3 Dashinput; // ダッシュ入力値
 
+    public GameObject Potion2;
+
     [SerializeField]
     private float DashSpeed = 5;
 
@@ -79,6 +81,19 @@ public class Player2 : HP
             transform.LookAt(transform.position + Dashinput);
 
             Dashvelosity += transform.forward * DashSpeed;
+        }
+
+        if (Potion2 != null)
+        {
+            // もしも100以下でプレイヤーHPが存在する場合
+            if (Slider.value < 100)
+            {
+                if (Input.GetAxis("TriangleButton1") > 0)
+                {
+                    Slider.value = Slider.maxValue;
+                    Potion2.SetActive(false);
+                }
+            }
         }
 
         // アニメーション

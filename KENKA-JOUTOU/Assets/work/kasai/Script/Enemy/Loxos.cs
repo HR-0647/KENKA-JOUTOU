@@ -122,7 +122,7 @@ public class Loxos : Enemy
         {
             DamageTrigger = true;
         }
-        if(collision.gameObject.tag== "Untagged")
+        if(collision.gameObject.tag== "Wall")
         {
             StunTrgger = true;
         }
@@ -157,27 +157,39 @@ public class Loxos : Enemy
 
     public IEnumerator Tackle()//タックル攻撃
     {
-        if (!process)
+        anim.SetBool("dash", true);
+        if (StunTrgger)
         {
-            
-            //Actが1の時呼び出される
-            anim.SetBool("dash", true);
-            process = true;
-            invincible = true;
-            StunTrgger = false;
-            //rb.AddForce(transform.forward * TackleSpeed, ForceMode.VelocityChange);
-            yield return new WaitForSeconds(2.0f);
-            anim.SetBool("dash", false);
-            this.transform.position += transform.forward * 0;
+            anim.SetBool("frightend", true);
+            TackleSpeed = 0;
+            //this.transform.position += transform.forward * 0;
             //rb.velocity = Vector3.zero;
             //rb.angularVelocity = Vector3.zero;
-            if (StunTrgger)
-            {
-                anim.SetBool("frightend", true);
-                yield return new WaitForSeconds(2.0f);
-                anim.SetBool("frightend", false);
-            }
-            StunTrgger = false;
+            Debug.Log("a");
+            yield return new WaitForSeconds(2.0f);
+            anim.SetBool("frightend", false);
+        }
+        StunTrgger = false;
+
+        //rb.AddForce(transform.forward * TackleSpeed, ForceMode.VelocityChange);
+
+        yield return new WaitForSeconds(1.0f);
+        this.transform.position += transform.forward * 0;
+        anim.SetBool("dash", false);
+        if (!process)
+        {
+
+            //Actが1の時呼び出される
+            
+            
+
+            process = true;
+            invincible = true;
+
+
+            //rb.velocity = Vector3.zero;
+            //rb.angularVelocity = Vector3.zero;
+
             Debug.Log("Atk");
             Act = 2;
             yield return new WaitForSeconds(EnemyAtkInterval);

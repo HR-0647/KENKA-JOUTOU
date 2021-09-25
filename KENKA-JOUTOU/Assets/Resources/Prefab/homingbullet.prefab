@@ -4920,7 +4920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7583f629cf01584eaaece54e72f7be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletSpead: 0
+  BulletSpead: 5
   reflect: 1
   sound: {fileID: 8300000, guid: 1071efa607dd14e40a55d534203c0427, type: 3}
 --- !u!82 &2529839013960979707
@@ -5030,7 +5030,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2869001
+  m_Radius: 0.62
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1986739233109320860
 GameObject:

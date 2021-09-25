@@ -4037,7 +4037,7 @@ MonoBehaviour:
   invincible: 0
   StunTrgger: 0
   process: 0
-  tackCol: {fileID: 0}
+  tackle: 0
   PlayerObject1: {fileID: 0}
   PlayerObject2: {fileID: 0}
   SpawnPos1: {fileID: 2788108465579038724}

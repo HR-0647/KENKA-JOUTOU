@@ -21,6 +21,18 @@ EditorBuildSettings:
     path: Assets/work/Honda/Final/Jailer room.unity
     guid: dcc9e15fd3f2c5f489d98d3fdaf48d46
   - enabled: 1
+    path: Assets/work/Honda/Scenes/HallTalk.unity
+    guid: 1db481f123e5bd443a5cbdeba6e2cadb
+  - enabled: 1
     path: Assets/work/Honda/Final/HallArea.unity
     guid: f57a645fd9e08064cbc272d3523ab877
+  - enabled: 1
+    path: Assets/work/Honda/Scenes/HallTalk2.unity
+    guid: 65abe9a1f6dced644814ad74f1360a1d
+  - enabled: 1
+    path: Assets/work/Honda/Final/HallArea2.unity
+    guid: 8ae688588057b4a448590bcf5494b986
+  - enabled: 1
+    path: Assets/work/Honda/Scenes/END.unity
+    guid: f9241de15b6cc674eb7f80ac495c7566
   m_configObjects: {}

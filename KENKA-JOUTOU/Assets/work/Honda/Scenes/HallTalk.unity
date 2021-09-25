@@ -488,7 +488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2209b7b5bf4fa438229d3607128f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneLoadName: 
+  sceneLoadName: HallArea
   textbox: {fileID: 1423575598}
   textbox2: {fileID: 1878227202}
   intervalForCharacterDisplay: 0.05

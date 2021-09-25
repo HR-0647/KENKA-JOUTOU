@@ -273,5 +273,17 @@ public class Player2 : HP
                 DamageTrigger = false;
             }
         }
+        if(collision.gameObject.tag == "Potion")
+        {
+            Potion2.SetActive(true);
+        }
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.tag == "Potion")
+    //    {
+    //        Potion2.SetActive(true);
+    //    }
+    //}
 }

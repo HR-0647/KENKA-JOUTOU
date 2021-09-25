@@ -274,4 +274,12 @@ public class OnePController : HP
             }
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Potion")
+        {
+            Potion1.SetActive(true);
+        }
+    }
 }

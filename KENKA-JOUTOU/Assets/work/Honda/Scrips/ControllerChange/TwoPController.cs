@@ -274,4 +274,12 @@ public class TwoPController : HP
             }
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Potion")
+        {
+            Potion2.SetActive(true);
+        }
+    }
 }

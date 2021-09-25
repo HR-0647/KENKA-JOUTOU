@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a28cd967fa961447917960bb4e22322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneLoadName: 
+  sceneLoadName: Title
   textbox: {fileID: 1846009464}
   textbox2: {fileID: 134143841}
   intervalForCharacterDisplay: 0.05

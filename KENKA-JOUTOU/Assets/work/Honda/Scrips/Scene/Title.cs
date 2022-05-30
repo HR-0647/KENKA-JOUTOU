@@ -1,25 +1,35 @@
 using UnityEngine;
-using System.Collections;
-using UnityEngine.SceneManagement;
 
 public class Title : MonoBehaviour
 {
-    public Fade fade;
-
+    public GameObject canvas;
+    public GameObject Hp;
+    public Animation TitleAnim;
+    public GameObject camera;
+    public GameObject titlecamera;
+    private float time;
+    private float endtime = 0.1f;
+    private bool OunButton;
     private void Update()
     {
-        if(Input.GetAxis("CircleButton1") > 0|| Input.GetAxis("CircleButton2") > 0)
+        if(Input.GetAxis("CircleButton1") > 0 || Input.GetAxis("CircleButton2") > 0)
         {
-            StartCoroutine(StartGame());
-        }
-    }
+            if (!OunButton)
+            {
+                OunButton = true;
+                canvas.SetActive(false);
+                Hp.SetActive(true);
+            }
 
-    IEnumerator StartGame()
-    {
-        yield return new WaitForSeconds(1f);
-        fade.isFadeIn = false;
-        fade.isFadeOut = true;
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("Prologue");
+            TitleAnim.Play();
+            time += Time.deltaTime;
+            if (time > endtime)
+            {
+                endtime = 0;
+                camera.SetActive(true);
+                
+                titlecamera.SetActive(false);
+            }
+        }
     }
 }

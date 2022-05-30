@@ -1,10 +1,13 @@
-using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NextStage : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene("Jailer room");
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Player2")
+        {
+            SceneManager.LoadScene("HallArea");
+        }
     }
 }

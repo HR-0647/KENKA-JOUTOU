@@ -222,7 +222,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126602891}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46617aee5812ea04bad57d780a82eb22, type: 3}
   m_Name: 
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126602891}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 142b9fe85eafe6947a659b2950c44bbf, type: 3}
   m_Name: 
@@ -250,9 +250,6 @@ MonoBehaviour:
   target2: {fileID: 5632547815374206305}
   p1: {fileID: 2380350005023555637}
   p2: {fileID: 5632547815374206309}
-  red: {fileID: 2100000, guid: 9644cf80be04bf648a21e6a6f647e476, type: 2}
-  yellow: {fileID: 2100000, guid: fd867d292e8a8dc4882f7a04f8b54302, type: 2}
-  obi: {fileID: 1352074890405584630}
 --- !u!1 &736266841
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +286,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.15}
-  m_SizeDelta: {x: 75, y: 25}
+  m_SizeDelta: {x: 50, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &736266845
 CanvasRenderer:
@@ -332,7 +329,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30EF\u30A4\u30A2\u30C3\u30C8"
+  m_Text: Player2
 --- !u!114 &736266843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,7 +379,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.15}
-  m_SizeDelta: {x: 75, y: 25}
+  m_SizeDelta: {x: 50, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &763663924
 CanvasRenderer:
@@ -425,7 +422,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30A2\u30C7\u30A3\u30BD\u30F3"
+  m_Text: Player1
 --- !u!114 &763663922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5206,7 +5203,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9239d223d9ea1b848970bbeba1f17544, type: 2}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10270,7 +10267,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9239d223d9ea1b848970bbeba1f17544, type: 2}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10451,211 +10448,96 @@ MonoBehaviour:
   m_CollisionMaterial: {fileID: 0}
   m_SurfaceCollisions: 0
   m_SelfCollisions: 0
-  restLength_: 4.020013
+  restLength_: 4.167189
   elements:
   - particle1: 0
     particle2: 1
-    restLength: 0.09760019
+    restLength: 0.23794554
     constraintForce: 0
     tearResistance: 1
   - particle1: 1
     particle2: 2
-    restLength: 0.096855715
+    restLength: 0.24057133
     constraintForce: 0
     tearResistance: 1
   - particle1: 2
     particle2: 3
-    restLength: 0.09644415
+    restLength: 0.24051975
     constraintForce: 0
     tearResistance: 1
   - particle1: 3
     particle2: 4
-    restLength: 0.096836224
+    restLength: 0.24042864
     constraintForce: 0
     tearResistance: 1
   - particle1: 4
     particle2: 5
-    restLength: 0.09708979
+    restLength: 0.24041206
     constraintForce: 0
     tearResistance: 1
   - particle1: 5
     particle2: 6
-    restLength: 0.09684802
+    restLength: 0.24066551
     constraintForce: 0
     tearResistance: 1
   - particle1: 6
     particle2: 7
-    restLength: 0.09673077
+    restLength: 0.24056523
     constraintForce: 0
     tearResistance: 1
   - particle1: 7
     particle2: 8
-    restLength: 0.09668536
+    restLength: 0.23955956
     constraintForce: 0
     tearResistance: 1
   - particle1: 8
     particle2: 9
-    restLength: 0.096761756
+    restLength: 0.23615949
     constraintForce: 0
     tearResistance: 1
   - particle1: 9
     particle2: 10
-    restLength: 0.09699677
+    restLength: 0.22239128
     constraintForce: 0
     tearResistance: 1
   - particle1: 10
     particle2: 11
-    restLength: 0.09694035
+    restLength: 0.22601254
     constraintForce: 0
     tearResistance: 1
   - particle1: 11
     particle2: 12
-    restLength: 0.096911915
+    restLength: 0.22701694
     constraintForce: 0
     tearResistance: 1
   - particle1: 12
     particle2: 13
-    restLength: 0.09689921
+    restLength: 0.22653203
     constraintForce: 0
     tearResistance: 1
   - particle1: 13
     particle2: 14
-    restLength: 0.096895196
+    restLength: 0.22714998
     constraintForce: 0
     tearResistance: 1
   - particle1: 14
     particle2: 15
-    restLength: 0.09689512
+    restLength: 0.22657068
     constraintForce: 0
     tearResistance: 1
   - particle1: 15
     particle2: 16
-    restLength: 0.09689234
+    restLength: 0.22695965
     constraintForce: 0
     tearResistance: 1
   - particle1: 16
     particle2: 17
-    restLength: 0.09687301
+    restLength: 0.22723441
     constraintForce: 0
     tearResistance: 1
   - particle1: 17
     particle2: 18
-    restLength: 0.09680447
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 18
-    particle2: 19
-    restLength: 0.09662571
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 19
-    particle2: 20
-    restLength: 0.0969476
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 20
-    particle2: 21
-    restLength: 0.09699781
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 21
-    particle2: 22
-    restLength: 0.096155345
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 22
-    particle2: 23
-    restLength: 0.0982825
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 23
-    particle2: 24
-    restLength: 0.09957765
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 24
-    particle2: 25
-    restLength: 0.09874951
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 25
-    particle2: 26
-    restLength: 0.099395014
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 26
-    particle2: 27
-    restLength: 0.099586815
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 27
-    particle2: 28
-    restLength: 0.09962478
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 28
-    particle2: 29
-    restLength: 0.09964463
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 29
-    particle2: 30
-    restLength: 0.09966747
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 30
-    particle2: 31
-    restLength: 0.09967588
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 31
-    particle2: 32
-    restLength: 0.099645376
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 32
-    particle2: 33
-    restLength: 0.09956531
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 33
-    particle2: 34
-    restLength: 0.09946579
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 34
-    particle2: 35
-    restLength: 0.09963318
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 35
-    particle2: 36
-    restLength: 0.09966372
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 36
-    particle2: 37
-    restLength: 0.099628486
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 37
-    particle2: 38
-    restLength: 0.09948674
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 38
-    particle2: 39
-    restLength: 0.09923036
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 39
-    particle2: 40
-    restLength: 0.10061346
-    constraintForce: 0
-    tearResistance: 1
-  - particle1: 40
-    particle2: 41
-    restLength: 0.09818942
+    restLength: 0.20049475
     constraintForce: 0
     tearResistance: 1
   m_RopeBlueprint: {fileID: 11400000, guid: 6c78051e8795f314cb83f9adf7c7060c, type: 2}
@@ -11055,16 +10937,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c7ade8e5a92ef4db6f72bc6f19bb5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerHP: 0
-  defaultPlayerHP: 0
-  Slider: {fileID: 2626597888581642027}
   WalkSpeed: 2.5
-  Potion2: {fileID: 4520195038436103267}
   DashSpeed: 15
   Dash: {fileID: 997948854}
   DashTime: 0.5
-  stackTime: 1.5
-  DamageTime: 2
 --- !u!114 &1352074890444075046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11089,16 +10965,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c2bb6bc65e99746a6a17622625141d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerHP: 0
-  defaultPlayerHP: 0
-  Slider: {fileID: 2626597888581642027}
-  Potion2: {fileID: 4520195038436103267}
   WalkSpeed: 2.5
   DashSpeed: 15
   Dash: {fileID: 997948854}
   DashTime: 0.5
-  stackTime: 1.5
-  DamageTime: 2
 --- !u!114 &1352074890444075048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11154,7 +11024,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6694984121475450188, guid: db80d3b34bd84a9458dfef166f68ec69, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6694984121475450188, guid: db80d3b34bd84a9458dfef166f68ec69, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11194,14 +11064,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db80d3b34bd84a9458dfef166f68ec69, type: 3}
---- !u!1 &5632547815374206309 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6694984121475450184, guid: db80d3b34bd84a9458dfef166f68ec69, type: 3}
-  m_PrefabInstance: {fileID: 1352074890444075053}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5632547815374206305 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6694984121475450188, guid: db80d3b34bd84a9458dfef166f68ec69, type: 3}
+  m_PrefabInstance: {fileID: 1352074890444075053}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5632547815374206309 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6694984121475450184, guid: db80d3b34bd84a9458dfef166f68ec69, type: 3}
   m_PrefabInstance: {fileID: 1352074890444075053}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2857952890299793682
@@ -11299,26 +11169,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_UI (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1767874621384273224, guid: f914a6034018ac145b6691c06023bce0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5418051493463849791, guid: f914a6034018ac145b6691c06023bce0, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5418051493463849791, guid: f914a6034018ac145b6691c06023bce0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7267687199799139920, guid: f914a6034018ac145b6691c06023bce0, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7267687199799139920, guid: f914a6034018ac145b6691c06023bce0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f914a6034018ac145b6691c06023bce0, type: 3}
 --- !u!224 &3628323672571358027 stripped
@@ -11326,38 +11176,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1581634466745379417, guid: f914a6034018ac145b6691c06023bce0, type: 3}
   m_PrefabInstance: {fileID: 2857952890299793682}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1758264212972669819 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4598147725590678121, guid: f914a6034018ac145b6691c06023bce0, type: 3}
-  m_PrefabInstance: {fileID: 2857952890299793682}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4520195038436103267 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1806937902042142065, guid: f914a6034018ac145b6691c06023bce0, type: 3}
-  m_PrefabInstance: {fileID: 2857952890299793682}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2626597888581642027 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 277800271406294585, guid: f914a6034018ac145b6691c06023bce0, type: 3}
-  m_PrefabInstance: {fileID: 2857952890299793682}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3428691098562224817 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 593443128779121571, guid: f914a6034018ac145b6691c06023bce0, type: 3}
-  m_PrefabInstance: {fileID: 2857952890299793682}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6115228222143041954
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11373,14 +11191,6 @@ PrefabInstance:
       propertyPath: Dash
       value: 
       objectReference: {fileID: 1745409392}
-    - target: {fileID: 5052527888598223765, guid: e1e7892a44da8ed4a869a5642f8a81f3, type: 3}
-      propertyPath: Slider
-      value: 
-      objectReference: {fileID: 3428691098562224817}
-    - target: {fileID: 5052527888598223765, guid: e1e7892a44da8ed4a869a5642f8a81f3, type: 3}
-      propertyPath: Potion1
-      value: 
-      objectReference: {fileID: 1758264212972669819}
     - target: {fileID: 5052527888598223765, guid: e1e7892a44da8ed4a869a5642f8a81f3, type: 3}
       propertyPath: DashSpeed
       value: 15
@@ -11406,14 +11216,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1745409392}
     - target: {fileID: 5052527888598223768, guid: e1e7892a44da8ed4a869a5642f8a81f3, type: 3}
-      propertyPath: Slider
-      value: 
-      objectReference: {fileID: 3428691098562224817}
-    - target: {fileID: 5052527888598223768, guid: e1e7892a44da8ed4a869a5642f8a81f3, type: 3}
-      propertyPath: Potion1
-      value: 
-      objectReference: {fileID: 1758264212972669819}
-    - target: {fileID: 5052527888598223768, guid: e1e7892a44da8ed4a869a5642f8a81f3, type: 3}
       propertyPath: DashSpeed
       value: 15
       objectReference: {fileID: 0}
@@ -11435,7 +11237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9123946156860148525, guid: e1e7892a44da8ed4a869a5642f8a81f3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 9123946156860148525, guid: e1e7892a44da8ed4a869a5642f8a81f3, type: 3}
       propertyPath: m_LocalPosition.y

@@ -1,28 +1,42 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
+
+
 
 [RequireComponent(typeof(NavMeshAgent))]
 
-public class Goblin : MonoBehaviour
+public class Goblin : Enemy
 {
     public GameObject PlayerObject1;    //プレイヤーオブジェクト1
     public GameObject PlayerObject2;    //プレイヤーオブジェクト2
-    public GameObject WireObject;      //ワイヤーオブジェクト
-    //public Transform PlayerDistance1;
-    //public Transform PlayerDistance2;
-    //public Transform WireDistance;
-    public bool trigger = true;         //巡回とターゲット切り替え
+
+    Rigidbody rb;
+
+    public static bool Trigger = true;  //巡回とターゲット切り替え
+    public bool DamageTrigger = false;  //ダメージ処理切り替え
+    public bool invincible = false;
 
     private Vector3 PlayerPosition1;    //プレイヤーの位置情報1
     private Vector3 PlayerPosition2;    //プレイヤーの位置情報2
-    private Vector3 WirePosition;       //ワイヤーの位置情報
-    //private Vector3 EnemyPosition;      //エネミーの位置情報
 
-    public static float EnemyHealth = 100;      //エネミーの体力
+    private float KnockbackSpeed = 25.0f;//ノックバックのスピード
+    private Vector3 knockback = Vector3.zero;
 
-    //タイマー
-    private float timeleft;
 
+
+
+    private float timeleft;             //タイマー
+
+    //サウンド
+    public AudioClip atksound;  //攻撃音
+
+    AudioSource audioSource;
+
+    //アニメーション
+    public Animator anim;
+
+    [SerializeField] GameObject Effect;//エフェクト
     //NavMesh関連
     [SerializeField]
     private Transform[] m_targets = null;
@@ -34,6 +48,8 @@ public class Goblin : MonoBehaviour
     private NavMeshAgent m_navAgent = null;
 
     private int m_targetIndex = 0;
+
+    private bool navmashtrigger = true;
 
     private Vector3 CurretTargetPosition
     {
@@ -48,40 +64,32 @@ public class Goblin : MonoBehaviour
         }
     }
 
-    //private float x1;                   //プレイヤー1のx座標
-    //private float x2;                   //プレイヤー2のx座標
-
-    //private float x3;                   //糸のx座標
-
-    //private float z1;                   //プレイヤー1のy座標
-    //private float z2;                   //プレイヤー2のy座標
-
-    //private float z3;                   //糸のy座標
 
     private float range1;               //エネミーからプレイヤー1までの距離
     private float range2;               //エネミーからプレイヤー2までの距離
-    private float range3;               //エネミーから糸までの距離
 
-    public float EnemySearchArea;       //敵の索敵範囲
-    public float EnemyAtkInterval;      //敵の攻撃間隔
-
-    //アニメーション関連
-    private Animator animator;
-
+    public float EnemyAtkInterval = 3.0f;      //敵の攻撃間隔
 
     // Start is called before the first frame update
     void Start()
     {
-        //PlayerObject = GameObject.FindWithTag("Player");
-        //WireObject = GameObject.FindWithTag("Wire");
-
-        //PlayerPosition1 = PlayerObject1.transform.position;
-        //PlayerPosition2 = PlayerObject2.transform.position;
-        //WirePosition = WireObject.transform.position;
-        //EnemyPosition = transform.position;
-
+        //type = EnemyType.Goblin;
+        EnemyHP = 40;//エネミー体力
+        attack = 5;
         m_navAgent = GetComponent<NavMeshAgent>();
         m_navAgent.destination = CurretTargetPosition;
+        //オーディオコンポーネント取得
+        audioSource = GetComponent<AudioSource>();
+
+        //アニメーターコンポーネント所得
+        anim = GetComponent<Animator>();
+        anim.SetBool("Atk", false);
+        anim.SetBool("Walk", true);
+
+        rb = GetComponent<Rigidbody>();
+
+
+
 
 
     }
@@ -89,165 +97,172 @@ public class Goblin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //体力の判定
+        if (EnemyHP <= 0)
+        {
+            GameObject effect = Instantiate(Effect) as GameObject;
+            effect.transform.position = this.transform.position;
+            Destroy(this.gameObject);
+        }
+
+        //ダメージ処理呼び出し
+        if (DamageTrigger == true && invincible == false)
+        {
+            StartCoroutine(Damaged());
+        }
+
         //プレイヤーと糸までの距離を出す
         PlayerPosition1 = PlayerObject1.transform.position;
         PlayerPosition2 = PlayerObject2.transform.position;
-        //EnemyPosition = transform.position;
-        WirePosition = WireObject.transform.position;
 
-        //x1 = PlayerPosition1.x - EnemyPosition.x;
-        //x2 = PlayerPosition2.x - EnemyPosition.x;
-        //x3 = WirePosition.x - EnemyPosition.x;
-        //z1 = PlayerPosition1.z - EnemyPosition.z;
-        //z2 = PlayerPosition2.z - EnemyPosition.z;
-        //z3 = WirePosition.z - EnemyPosition.z;
-
-        //range1 = Vector3.Distance(PlayerDistance1.position,transform.position);
-        //range2 = Vector3.Distance(PlayerDistance2.position, transform.position);
-        //range3 = Vector3.Distance(WireDistance.position, transform.position);
 
         range1 = Vector3.Distance(PlayerPosition1, transform.position);
         range2 = Vector3.Distance(PlayerPosition2, transform.position);
-        range3 = Vector3.Distance(WirePosition, transform.position);
 
         //タイマー
         timeleft -= Time.deltaTime;
+
 
         //ここからエネミーの行動パターン
 
         //エネミーの巡回
 
-        if (m_navAgent.remainingDistance <= m_destinationThreshold && trigger)
-        //(range1 >= EnemySearchArea || range2 >= EnemySearchArea || range3 >= EnemySearchArea)
+        if (navmashtrigger)
         {
+            if (Trigger)
             {
-                m_targetIndex = (m_targetIndex + 1) % m_targets.Length;
-
-                m_navAgent.destination = CurretTargetPosition;
-
-            }
-        }
-        if (range1 <= EnemySearchArea || range2 <= EnemySearchArea || range3 <= EnemySearchArea)
-        {
-            trigger = false;
-        }
-        //検知範囲にプレイヤーか糸がいるなら接近する
-        if (!trigger)
-        {
-
-            //体力がMaxなら糸に向かって移動
-            if (EnemyHealth >= 100 && range3 >= 1)
-            {
-                m_navAgent.destination = WirePosition;
-                //if (WirePosition.x > EnemyPosition.x)
-                //{
-                //    EnemyPosition.x = EnemyPosition.x + 0.01f;
-                //}
-                //else if (WirePosition.x < EnemyPosition.x)
-                //{
-                //    EnemyPosition.x = EnemyPosition.x - 0.01f;
-                //}
-
-                //if (WirePosition.z > EnemyPosition.z)
-                //{
-                //    EnemyPosition.z = EnemyPosition.z + 0.01f;
-                //}
-                //else if (WirePosition.z < EnemyPosition.z)
-                //{
-                //    EnemyPosition.z = EnemyPosition.z - 0.01f;
-                //}
-
-            }
-            else if (EnemyHealth >= 100 && range3 <= 1)
-            {
-                //糸に攻撃した後EnemyAtkInterval分の間隔を置いて再度攻撃を繰り返す
-                if (timeleft <= 0.0)
+                if (m_navAgent.remainingDistance <= m_destinationThreshold)
                 {
-                    timeleft = EnemyAtkInterval;
-                    //攻撃
-                    Debug.Log("Atk");
+
+                    {
+
+                        m_targetIndex = (m_targetIndex + 1) % m_targets.Length;
+                        //移動アニメーション
+                        anim.SetBool("Walk", true);
+                        m_navAgent.destination = CurretTargetPosition;
+
+
+                    }
                 }
-
-
-
             }
 
-            //体力が減っているならプレイヤーに向かって移動
-            if (EnemyHealth < 100)
+            if (!Trigger)
             {
                 //プレイヤー1の方が近い場合
-                if (range1 <= range2 && range1 >= 1)
+                if (range1 <= range2)
                 {
-                    m_navAgent.destination = PlayerPosition1;
-                    //if (PlayerPosition1.x > EnemyPosition.x)
-                    //{
-                    //    EnemyPosition.x = EnemyPosition.x + 0.01f;
-                    //}
-                    //else if (PlayerPosition1.x < EnemyPosition.x)
-                    //{
-                    //    EnemyPosition.x = EnemyPosition.x - 0.01f;
-                    //}
-
-                    //if (PlayerPosition1.z > EnemyPosition.z)
-                    //{
-                    //    EnemyPosition.z = EnemyPosition.z + 0.01f;
-                    //}
-                    //else if (PlayerPosition1.z < EnemyPosition.z)
-                    //{
-                    //    EnemyPosition.z = EnemyPosition.z - 0.01f;
-                    //}
-                }
-                else if (range1 <= range2 && range1 <= 1)
-                {
-                    //プレイヤー1に攻撃した後EnemyAtkInterval分の間隔を置いて再度攻撃を繰り返す
-                    if (timeleft <= 0.0)
+                    if (range1 > m_navAgent.stoppingDistance)
                     {
-                        timeleft = EnemyAtkInterval;
-                        //攻撃
-                        Debug.Log("Atk");
+                        m_navAgent.destination = PlayerPosition1;
+                        //移動アニメーション
+                        anim.SetBool("Atk", false);
+                        anim.SetBool("Walk", true);
+                    }
+                    else if (range1 < m_navAgent.stoppingDistance)
+                    {
+
+                        //プレイヤー1に攻撃した後EnemyAtkInterval分の間隔を置いて再度攻撃を繰り返す
+                        if (timeleft <= 0.0)
+                        {
+                            timeleft = EnemyAtkInterval;
+
+                            //攻撃アニメーション
+                            anim.SetBool("Atk", true);
+                            anim.SetBool("Walk", false);
+
+                            //攻撃
+                            Debug.Log("Atk");
+                            //Debug.Log(timeleft);
+
+                            //攻撃音再生
+                            audioSource.PlayOneShot(atksound);
+
+                        }
+
+
                     }
 
-
                 }
-                else { }
-                //プレイヤー2の方が近い場合
-                if (range2 < range1 && range2 >= 1)
-                {
-                    m_navAgent.destination = PlayerPosition2;
-                    //if (PlayerPosition2.x > EnemyPosition.x)
-                    //{
-                    //    EnemyPosition.x = EnemyPosition.x + 0.01f;
-                    //}
-                    //else if (PlayerPosition2.x < EnemyPosition.x)
-                    //{
-                    //    EnemyPosition.x = EnemyPosition.x - 0.01f;
-                    //}
 
-                    //if (PlayerPosition2.z > EnemyPosition.z)
-                    //{
-                    //    EnemyPosition.z = EnemyPosition.z + 0.01f;
-                    //}
-                    //else if (PlayerPosition2.z < EnemyPosition.z)
-                    //{
-                    //    EnemyPosition.z = EnemyPosition.z - 0.01f;
-                    //}
-                }
-                else if (range2 < range1 && range2 <= 1)
+
+                //プレイヤー2の方が近く、プレイヤー2と密着していない場合
+                if (range2 < range1)
                 {
-                    //プレイヤー2に攻撃した後EnemyAtkInterval分の間隔を置いて再度攻撃を繰り返す
-                    if (timeleft <= 0.0)
+                    if (range2 > m_navAgent.stoppingDistance)
                     {
-                        timeleft = EnemyAtkInterval;
-                        Debug.Log("Atk");
+                        m_navAgent.destination = PlayerPosition2;
+                        //移動アニメーション
+                        anim.SetBool("Atk", false);
+                        anim.SetBool("Walk", true);
                     }
+                    else if (range2 <= m_navAgent.stoppingDistance)
+                    {
 
+                        //プレイヤー2に攻撃した後EnemyAtkInterval分の間隔を置いて再度攻撃を繰り返す
+                        if (timeleft <= 0.0)
+                        {
+                            timeleft = EnemyAtkInterval;
 
+                            //攻撃アニメーション
+                            anim.SetBool("Atk", true);
+                            anim.SetBool("Walk", false);
+
+                            //攻撃
+                            Debug.Log("Atk");
+                            //攻撃音再生
+                            audioSource.PlayOneShot(atksound);
+                            //攻撃アニメーションを一時的に停止させる
+                            anim.SetBool("Atk", false);
+                        }
+
+                    }
                 }
-                else { }
+
+
 
 
             }
 
+        }
+    }
+
+    public IEnumerator Damaged()//エネミーがダメージを受けた時の処理
+    {
+        invincible = true;//無敵時間中はこの処理は行わない
+        navmashtrigger = false;
+        m_navAgent.enabled = false;
+        rb.isKinematic = false;
+
+        EnemyHP -= 10;
+        Slider.value = (float)EnemyHP;//HPバー変動
+
+        rb.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange); //ノックバック
+        //アニメーションをidol状態に移行
+        anim.SetBool("Atk", false);
+        anim.SetBool("Walk", false);
+
+
+        knockback = Vector3.zero;
+
+        yield return new WaitForSeconds(2.0f);//数秒待機
+
+        Debug.Log("hit");
+
+        navmashtrigger = true;
+        m_navAgent.enabled = true;
+        rb.isKinematic = true;
+
+        DamageTrigger = false;
+        invincible = false;
+
+    }
+    //当たった時に呼ばれる関数
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Player2")
+        {
+            DamageTrigger = true;
         }
 
     }

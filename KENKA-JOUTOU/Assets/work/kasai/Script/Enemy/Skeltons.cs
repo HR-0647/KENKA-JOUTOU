@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
+
 
 
 [RequireComponent(typeof(NavMeshAgent))]
@@ -8,32 +10,33 @@ public class Skeltons : Enemy
 {
     public GameObject PlayerObject1;    //プレイヤーオブジェクト1
     public GameObject PlayerObject2;    //プレイヤーオブジェクト2
-    public GameObject WireObject;       //ワイヤーオブジェクト
 
-    //public Rigidbody rb;
+    Rigidbody rb;
 
-
-    public static bool Trigger = true;         //巡回とターゲット切り替え
+    public static bool Trigger = true;  //巡回とターゲット切り替え
     public bool DamageTrigger = false;  //ダメージ処理切り替え
+    public bool invincible = false;     //無敵時間
 
     private Vector3 PlayerPosition1;    //プレイヤーの位置情報1
     private Vector3 PlayerPosition2;    //プレイヤーの位置情報2
-    private Vector3 WirePosition;       //ワイヤーの位置情報
 
-    private float KnockbackSpeed = 5.0f;//ノックバックのスピード
+    private float KnockbackSpeed = 50.0f;//ノックバックのスピード
+    private Vector3 knockback = Vector3.zero;
 
-    
+
+
 
     private float timeleft;             //タイマー
 
     //サウンド
     public AudioClip atksound;  //攻撃音
-    //public AudioClip objectcllide;//衝突音
+
     AudioSource audioSource;
 
     //アニメーション
-    //Animation Animation;
     public Animator anim;
+
+    [SerializeField] GameObject Effect;//エフェクト
 
     //NavMesh関連
     [SerializeField]
@@ -46,6 +49,8 @@ public class Skeltons : Enemy
     private NavMeshAgent m_navAgent = null;
 
     private int m_targetIndex = 0;
+
+    private bool navmashtrigger = true;
 
     private Vector3 CurretTargetPosition
     {
@@ -63,20 +68,17 @@ public class Skeltons : Enemy
 
     private float range1;               //エネミーからプレイヤー1までの距離
     private float range2;               //エネミーからプレイヤー2までの距離
-    //private float range3;               //エネミーから糸までの距離
 
-    //public float EnemySearchArea;       //敵の索敵範囲
-    public float EnemyAtkInterval;      //敵の攻撃間隔
+    public float EnemyAtkInterval = 3.0f;      //敵の攻撃間隔
 
     // Start is called before the first frame update
     void Start()
     {
         type = EnemyType.Skeleton;
-        EnemyHP = 100;//エネミー体力
-        attack = 10;
+        EnemyHP = 20;//エネミー体力
+        attack = 3;
         m_navAgent = GetComponent<NavMeshAgent>();
         m_navAgent.destination = CurretTargetPosition;
-
         //オーディオコンポーネント取得
         audioSource = GetComponent<AudioSource>();
 
@@ -84,6 +86,10 @@ public class Skeltons : Enemy
         anim = GetComponent<Animator>();
         anim.SetBool("Atk", false);
         anim.SetBool("Walk", true);
+
+        rb = GetComponent<Rigidbody>();
+
+        
 
     }
 
@@ -93,23 +99,24 @@ public class Skeltons : Enemy
         //体力の判定
         if (EnemyHP <= 0)
         {
+            GameObject effect = Instantiate(Effect) as GameObject;
+            effect.transform.position = this.transform.position;
             Destroy(this.gameObject);
         }
 
         //ダメージ処理呼び出し
-        if (DamageTrigger == true)
+        if (DamageTrigger == true && invincible == false)
         {
-            Damaged();
+            StartCoroutine(Damaged());
         }
 
         //プレイヤーと糸までの距離を出す
         PlayerPosition1 = PlayerObject1.transform.position;
         PlayerPosition2 = PlayerObject2.transform.position;
-        WirePosition = WireObject.transform.position;
+
 
         range1 = Vector3.Distance(PlayerPosition1, transform.position);
         range2 = Vector3.Distance(PlayerPosition2, transform.position);
-        //range3 = Vector3.Distance(WirePosition, transform.position);
 
         //タイマー
         timeleft -= Time.deltaTime;
@@ -119,131 +126,142 @@ public class Skeltons : Enemy
 
         //エネミーの巡回
 
-        if (m_navAgent.remainingDistance <= m_destinationThreshold && Trigger)
+        if (navmashtrigger)
         {
-            
-            {            
-
-                m_targetIndex = (m_targetIndex + 1) % m_targets.Length;
-                //移動アニメーション
-                anim.SetBool("Walk", true);
-                m_navAgent.destination = CurretTargetPosition;
-
-
-            }
-        }
-
-        //検知範囲にプレイヤーか糸がいるなら接近する
-        //if (range1 <= EnemySearchArea || range2 <= EnemySearchArea || range3 <= EnemySearchArea)
-        //{
-        //    Trigger = false;
-        //}
-
-
-        if (!Trigger)
-        {
-            //プレイヤー1の方が近い場合
-            if (range1 <= range2)
+            if (Trigger)
             {
-                if (range1 > m_navAgent.stoppingDistance)
-                {
-                    m_navAgent.destination = PlayerPosition1;
-                    //移動アニメーション
-                    anim.SetBool("Atk", false);
-                    anim.SetBool("Walk", true);
-                }
-                else if (range1 < m_navAgent.stoppingDistance)
+                if (m_navAgent.remainingDistance <= m_destinationThreshold)
                 {
 
-                    //プレイヤー1に攻撃した後EnemyAtkInterval分の間隔を置いて再度攻撃を繰り返す
-                    if (timeleft <= 0.0)
                     {
-                        timeleft = EnemyAtkInterval;
 
-                        //攻撃アニメーション
-                        anim.SetBool("Atk", true);
-                        anim.SetBool("Walk", false);
+                        m_targetIndex = (m_targetIndex + 1) % m_targets.Length;
+                        //移動アニメーション
+                        anim.SetBool("Walk", true);
+                        m_navAgent.destination = CurretTargetPosition;
 
-                        //攻撃
-                        Debug.Log("Atk");
-                        //Debug.Log(timeleft);
 
-                        //攻撃音再生
-                        audioSource.PlayOneShot(atksound);
-
-                        //if (timeleft == 3.0)
-                        //{
-                        //    //攻撃アニメーションを一時的に停止させる
-                        //    anim.SetBool("Atk", false);
-                        //}
                     }
-                    
-
                 }
-
             }
 
-
-            //プレイヤー2の方が近く、プレイヤー2と密着していない場合
-            if (range2 < range1)
+            if (!Trigger)
             {
-                if (range2 > m_navAgent.stoppingDistance)
+                //プレイヤー1の方が近い場合
+                if (range1 <= range2)
                 {
-                    m_navAgent.destination = PlayerPosition2;
-                    //移動アニメーション
-                    anim.SetBool("Atk", false);
-                    anim.SetBool("Walk", true);
-                }
-                else if (range2 <= m_navAgent.stoppingDistance)
-                {
-                    
-                    //プレイヤー2に攻撃した後EnemyAtkInterval分の間隔を置いて再度攻撃を繰り返す
-                    if (timeleft <= 0.0)
+                    if (range1 > m_navAgent.stoppingDistance)
                     {
-                        timeleft = EnemyAtkInterval;
-
-                        //攻撃アニメーション
-                        anim.SetBool("Atk", true);
-                        anim.SetBool("Walk", false);
-
-                        //攻撃
-                        Debug.Log("Atk");
-                        //攻撃音再生
-                        audioSource.PlayOneShot(atksound);
-                        //攻撃アニメーションを一時的に停止させる
+                        m_navAgent.destination = PlayerPosition1;
+                        //移動アニメーション
                         anim.SetBool("Atk", false);
+                        anim.SetBool("Walk", true);
+                    }
+                    else if (range1 < m_navAgent.stoppingDistance)
+                    {
+
+                        //プレイヤー1に攻撃した後EnemyAtkInterval分の間隔を置いて再度攻撃を繰り返す
+                        if (timeleft <= 0.0)
+                        {
+                            timeleft = EnemyAtkInterval;
+                            
+
+                            //攻撃アニメーション
+                            anim.SetBool("Atk", true);
+                            anim.SetBool("Walk", false);
+
+                            //攻撃
+                            Debug.Log("Atk");
+                            //Debug.Log(timeleft);
+
+                            //攻撃音再生
+                            audioSource.PlayOneShot(atksound);
+
+                        }
+
+
                     }
 
                 }
+
+
+                //プレイヤー2の方が近く、プレイヤー2と密着していない場合
+                if (range2 < range1)
+                {
+                    if (range2 > m_navAgent.stoppingDistance)
+                    {
+                        m_navAgent.destination = PlayerPosition2;
+                        //移動アニメーション
+                        anim.SetBool("Atk", false);
+                        anim.SetBool("Walk", true);
+                    }
+                    else if (range2 <= m_navAgent.stoppingDistance)
+                    {
+
+                        //プレイヤー2に攻撃した後EnemyAtkInterval分の間隔を置いて再度攻撃を繰り返す
+                        if (timeleft <= 0.0)
+                        {
+                            timeleft = EnemyAtkInterval;
+                            
+
+                            //攻撃アニメーション
+                            anim.SetBool("Atk", true);
+                            anim.SetBool("Walk", false);
+
+                            //攻撃
+                            Debug.Log("Atk");
+                            //攻撃音再生
+                            audioSource.PlayOneShot(atksound);
+                            //攻撃アニメーションを一時的に停止させる
+                            anim.SetBool("Atk", false);
+                        }
+
+                    }
+                }
+
+
+
+
             }
 
-
-
-
         }
-
     }
 
-    public void Damaged()//エネミーがダメージを受けた時の処理
+    public IEnumerator Damaged()//エネミーがダメージを受けた時の処理
     {
-        var rigidbody = GetComponent<Rigidbody>();
-        EnemyHP -= 20;
+        invincible = true;//無敵時間中はこの処理は行わない
+        navmashtrigger = false;
+        m_navAgent.enabled = false;
+        rb.isKinematic = false;
+
+        EnemyHP -= 10;
+        Slider.value = (float)EnemyHP;//HPバー変動
+        Debug.Log(Slider.value);
+
+        rb.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange); //ノックバック
+        //アニメーションをidol状態に移行
+        anim.SetBool("Atk", false);
+        anim.SetBool("Walk", false);
+
+
+        knockback = Vector3.zero;
+
+        yield return new WaitForSeconds(2.0f);//数秒待機
+
         Debug.Log("hit");
-        Slider.value = (float)EnemyHP / defaultEnemyHP;
-        //transform.position -= transform.forward * KnockbackSpeed*Time.deltaTime;
-        rigidbody.AddForce(-transform.forward * KnockbackSpeed, ForceMode.VelocityChange);
+
+        navmashtrigger = true;
+        m_navAgent.enabled = true;
+        rb.isKinematic = true;
+
         DamageTrigger = false;
+        invincible = false;
+
     }
     //当たった時に呼ばれる関数
     private void OnCollisionEnter(Collision collision)
     {
-        ////プレイヤーと床以外のオブジェクトに衝突した場合
-        //if (collision.gameObject.tag == "Untagged")
-        //{
-        //    //衝突音再生
-        //    //audioSource.PlayOneShot(objectcllide);
-        //    GetComponent<AudioSource>().PlayOneShot(objectcllide);
-        //}
+
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Player2")
         {
             DamageTrigger = true;

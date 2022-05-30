@@ -17,10 +17,15 @@ public class DistanceivController : MonoBehaviour
     private Vector3 A;
     private Vector3 B;
 
+    public Material red;
+    public Material yellow;
+
+    public GameObject obi;
+
     private void Start()
     {
-        p1 = GameObject.Find("player_1_");
-        p2 = GameObject.Find("player_2_");
+        p1 = GameObject.Find("player_1_cmp");
+        p2 = GameObject.Find("player_2_cmp");
     }
 
     private void Update()
@@ -29,6 +34,15 @@ public class DistanceivController : MonoBehaviour
         B = target2.transform.position;
 
         dis = Vector3.Distance(A, B);
+
+        if (dis > 10)
+        {
+            obi.GetComponent<MeshRenderer>().material.color = red.color;
+        }
+        else
+        {
+            obi.GetComponent<MeshRenderer>().material.color = yellow.color;
+        }
     }
 
     private void LateUpdate()
@@ -42,8 +56,8 @@ public class DistanceivController : MonoBehaviour
         }
         else
         {
-            p1.GetComponent<OnePController>().WalkSpeed = 5f;
-            p2.GetComponent<TwoPController>().WalkSpeed = 5f;
+            p1.GetComponent<OnePController>().WalkSpeed = 2.5f;
+            p2.GetComponent<TwoPController>().WalkSpeed = 2.5f;
         }
 
         if (dis > 10)

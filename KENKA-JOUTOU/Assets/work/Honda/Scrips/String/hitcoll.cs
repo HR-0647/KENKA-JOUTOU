@@ -45,13 +45,44 @@ public class hitcoll : MonoBehaviour
 
                 Vector3 dis = (col.transform.position - transform.position).normalized;
                 // EnemyŽž
-                if (col != null && col.gameObject.CompareTag("Enemy"))
+                if (col != null && col.gameObject.CompareTag("Enemy1"))
+                {
+                    col.GetComponent<Goblin>().DamageTrigger = true;
+                    col.GetComponent<Goblin>().Damaged();
+                    col.GetComponent<NavMeshAgent>().enabled = false;
+                }
+                if (col != null && col.gameObject.CompareTag("Enemy2"))
                 {
                     col.GetComponent<Skeltons>().DamageTrigger = true;
                     col.GetComponent<Skeltons>().Damaged();
-                    col.GetComponent<NavMeshAgent>().enabled = false;
+                }
+                if (col != null && col.gameObject.CompareTag("Enemy3"))
+                {
+                    col.GetComponent<mimic>().DamageTrigger = true;
+                    col.GetComponent<mimic>().Damaged();
+                }
+                if (col != null && col.gameObject.CompareTag("summon1"))
+                {
+                    col.GetComponent<SummonsGoblin>().DamageTrigger = true;
+                    col.GetComponent<SummonsGoblin>().Damaged();
+                }
+                if (col != null && col.gameObject.CompareTag("summon2"))
+                {
+                    col.GetComponent<SummonSkelton>().DamageTrigger = true;
+                    col.GetComponent<SummonSkelton>().Damaged();
                 }
 
+                // BossŽž
+                if(col != null && col.gameObject.CompareTag("Boss1"))
+                {
+                    col.GetComponent<Cerestiea>().DamageTrigger = true;
+                    col.GetComponent<Cerestiea>().Damaged();
+                }
+                if (col != null && col.gameObject.CompareTag("Boss2"))
+                {
+                    col.GetComponent<Loxos>().DamageTrigger = true;
+                    col.GetComponent<Loxos>().Damaged();
+                }
                 // ˜S‰®Žž
                 if (col.gameObject.CompareTag("IronGrill"))
                 {
